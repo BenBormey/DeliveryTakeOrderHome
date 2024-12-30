@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35425.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryTakeOrder", "DeliveryTakeOrder.csproj", "{FCDFAE6C-D96A-4096-AEB8-84B3BD860411}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCDFAE6C-D96A-4096-AEB8-84B3BD860411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCDFAE6C-D96A-4096-AEB8-84B3BD860411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCDFAE6C-D96A-4096-AEB8-84B3BD860411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCDFAE6C-D96A-4096-AEB8-84B3BD860411}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB61DE58-8E7A-4561-97EB-AB41DFC8D050}
+	EndGlobalSection
+EndGlobal
