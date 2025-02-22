@@ -98,6 +98,9 @@
             this.DgvShow.RowHeadersWidth = 25;
             this.DgvShow.Size = new System.Drawing.Size(818, 359);
             this.DgvShow.TabIndex = 114;
+            this.DgvShow.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvShow_CellDoubleClick);
+            this.DgvShow.DoubleClick += new System.EventHandler(this.DgvShow_DoubleClick);
+            this.DgvShow.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.DgvShow_PreviewKeyDown);
             // 
             // Id
             // 
@@ -182,6 +185,7 @@
             this.BtnExportToExcel.TabIndex = 12;
             this.BtnExportToExcel.Text = "&Export To Excel";
             this.BtnExportToExcel.UseVisualStyleBackColor = true;
+            this.BtnExportToExcel.Click += new System.EventHandler(this.BtnExportToExcel_Click);
             // 
             // LblCountRow
             // 
@@ -381,7 +385,10 @@
             this.CmbProducts.Name = "CmbProducts";
             this.CmbProducts.Size = new System.Drawing.Size(343, 27);
             this.CmbProducts.TabIndex = 3;
+            this.CmbProducts.SelectedIndexChanged += new System.EventHandler(this.CmbProducts_SelectedIndexChanged);
             this.CmbProducts.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CmbProducts_KeyPress);
+            this.CmbProducts.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CmbProducts_MouseDown);
+            this.CmbProducts.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.CmbProducts_PreviewKeyDown);
             // 
             // Label14
             // 
@@ -462,6 +469,7 @@
             this.Text = "Set Pieces Per Tray";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmSetPiecesPerTray_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FrmSetPiecesPerTray_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.DgvShow)).EndInit();
             this.Panel44.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);

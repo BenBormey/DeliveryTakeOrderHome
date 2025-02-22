@@ -43,6 +43,7 @@ namespace DeliveryTakeOrder.Interfaces
 
         }
 
+      
         private void DataSources(ComboBox ComboBoxName, DataTable DTable, string DisplayMember, string ValueMember)
         {
             ComboBoxName.DataSource = DTable;
@@ -343,6 +344,16 @@ namespace DeliveryTakeOrder.Interfaces
         private void FrmProcessTakeOrderPreviewNEdit_Paint(object sender, PaintEventArgs e)
         {
             this.Text = string.Format("Preview & Edit Take Order For {0:dd-MMM-yyyy}", vRequiredDate);
+
+        }
+
+        private void FrmProcessTakeOrderPreviewNEdit_Load(object sender, EventArgs e)
+        {
+           this.DisplayLoading.Enabled = true;
+        }
+        private void LoadingInitialized()
+        {
+
 
         }
     }

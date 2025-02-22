@@ -58,7 +58,7 @@ namespace DeliveryTakeOrder.Declares
             }
         }
 
-        private static string _signalrserver = "192.168.1.37,1433";
+        private static string _signalrserver = "192.168.1.99";
         public static string SignalRClientServer
         {
             get
@@ -91,9 +91,9 @@ namespace DeliveryTakeOrder.Declares
                 {
                     var conBuilder = new System.Data.SqlClient.SqlConnectionStringBuilder()
                     {
-                        DataSource = "192.168.1.37,1433",
+                        DataSource = "192.168.1.58",
                         InitialCatalog = "DBUNTWHOLESALECOLTD",
-                        UserID = "sa",
+                        UserID = "UserConnection",
                         Password = "123"
                     };
                     _db_local = new RMDB(conBuilder.ConnectionString);
@@ -155,8 +155,8 @@ namespace DeliveryTakeOrder.Declares
         private static List<Company> _lscompany = new List<Company>();
         public static void InitialCompany()
         {
-            string primary_ip = "192.168.1.37,1433";
-            string secondary_ip = "192.168.1.37,1433";
+            string primary_ip = "192.168.1.111";
+            string secondary_ip = "192.168.100.49";
 
       
             if (!IsHostReachable( primary_ip))
@@ -169,7 +169,7 @@ namespace DeliveryTakeOrder.Declares
             {
                 DataSource = primary_ip,
                 InitialCatalog = "DBUNTWHOLESALECOLTD",
-                UserID = "sa",
+                UserID = "UserConnection",
                 Password = "123"
             };
 

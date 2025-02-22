@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DgvShow = new System.Windows.Forms.DataGridView();
             this.allowedday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.overday = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -238,8 +238,8 @@
             // DateShip
             // 
             this.DateShip.DataPropertyName = "DateShip";
-            dataGridViewCellStyle1.Format = "dd-MMM-yy";
-            this.DateShip.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "dd-MMM-yy";
+            this.DateShip.DefaultCellStyle = dataGridViewCellStyle3;
             this.DateShip.HeaderText = "Inv. Date";
             this.DateShip.Name = "DateShip";
             this.DateShip.ReadOnly = true;
@@ -248,9 +248,9 @@
             // GrandTotal
             // 
             this.GrandTotal.DataPropertyName = "GrandTotal";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.GrandTotal.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.GrandTotal.DefaultCellStyle = dataGridViewCellStyle4;
             this.GrandTotal.HeaderText = "Amount";
             this.GrandTotal.Name = "GrandTotal";
             this.GrandTotal.ReadOnly = true;
@@ -287,6 +287,7 @@
             this.BtnYes.TabIndex = 114;
             this.BtnYes.Text = "&OK";
             this.BtnYes.UseVisualStyleBackColor = true;
+            this.BtnYes.Click += new System.EventHandler(this.BtnYes_Click);
             // 
             // Panel1
             // 
@@ -333,9 +334,10 @@
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.Panel1);
             this.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmLockInvoicingDocumentARIN";
             this.Text = "FrmLockInvoicingDocumentARIN";
+            this.Load += new System.EventHandler(this.FrmLockInvoicingDocumentARIN_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvShow)).EndInit();
             this.Panel2.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);

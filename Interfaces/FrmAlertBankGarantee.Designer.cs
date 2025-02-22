@@ -67,6 +67,7 @@
             this.DgvShow.RowHeadersWidth = 25;
             this.DgvShow.Size = new System.Drawing.Size(435, 173);
             this.DgvShow.TabIndex = 115;
+            this.DgvShow.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.DgvShow_RowPrePaint);
             // 
             // CreditLimit
             // 
@@ -127,6 +128,7 @@
             this.BtnOK.TabIndex = 113;
             this.BtnOK.Text = "&OK";
             this.BtnOK.UseVisualStyleBackColor = true;
+            this.BtnOK.Click += new System.EventHandler(this.BtnOK_Click);
             // 
             // Panel1
             // 
@@ -168,9 +170,10 @@
             this.Controls.Add(this.Panel1);
             this.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmAlertBankGarantee";
             this.Text = "FrmAlertBankGarantee";
+            this.Load += new System.EventHandler(this.FrmAlertBankGarantee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvShow)).EndInit();
             this.Panel2.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);

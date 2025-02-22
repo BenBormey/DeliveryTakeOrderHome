@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DeliveryTakeOrder.Interfaces.WS_Products_List
 {
-    internal class cls_ws_products_list
+    public class cls_ws_products_list
     {
         public string CusNum { get; set; }
         public string CusName { get; set; }

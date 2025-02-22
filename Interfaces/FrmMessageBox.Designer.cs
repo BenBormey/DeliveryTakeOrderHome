@@ -109,6 +109,7 @@
             this.btnclose.TabIndex = 13;
             this.btnclose.Text = "&OK";
             this.btnclose.UseVisualStyleBackColor = true;
+            this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
             // 
             // FrmMessageBox
             // 

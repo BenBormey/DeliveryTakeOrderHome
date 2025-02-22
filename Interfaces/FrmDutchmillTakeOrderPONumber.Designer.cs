@@ -184,6 +184,7 @@
             this.BtnUpdate.TabIndex = 10;
             this.BtnUpdate.Text = "&Go Ahead";
             this.BtnUpdate.UseVisualStyleBackColor = true;
+            this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
             // BtnCancel
             // 
@@ -200,6 +201,7 @@
             this.BtnCancel.TabIndex = 11;
             this.BtnCancel.Text = "&Cancel";
             this.BtnCancel.UseVisualStyleBackColor = true;
+            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // FrmDutchmillTakeOrderPONumber
             // 

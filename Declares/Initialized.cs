@@ -29,9 +29,9 @@ namespace DeliveryTakeOrder.Declares
 
         public static string R_PrefixDatabase = "DB";
         public static string R_PublicIPAddress;
-        public static string R_IPAddress = "192.168.1.37";
-        public static string R_IPAddress_Temp = "192.168.1.37";
-        public static string R_UserConnection = "sa";
+        public static string R_IPAddress = "192.168.1.111";
+        public static string R_IPAddress_Temp = "192.168.100.49";
+        public static string R_UserConnection = "UserConnection";
         public static string R_PasswordConnection = "123";
         public static string R_DatabaseName;
         public static string R_MainDatabaseName = "";

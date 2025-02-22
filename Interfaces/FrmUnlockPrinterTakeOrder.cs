@@ -91,27 +91,33 @@ namespace DeliveryTakeOrder.Interfaces
 
         private void BtnUnlockPrinter_Click(object sender, EventArgs e)
         {
-            RCon = new SqlConnection(Data.ConnectionString(Initialized.GetConnectionType(Data, App)));
+        
+            SqlConnection RCon = new SqlConnection(Data.ConnectionString(Initialized.GetConnectionType(Data, App)));
             RCon.Open();
-            RTran = RCon.BeginTransaction();
+            SqlTransaction RTran = RCon.BeginTransaction();
+
             try
             {
+                SqlCommand RCom = new SqlCommand();
                 RCom.Transaction = RTran;
                 RCom.Connection = RCon;
                 RCom.CommandType = CommandType.Text;
-                RSQL = @"
-        UPDATE v
-        SET v.[PrintInvNo] = (ISNULL(v.[PrintInvNo], 0) + 1), v.[IsBusy] = 0
-        FROM [Stock].[dbo].[TPRDeliveryTakeOrdPrintInvNo] v
-        WHERE ISNULL(v.[IsBusy], 0) = 1;
-    ";
+
+                string RSQL = @"
+                    UPDATE v
+                    SET v.[PrintInvNo] = (ISNULL(v.[PrintInvNo],0) + 1), v.[IsBusy] = 0
+                    FROM [Stock].[dbo].[TPRDeliveryTakeOrdPrintInvNo] v
+                    WHERE ISNULL(v.[IsBusy],0) = 1;
+                  ";
+
                 RSQL = string.Format(RSQL, DatabaseName);
                 RCom.CommandText = RSQL;
                 RCom.ExecuteNonQuery();
+
                 RTran.Commit();
                 RCon.Close();
                 MessageBox.Show("Unlock Printer have been completed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                PicStatus.Image = DeliveryTakeOrder.Properties.Resources.Unlock_Printer;
+              //  PicStatus.Image = this.u.Resources.Unlock_Printer;
             }
             catch (SqlException ex)
             {

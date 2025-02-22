@@ -75,5 +75,30 @@ namespace DeliveryTakeOrder.Interfaces
             }
 
         }
+
+        private void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.None;
+            if (TxtPONo.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Please enter the P.O Number!", "Enter P.O Number", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                TxtPONo.Focus();
+                return;
+            }
+            else
+            {
+                this.vDateOrder = Convert.ToDateTime(TxtOrderDate.Text.Trim());
+                this.vRequiredDate = Convert.ToDateTime(DTPRequiredDate.Value);
+                this.vPONumber = TxtPONo.Text.Trim();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+
+        }
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -249,6 +249,7 @@
             this.DgvShow.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DgvShow_RowPostPaint);
             this.DgvShow.Sorted += new System.EventHandler(this.DgvShow_Sorted);
             this.DgvShow.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DgvShow_MouseDown);
+            this.DgvShow.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.DgvShow_PreviewKeyDown);
             // 
             // ManualRenew
             // 
@@ -619,6 +620,7 @@
             this.BtnClose.Dock = System.Windows.Forms.DockStyle.Right;
             this.BtnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.BtnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BtnClose.Image = global::DeliveryTakeOrder.Properties.Resources.Cancel16;
             this.BtnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnClose.Location = new System.Drawing.Point(712, 1);
             this.BtnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -677,12 +679,14 @@
             this.CmbProducts.Size = new System.Drawing.Size(337, 27);
             this.CmbProducts.TabIndex = 7;
             this.CmbProducts.SelectedIndexChanged += new System.EventHandler(this.CmbProducts_SelectedIndexChanged);
+            this.CmbProducts.TextChanged += new System.EventHandler(this.CmbProducts_TextChanged);
             this.CmbProducts.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CmbProducts_KeyPress);
             this.CmbProducts.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.CmbProducts_PreviewKeyDown);
             // 
             // Label7
             // 
             this.Label7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Label7.ForeColor = System.Drawing.Color.Black;
             this.Label7.Location = new System.Drawing.Point(0, 1);
             this.Label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label7.Name = "Label7";
@@ -720,6 +724,7 @@
             // Label8
             // 
             this.Label8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Label8.ForeColor = System.Drawing.Color.Black;
             this.Label8.Location = new System.Drawing.Point(0, 1);
             this.Label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label8.Name = "Label8";
@@ -777,6 +782,7 @@
             // Label12
             // 
             this.Label12.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Label12.ForeColor = System.Drawing.Color.Black;
             this.Label12.Location = new System.Drawing.Point(0, 1);
             this.Label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label12.Name = "Label12";
@@ -822,6 +828,7 @@
             // Label9
             // 
             this.Label9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Label9.ForeColor = System.Drawing.Color.Black;
             this.Label9.Location = new System.Drawing.Point(0, 1);
             this.Label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label9.Name = "Label9";
@@ -857,10 +864,12 @@
             this.CmbDelto.SelectedIndexChanged += new System.EventHandler(this.CmbDelto_SelectedIndexChanged);
             this.CmbDelto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CmbDelto_KeyDown);
             this.CmbDelto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CmbDelto_KeyPress);
+            this.CmbDelto.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.CmbDelto_PreviewKeyDown);
             // 
             // Label6
             // 
             this.Label6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Label6.ForeColor = System.Drawing.Color.Black;
             this.Label6.Location = new System.Drawing.Point(0, 1);
             this.Label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label6.Name = "Label6";
@@ -982,6 +991,7 @@
             // Label21
             // 
             this.Label21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Label21.ForeColor = System.Drawing.Color.Black;
             this.Label21.Location = new System.Drawing.Point(0, 1);
             this.Label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label21.Name = "Label21";
@@ -1012,6 +1022,8 @@
             this.TxtCTNOrder.TabIndex = 2;
             this.TxtCTNOrder.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TxtCTNOrder.TextChanged += new System.EventHandler(this.TxtCTNOrder_TextChanged);
+            this.TxtCTNOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCTNOrder_KeyPress);
+            this.TxtCTNOrder.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.TxtCTNOrder_PreviewKeyDown);
             // 
             // Panel33
             // 
@@ -1027,6 +1039,7 @@
             // Label20
             // 
             this.Label20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Label20.ForeColor = System.Drawing.Color.Black;
             this.Label20.Location = new System.Drawing.Point(0, 1);
             this.Label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label20.Name = "Label20";
@@ -1057,6 +1070,8 @@
             this.TxtPcsOrder.TabIndex = 2;
             this.TxtPcsOrder.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TxtPcsOrder.TextChanged += new System.EventHandler(this.TxtPcsOrder_TextChanged);
+            this.TxtPcsOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPcsOrder_KeyPress);
+            this.TxtPcsOrder.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.TxtPcsOrder_PreviewKeyDown);
             // 
             // Panel31
             // 
@@ -1072,6 +1087,7 @@
             // Label19
             // 
             this.Label19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Label19.ForeColor = System.Drawing.Color.Black;
             this.Label19.Location = new System.Drawing.Point(0, 1);
             this.Label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label19.Name = "Label19";
@@ -1117,6 +1133,7 @@
             // Label11
             // 
             this.Label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Label11.ForeColor = System.Drawing.Color.Black;
             this.Label11.Location = new System.Drawing.Point(0, 1);
             this.Label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label11.Name = "Label11";
@@ -1303,6 +1320,7 @@
             // Label4
             // 
             this.Label4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Label4.ForeColor = System.Drawing.Color.Black;
             this.Label4.Location = new System.Drawing.Point(0, 1);
             this.Label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label4.Name = "Label4";
@@ -1370,6 +1388,7 @@
             // 
             // MnuChangeCustomer
             // 
+            this.MnuChangeCustomer.Image = global::DeliveryTakeOrder.Properties.Resources.update_blue;
             this.MnuChangeCustomer.Name = "MnuChangeCustomer";
             this.MnuChangeCustomer.Size = new System.Drawing.Size(198, 22);
             this.MnuChangeCustomer.Text = "&Change Customer";
@@ -1381,6 +1400,7 @@
             // 
             // MnuChangePlanningOrder
             // 
+            this.MnuChangePlanningOrder.Image = global::DeliveryTakeOrder.Properties.Resources.Transfer;
             this.MnuChangePlanningOrder.Name = "MnuChangePlanningOrder";
             this.MnuChangePlanningOrder.Size = new System.Drawing.Size(198, 22);
             this.MnuChangePlanningOrder.Text = "Change &Planning Order";
@@ -1403,7 +1423,9 @@
             this.Name = "FrmDutchmillTakeOrder";
             this.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Text = "Dutchmill Planning Order";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmDutchmillTakeOrder_FormClosed);
             this.Load += new System.EventHandler(this.FrmDutchmillTakeOrder_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FrmDutchmillTakeOrder_Paint);
             this.PCustomerRemark.ResumeLayout(false);
             this.PCustomerRemark.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvShow)).EndInit();

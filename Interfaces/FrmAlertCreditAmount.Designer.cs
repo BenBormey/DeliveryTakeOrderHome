@@ -185,6 +185,7 @@
             this.BtnOK.Text = "&OK";
             this.BtnOK.UseVisualStyleBackColor = true;
             this.BtnOK.Visible = false;
+            this.BtnOK.Click += new System.EventHandler(this.BtnOK_Click);
             // 
             // BtnNo
             // 
@@ -261,7 +262,7 @@
             this.loading.Interval = 5;
             this.loading.Tick += new System.EventHandler(this.loading_Tick);
             // 
-            // FrmAlertCreditAmount
+            // ar_aging_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -271,8 +272,8 @@
             this.Controls.Add(this.Panel1);
             this.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FrmAlertCreditAmount";
-            this.Text = "FrmAlertCreditAmount";
+            this.Name = "ar_aging_form";
+            this.Text = "ar_aging_form";
             this.Load += new System.EventHandler(this.FrmAlertCreditAmount_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvShow)).EndInit();
             this.Panel2.ResumeLayout(false);

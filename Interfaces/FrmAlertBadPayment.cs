@@ -55,5 +55,10 @@ namespace DeliveryTakeOrder.Interfaces
             Todate = Data.Get_CURRENT_DATE(Initialized.GetConnectionType(Data, App));
 
         }
+
+        private void BtnYes_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

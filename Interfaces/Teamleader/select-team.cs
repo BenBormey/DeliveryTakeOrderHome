@@ -188,12 +188,12 @@ DROP TABLE #team_;
             Initialized.vIsNestleOnly = false;
             AppSetting.SaleManagerID = (int)(this.bsTeam.Current as DataRowView)["SaleManagerID"]; 
             if (AppSetting.SaleManagerID == 2) Initialized.vIsNestleOnly = true;
-            FrmPasswordLogin frmPasswordLogin = new FrmPasswordLogin(currentWarehouseName);
+          //  FrmPasswordLogin frmPasswordLogin = new FrmPasswordLogin(currentWarehouseName);
             using (FrmPasswordLogin frmLogin = new FrmPasswordLogin(currentWarehouseName))
             {
                 this.Hide(); // Hide the current form before showing the next form
                 frmLogin.ShowDialog(); // Use ShowDialog for modal behavior
-                this.Close(); // Close the current form after FrmPasswordLogin closes
+               // Close the current form after FrmPasswordLogin closes
             }
 
             //frmPasswordLogin.Show();

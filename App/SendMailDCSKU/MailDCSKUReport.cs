@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DevExpress.XtraReports.UI;
+using System;
+using System.Collections;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DeliveryTakeOrder.App.SendMailDCSKU
 {
-    public partial class MailDCSKUReport : Form
+    public partial class MailDCSKUReport : DevExpress.XtraReports.UI.XtraReport
     {
         public MailDCSKUReport()
         {
             InitializeComponent();
         }
+
     }
 }

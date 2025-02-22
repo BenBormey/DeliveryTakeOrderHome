@@ -117,4 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="XrLabel3.ExpressionBindings" xml:space="preserve">
+    <value>'Please be inform that the product order below have been discontinued.
+
+        • P.O Number: '+ [Parameters].[paramPO] +'
+        • Product Barcode: '+ [Parameters].[paramBarcode] +'
+        • Product Name: '+ [Parameters].[paramName] +'
+        • Product Size: '+ [Parameters].[paramSize] +'
+
+If you have any question please contact to our Admin Team 093 70 2000 | 012 70 200 or 
+Admin Manager at 011 500 706 (Ms. Moung Mearday).
+
+Best Regards,
+UNT WHOLESALE'</value>
+  </data>
 </root>

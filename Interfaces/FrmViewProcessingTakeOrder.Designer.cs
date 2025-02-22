@@ -71,7 +71,7 @@
             this.BtnClose = new System.Windows.Forms.Button();
             this.LblCountRow = new System.Windows.Forms.Label();
             this.Panel1 = new System.Windows.Forms.Panel();
-            this.PicLogo = new System.Windows.Forms.PictureBox();
+            this.LblCompanyName = new System.Windows.Forms.Label();
             this.Panel2 = new System.Windows.Forms.Panel();
             this.Panel3 = new System.Windows.Forms.Panel();
             this.CmbDate = new System.Windows.Forms.ComboBox();
@@ -82,34 +82,40 @@
             this.Panel8 = new System.Windows.Forms.Panel();
             this.CmbCustomer = new System.Windows.Forms.ComboBox();
             this.Label11 = new System.Windows.Forms.Label();
+            this.Panel6 = new System.Windows.Forms.Panel();
+            this.cmbDistributor = new DevExpress.XtraEditors.CheckedComboBoxEdit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.PicLogo = new System.Windows.Forms.PictureBox();
             this.Panel4 = new System.Windows.Forms.Panel();
-            this.LblCompanyName = new System.Windows.Forms.Label();
-            this.Label1 = new System.Windows.Forms.Label();
             this.CustomerLoading = new System.Windows.Forms.Timer(this.components);
             this.DateLoading = new System.Windows.Forms.Timer(this.components);
             this.displayloading = new System.Windows.Forms.Timer(this.components);
             this.DeltoLoading = new System.Windows.Forms.Timer(this.components);
+            this.distributorLoading = new System.Windows.Forms.Timer(this.components);
             this.Panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvShow)).BeginInit();
             this.Panel7.SuspendLayout();
             this.Panel5.SuspendLayout();
             this.Panel9.SuspendLayout();
             this.Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).BeginInit();
             this.Panel2.SuspendLayout();
             this.Panel3.SuspendLayout();
             this.Panel18.SuspendLayout();
             this.Panel8.SuspendLayout();
+            this.Panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbDistributor.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel10
             // 
             this.Panel10.Controls.Add(this.DgvShow);
             this.Panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel10.Location = new System.Drawing.Point(6, 105);
+            this.Panel10.Location = new System.Drawing.Point(6, 145);
             this.Panel10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Panel10.Name = "Panel10";
-            this.Panel10.Size = new System.Drawing.Size(872, 415);
+            this.Panel10.Size = new System.Drawing.Size(872, 375);
             this.Panel10.TabIndex = 119;
             // 
             // DgvShow
@@ -151,7 +157,7 @@
             this.DgvShow.Name = "DgvShow";
             this.DgvShow.ReadOnly = true;
             this.DgvShow.RowHeadersWidth = 25;
-            this.DgvShow.Size = new System.Drawing.Size(872, 415);
+            this.DgvShow.Size = new System.Drawing.Size(872, 375);
             this.DgvShow.TabIndex = 114;
             // 
             // ID
@@ -481,42 +487,40 @@
             // Panel1
             // 
             this.Panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.Panel1.Controls.Add(this.PicLogo);
-            this.Panel1.Controls.Add(this.Panel2);
-            this.Panel1.Controls.Add(this.Panel4);
             this.Panel1.Controls.Add(this.LblCompanyName);
-            this.Panel1.Controls.Add(this.Label1);
+            this.Panel1.Controls.Add(this.Panel2);
+            this.Panel1.Controls.Add(this.label4);
+            this.Panel1.Controls.Add(this.PicLogo);
+            this.Panel1.Controls.Add(this.Panel4);
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(6, 7);
             this.Panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(872, 98);
+            this.Panel1.Size = new System.Drawing.Size(872, 138);
             this.Panel1.TabIndex = 117;
             // 
-            // PicLogo
+            // LblCompanyName
             // 
-            this.PicLogo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PicLogo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.PicLogo.Image = global::DeliveryTakeOrder.Properties.Resources.Logo;
-            this.PicLogo.Location = new System.Drawing.Point(0, 0);
-            this.PicLogo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.PicLogo.Name = "PicLogo";
-            this.PicLogo.Size = new System.Drawing.Size(110, 95);
-            this.PicLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PicLogo.TabIndex = 3;
-            this.PicLogo.TabStop = false;
+            this.LblCompanyName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCompanyName.ForeColor = System.Drawing.Color.Teal;
+            this.LblCompanyName.Location = new System.Drawing.Point(128, 57);
+            this.LblCompanyName.Name = "LblCompanyName";
+            this.LblCompanyName.Size = new System.Drawing.Size(277, 63);
+            this.LblCompanyName.TabIndex = 11;
+            this.LblCompanyName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Panel2
             // 
             this.Panel2.Controls.Add(this.Panel3);
             this.Panel2.Controls.Add(this.Panel18);
             this.Panel2.Controls.Add(this.Panel8);
+            this.Panel2.Controls.Add(this.Panel6);
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.Panel2.Location = new System.Drawing.Point(457, 0);
             this.Panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(415, 95);
-            this.Panel2.TabIndex = 8;
+            this.Panel2.Size = new System.Drawing.Size(415, 135);
+            this.Panel2.TabIndex = 10;
             // 
             // Panel3
             // 
@@ -525,11 +529,11 @@
             this.Panel3.Controls.Add(this.Label2);
             this.Panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel3.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Panel3.Location = new System.Drawing.Point(0, 64);
+            this.Panel3.Location = new System.Drawing.Point(0, 86);
             this.Panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Panel3.Name = "Panel3";
             this.Panel3.Padding = new System.Windows.Forms.Padding(2);
-            this.Panel3.Size = new System.Drawing.Size(415, 32);
+            this.Panel3.Size = new System.Drawing.Size(415, 30);
             this.Panel3.TabIndex = 1;
             // 
             // CmbDate
@@ -537,20 +541,23 @@
             this.CmbDate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CmbDate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CmbDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbDate.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F);
             this.CmbDate.FormattingEnabled = true;
             this.CmbDate.Location = new System.Drawing.Point(99, 2);
             this.CmbDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CmbDate.Name = "CmbDate";
-            this.CmbDate.Size = new System.Drawing.Size(314, 27);
+            this.CmbDate.Size = new System.Drawing.Size(314, 25);
             this.CmbDate.TabIndex = 1;
+            this.CmbDate.SelectedIndexChanged += new System.EventHandler(this.CmbInvoiceNumber_SelectedIndexChanged);
             // 
             // Label2
             // 
             this.Label2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Label2.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F);
             this.Label2.ForeColor = System.Drawing.Color.Black;
             this.Label2.Location = new System.Drawing.Point(2, 2);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(97, 28);
+            this.Label2.Size = new System.Drawing.Size(97, 26);
             this.Label2.TabIndex = 0;
             this.Label2.Text = "Required Date";
             this.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -560,10 +567,10 @@
             this.Panel18.Controls.Add(this.CmbDelto);
             this.Panel18.Controls.Add(this.Label14);
             this.Panel18.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Panel18.Location = new System.Drawing.Point(0, 32);
+            this.Panel18.Location = new System.Drawing.Point(0, 57);
             this.Panel18.Name = "Panel18";
             this.Panel18.Padding = new System.Windows.Forms.Padding(2);
-            this.Panel18.Size = new System.Drawing.Size(415, 32);
+            this.Panel18.Size = new System.Drawing.Size(415, 29);
             this.Panel18.TabIndex = 119;
             // 
             // CmbDelto
@@ -571,22 +578,21 @@
             this.CmbDelto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CmbDelto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CmbDelto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbDelto.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F);
             this.CmbDelto.FormattingEnabled = true;
-            this.CmbDelto.Items.AddRange(new object[] {
-            "CLAIM",
-            "UNCLAIM"});
             this.CmbDelto.Location = new System.Drawing.Point(99, 2);
             this.CmbDelto.Name = "CmbDelto";
-            this.CmbDelto.Size = new System.Drawing.Size(314, 27);
+            this.CmbDelto.Size = new System.Drawing.Size(314, 25);
             this.CmbDelto.TabIndex = 2;
             this.CmbDelto.SelectedIndexChanged += new System.EventHandler(this.CmbDelto_SelectedIndexChanged);
             // 
             // Label14
             // 
             this.Label14.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Label14.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F);
             this.Label14.Location = new System.Drawing.Point(2, 2);
             this.Label14.Name = "Label14";
-            this.Label14.Size = new System.Drawing.Size(97, 28);
+            this.Label14.Size = new System.Drawing.Size(97, 25);
             this.Label14.TabIndex = 0;
             this.Label14.Text = "Delto";
             this.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -598,11 +604,11 @@
             this.Panel8.Controls.Add(this.Label11);
             this.Panel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel8.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Panel8.Location = new System.Drawing.Point(0, 0);
+            this.Panel8.Location = new System.Drawing.Point(0, 28);
             this.Panel8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Panel8.Name = "Panel8";
             this.Panel8.Padding = new System.Windows.Forms.Padding(2);
-            this.Panel8.Size = new System.Drawing.Size(415, 32);
+            this.Panel8.Size = new System.Drawing.Size(415, 29);
             this.Panel8.TabIndex = 0;
             // 
             // CmbCustomer
@@ -610,55 +616,105 @@
             this.CmbCustomer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CmbCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CmbCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbCustomer.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F);
             this.CmbCustomer.FormattingEnabled = true;
             this.CmbCustomer.Location = new System.Drawing.Point(99, 2);
             this.CmbCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CmbCustomer.Name = "CmbCustomer";
-            this.CmbCustomer.Size = new System.Drawing.Size(314, 27);
+            this.CmbCustomer.Size = new System.Drawing.Size(314, 25);
             this.CmbCustomer.TabIndex = 1;
             this.CmbCustomer.SelectedIndexChanged += new System.EventHandler(this.CmbCustomer_SelectedIndexChanged);
             // 
             // Label11
             // 
             this.Label11.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Label11.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F);
             this.Label11.ForeColor = System.Drawing.Color.Black;
             this.Label11.Location = new System.Drawing.Point(2, 2);
             this.Label11.Name = "Label11";
-            this.Label11.Size = new System.Drawing.Size(97, 28);
+            this.Label11.Size = new System.Drawing.Size(97, 25);
             this.Label11.TabIndex = 0;
             this.Label11.Text = "Customer";
             this.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // Panel6
+            // 
+            this.Panel6.BackColor = System.Drawing.Color.Transparent;
+            this.Panel6.Controls.Add(this.cmbDistributor);
+            this.Panel6.Controls.Add(this.label1);
+            this.Panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Panel6.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Panel6.Location = new System.Drawing.Point(0, 0);
+            this.Panel6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Panel6.Name = "Panel6";
+            this.Panel6.Padding = new System.Windows.Forms.Padding(2);
+            this.Panel6.Size = new System.Drawing.Size(415, 28);
+            this.Panel6.TabIndex = 120;
+            // 
+            // cmbDistributor
+            // 
+            this.cmbDistributor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbDistributor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbDistributor.Location = new System.Drawing.Point(99, 2);
+            this.cmbDistributor.Name = "cmbDistributor";
+            this.cmbDistributor.Properties.AllowMultiSelect = true;
+            this.cmbDistributor.Properties.Appearance.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F);
+            this.cmbDistributor.Properties.Appearance.Options.UseFont = true;
+            this.cmbDistributor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbDistributor.Properties.DropDownRows = 15;
+            this.cmbDistributor.Properties.IncrementalSearch = true;
+            this.cmbDistributor.Size = new System.Drawing.Size(314, 24);
+            this.cmbDistributor.TabIndex = 143;
+            this.cmbDistributor.ToolTip = "Please select any supplier which you want to preview";
+            this.cmbDistributor.Closed += new DevExpress.XtraEditors.Controls.ClosedEventHandler(this.cmbDistributor_Closed);
+            this.cmbDistributor.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.cmbDistributor_CustomDisplayText);
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label1.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(2, 2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(97, 24);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Distributor";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Teal;
+            this.label4.Location = new System.Drawing.Point(116, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(276, 23);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Q\'s MANAGEMENT SYSTEM";
+            // 
+            // PicLogo
+            // 
+            this.PicLogo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PicLogo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PicLogo.Image = global::DeliveryTakeOrder.Properties.Resources.Logo;
+            this.PicLogo.Location = new System.Drawing.Point(0, 0);
+            this.PicLogo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.PicLogo.Name = "PicLogo";
+            this.PicLogo.Size = new System.Drawing.Size(110, 135);
+            this.PicLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PicLogo.TabIndex = 3;
+            this.PicLogo.TabStop = false;
             // 
             // Panel4
             // 
             this.Panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Panel4.Location = new System.Drawing.Point(0, 95);
+            this.Panel4.Location = new System.Drawing.Point(0, 135);
             this.Panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Panel4.Name = "Panel4";
             this.Panel4.Size = new System.Drawing.Size(872, 3);
             this.Panel4.TabIndex = 7;
-            // 
-            // LblCompanyName
-            // 
-            this.LblCompanyName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCompanyName.ForeColor = System.Drawing.Color.Teal;
-            this.LblCompanyName.Location = new System.Drawing.Point(116, 39);
-            this.LblCompanyName.Name = "LblCompanyName";
-            this.LblCompanyName.Size = new System.Drawing.Size(277, 63);
-            this.LblCompanyName.TabIndex = 6;
-            this.LblCompanyName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // Label1
-            // 
-            this.Label1.AutoSize = true;
-            this.Label1.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.ForeColor = System.Drawing.Color.Teal;
-            this.Label1.Location = new System.Drawing.Point(117, 11);
-            this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(276, 23);
-            this.Label1.TabIndex = 0;
-            this.Label1.Text = "Q\'s MANAGEMENT SYSTEM";
             // 
             // CustomerLoading
             // 
@@ -679,6 +735,11 @@
             // 
             this.DeltoLoading.Interval = 5;
             this.DeltoLoading.Tick += new System.EventHandler(this.DeltoLoading_Tick);
+            // 
+            // distributorLoading
+            // 
+            this.distributorLoading.Interval = 5;
+            this.distributorLoading.Tick += new System.EventHandler(this.distributorLoading_Tick);
             // 
             // FrmViewProcessingTakeOrder
             // 
@@ -707,11 +768,13 @@
             this.Panel9.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);
             this.Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).EndInit();
             this.Panel2.ResumeLayout(false);
             this.Panel3.ResumeLayout(false);
             this.Panel18.ResumeLayout(false);
             this.Panel8.ResumeLayout(false);
+            this.Panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cmbDistributor.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -757,6 +820,13 @@
         internal System.Windows.Forms.Label LblCountRow;
         internal System.Windows.Forms.Panel Panel1;
         internal System.Windows.Forms.PictureBox PicLogo;
+        internal System.Windows.Forms.Panel Panel4;
+        internal System.Windows.Forms.Timer CustomerLoading;
+        internal System.Windows.Forms.Timer DateLoading;
+        internal System.Windows.Forms.Timer displayloading;
+        internal System.Windows.Forms.Timer DeltoLoading;
+        internal System.Windows.Forms.Timer distributorLoading;
+        internal System.Windows.Forms.Label label4;
         internal System.Windows.Forms.Panel Panel2;
         internal System.Windows.Forms.Panel Panel3;
         internal System.Windows.Forms.ComboBox CmbDate;
@@ -767,12 +837,9 @@
         internal System.Windows.Forms.Panel Panel8;
         internal System.Windows.Forms.ComboBox CmbCustomer;
         internal System.Windows.Forms.Label Label11;
-        internal System.Windows.Forms.Panel Panel4;
+        internal System.Windows.Forms.Panel Panel6;
+        internal DevExpress.XtraEditors.CheckedComboBoxEdit cmbDistributor;
+        internal System.Windows.Forms.Label label1;
         internal System.Windows.Forms.Label LblCompanyName;
-        internal System.Windows.Forms.Label Label1;
-        internal System.Windows.Forms.Timer CustomerLoading;
-        internal System.Windows.Forms.Timer DateLoading;
-        internal System.Windows.Forms.Timer displayloading;
-        internal System.Windows.Forms.Timer DeltoLoading;
     }
 }

@@ -111,11 +111,12 @@
             this.Controls.Add(this.Panel44);
             this.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmProcessTakeOrderPreviewNEdit";
             this.Padding = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Preview & Edit Take Order";
+            this.Load += new System.EventHandler(this.FrmProcessTakeOrderPreviewNEdit_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FrmProcessTakeOrderPreviewNEdit_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.DgvShow)).EndInit();
             this.Panel44.ResumeLayout(false);

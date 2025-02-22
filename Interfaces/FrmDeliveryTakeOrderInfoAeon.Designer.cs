@@ -199,6 +199,7 @@
             this.BtnFinish.TabIndex = 10;
             this.BtnFinish.Text = "&Finish Take Order";
             this.BtnFinish.UseVisualStyleBackColor = true;
+            this.BtnFinish.Click += new System.EventHandler(this.BtnFinish_Click);
             // 
             // FrmDeliveryTakeOrderInfoAeon
             // 
@@ -212,6 +213,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmDeliveryTakeOrderInfoAeon";
             this.Text = "Information For AEON";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmDeliveryTakeOrderInfoAeon_FormClosed);
             this.Panel3.ResumeLayout(false);
             this.Panel3.PerformLayout();
             this.Panel4.ResumeLayout(false);

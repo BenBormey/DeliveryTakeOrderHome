@@ -356,7 +356,8 @@ namespace DeliveryTakeOrder.ApplicationFrameworks
                         cs.Write(clearBytes, 0, clearBytes.Length);
                         cs.Close();
                     }
-                   // Password = Convert.ToBase64String(ms.ToArray());
+                    // Password = Convert.ToBase64String(ms.ToArray());
+                    Password = "VX2vsFgG4sWN1JvXrJsDWeigH+QOqeXAH29UqQlz3dg=";
                 }
             }
             return Password;

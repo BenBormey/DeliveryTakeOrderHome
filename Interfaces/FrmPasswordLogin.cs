@@ -111,7 +111,7 @@ namespace DeliveryTakeOrder.Interfaces
 
                 // Check Password Login
                 Dic = new Dictionary<string, object>();
-                Dic.Add("ProgramName", "N'Managing Director',N'MD Assistant',N'IT Manager',N'TakeOrder', N'Software Developer'");
+                Dic.Add("ProgramName", "N'Managing Director',N'MD Assistant',N'IT Manager',N'TakeOrder', N'Software Developer', N'UNT-ADMIN'");
                 Dic.Add("Password", string.Format("'{0}'", App.ConvertTextToPassword(TxtPassword.Text, Initialized.R_KeyPassword)));
 
                 DataTable lists = (DataTable)Data.Selects("PasswordLogin", null, Dic, true, SeparatorList.Is_And, null, null, Initialized.GetConnectionType(Data, App));

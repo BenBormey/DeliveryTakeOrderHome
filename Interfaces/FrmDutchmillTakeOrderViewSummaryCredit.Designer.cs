@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -46,6 +47,7 @@
             this.LblCountRow = new System.Windows.Forms.Label();
             this.BtnExportToExcel = new System.Windows.Forms.Button();
             this.BtnCancel = new System.Windows.Forms.Button();
+            this.DisplayLoading = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DgvShow)).BeginInit();
             this.Panel44.SuspendLayout();
             this.SuspendLayout();
@@ -73,6 +75,7 @@
             this.DgvShow.RowHeadersWidth = 25;
             this.DgvShow.Size = new System.Drawing.Size(845, 381);
             this.DgvShow.TabIndex = 114;
+            this.DgvShow.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvShow_CellDoubleClick);
             // 
             // CusNum
             // 
@@ -184,6 +187,7 @@
             this.BtnExportToExcel.TabIndex = 10;
             this.BtnExportToExcel.Text = "&Export To Excel";
             this.BtnExportToExcel.UseVisualStyleBackColor = true;
+            this.BtnExportToExcel.Click += new System.EventHandler(this.BtnExportToExcel_Click);
             // 
             // BtnCancel
             // 
@@ -200,6 +204,12 @@
             this.BtnCancel.TabIndex = 11;
             this.BtnCancel.Text = "&Cancel";
             this.BtnCancel.UseVisualStyleBackColor = true;
+            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+            // 
+            // DisplayLoading
+            // 
+            this.DisplayLoading.Interval = 5;
+            this.DisplayLoading.Tick += new System.EventHandler(this.DisplayLoading_Tick);
             // 
             // FrmDutchmillTakeOrderViewSummaryCredit
             // 
@@ -210,11 +220,13 @@
             this.Controls.Add(this.Panel44);
             this.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmDutchmillTakeOrderViewSummaryCredit";
             this.Padding = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Over Credit ~ Customer List";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmDutchmillTakeOrderViewSummaryCredit_FormClosed);
+            this.Load += new System.EventHandler(this.FrmDutchmillTakeOrderViewSummaryCredit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvShow)).EndInit();
             this.Panel44.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -236,5 +248,6 @@
         internal System.Windows.Forms.Label LblCountRow;
         internal System.Windows.Forms.Button BtnExportToExcel;
         internal System.Windows.Forms.Button BtnCancel;
+        internal System.Windows.Forms.Timer DisplayLoading;
     }
 }

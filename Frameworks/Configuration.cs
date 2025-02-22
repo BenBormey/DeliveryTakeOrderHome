@@ -174,6 +174,7 @@ namespace DeliveryTakeOrder
             {
                 R_Connection = string.Format("Network Library=DBMSSOCN;Data Source={0}{1};Initial Catalog={2};uid={3};pwd={4};", PublicIPAddress, Interaction.IIf(string.IsNullOrEmpty(Strings.Trim(PortNumber)), "", "," + PortNumber), Interaction.IIf(IsPrefixDatabase == true, string.Format("{0}{1}", PrefixDatabase, DatabaseName), DatabaseName), UserConnection, Password);
             }
+
             return R_Connection;
         }
     }

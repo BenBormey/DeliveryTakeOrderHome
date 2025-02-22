@@ -1,6 +1,9 @@
 ﻿using DeliveryTakeOrder.ApplicationFrameworks;
 using DeliveryTakeOrder.DatabaseFrameworks;
 using DeliveryTakeOrder.Declares;
+using DeliveryTakeOrder.Dev;
+using DeliveryTakeOrder.Interfaces.preview;
+using DeliveryTakeOrder.Reports;
 using DevExpress.CodeParser;
 using DevExpress.XtraReports.UI;
 using DevExpress.XtraRichEdit;
@@ -38,7 +41,7 @@ namespace DeliveryTakeOrder.Interfaces
         private string query;
         private DataTable lists;
         private const string InvoiceName = "";
-        private CheckBox vCheckBox;
+        private System.Windows.Forms.CheckBox vCheckBox;
         private MDI menuMdi;
 
         public FrmProcessTakeOrder(MDI menuMdi)
@@ -64,7 +67,7 @@ namespace DeliveryTakeOrder.Interfaces
             rect.Y = 3;
             rect.X = rect.Location.X + (rect.Width / 10);
 
-            CheckBox vCheckBox = new CheckBox
+            System.Windows.Forms.CheckBox vCheckBox = new System.Windows.Forms.CheckBox
             {
                 BackColor = Color.Transparent,
                 Name = "Checker",
@@ -79,11 +82,11 @@ namespace DeliveryTakeOrder.Interfaces
 
         private void vCheckBox_CheckedChanged(System.Object sender, System.EventArgs e)
         {
-            CheckBox headerBox = (CheckBox)DgvShow.Controls.Find("Checker", true)[0];
+            System.Windows.Forms.CheckBox headerBox = (System.Windows.Forms.CheckBox)DgvShow.Controls.Find("Checker", true)[0];
             int vSelected = 0;
             string vCusVAT = "";
             Boolean vCheckVAT = false;
-            Boolean vSpecial = false;   
+            Boolean vSpecial = false;
             Boolean lOnePOOneInvoice = false;
 
             string lSql = "";
@@ -94,9 +97,9 @@ namespace DeliveryTakeOrder.Interfaces
 
             lSql = string.Format(lSql, DatabaseName, DgvShow.Rows[DgvShow.CurrentRow.Index].Cells["CusNum"].Value);
             lists = Data.Selects(lSql, Initialized.GetConnectionType(Data, App));
-            if(lists is null)
+            if (lists is null)
             {
-                if(lists.Rows.Count> 0)
+                if (lists.Rows.Count > 0)
                 {
                     vSpecial = true;
                 }
@@ -117,22 +120,22 @@ WHERE [lc].[CusNum] = @lCusNum;";
 
             lSql = string.Format(lSql, DatabaseName, DgvShow.Rows[DgvShow.CurrentRow.Index].Cells["CusNum"].Value);
             lists = Data.Selects(lSql, Initialized.GetConnectionType(Data, App));
-            if(lists != null)
+            if (lists != null)
             {
-                if(lists.Rows.Count> 0)
+                if (lists.Rows.Count > 0)
                 {
                     vCusVAT = DBNull.Value.Equals(lists.Rows[0]["CusVat"]) ? "" : lists.Rows[0]["CusVat"].ToString().Trim();
                     lOnePOOneInvoice = DBNull.Value.Equals(lists.Rows[0]["lOnePOOneInvoice"]) ? false : Convert.ToBoolean(lists.Rows[0]["lOnePOOneInvoice"]);
 
                 }
             }
-            foreach(DataGridViewRow row in DgvShow.Rows)
+            foreach (DataGridViewRow row in DgvShow.Rows)
             {
                 row.Cells["Tick"].Value = headerBox.Checked;
                 if (Convert.ToBoolean(row.Cells["Tick"].Value) == true)
                 {
                     vSelected += 1;
-                
+
                 }
                 if (vSelected >= 21 && vSpecial == false && lOnePOOneInvoice == false)
                 {
@@ -152,9 +155,9 @@ WHERE [lc].[CusNum] = @lCusNum;";
 
         }
 
-    
 
-       private void DataSources(ComboBox ComboBoxName, DataTable DTable, string DisplayMember, string ValueMember)
+
+        private void DataSources(ComboBox ComboBoxName, DataTable DTable, string DisplayMember, string ValueMember)
         {
             ComboBoxName.DataSource = DTable;
             ComboBoxName.DisplayMember = DisplayMember;
@@ -280,18 +283,18 @@ WHERE [lc].[CusNum] = @lCusNum;";
                 }
             }
 
-            query = $@"
-    DECLARE @vRequiredDate AS DATE = N'{vRequiredDate:yyyy-MM-dd}';
-    SELECT [CusNum], [CusName], [Customer]
-    FROM (
-        --SELECT 0 AS [Index], N'CUS00000' AS [CusNum], N'All Customers' AS [CusName], N'All Customers' AS [Customer]
-        --UNION ALL
-        SELECT 1 AS [Index], [CusNum], [CusName], ISNULL([CusNum], '') + SPACE(3) + ISNULL([CusName], '') AS [Customer]
-        FROM [{DatabaseName}].[dbo].[TblDeliveryTakeOrders_Dutchmill]
-        WHERE (CONVERT(DATE, [DateRequired]) = @vRequiredDate)
-        GROUP BY [CusNum], [CusName], ISNULL([CusNum], '') + SPACE(3) + ISNULL([CusName], '')
-    ) LISTS
-    ORDER BY [Index], [CusName];
+            query = @"
+ DECLARE @vRequiredDate AS DATE = N'{1:yyyy-MM-dd}';
+                SELECT [CusNum],[CusName],[Customer]
+                FROM (
+                    --SELECT 0 AS [Index], N'CUS00000' AS [CusNum],N'All Customers' AS [CusName],N'All Customers' AS [Customer]
+                    --UNION ALL
+                    SELECT 1 AS [Index], [CusNum],[CusName],ISNULL([CusNum],'') + SPACE(3) + ISNULL([CusName],'') AS [Customer]
+                    FROM [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill]
+                    WHERE (CONVERT(DATE,[DateRequired]) = @vRequiredDate)
+                    GROUP BY [CusNum],[CusName],ISNULL([CusNum],'') + SPACE(3) + ISNULL([CusName],'')
+                ) LISTS
+                ORDER BY [Index],[CusName];
 ";
             query = string.Format(query, DatabaseName, vRequiredDate);
             lists = Data.Selects(query, Initialized.GetConnectionType(Data, App));
@@ -418,27 +421,27 @@ WHERE [lc].[CusNum] = @lCusNum;";
                 }
             }
 
-            query = $@"
+            query = @"
     UPDATE v
-    SET v.[DelTo] = o.[DelTo]
-    FROM [{DatabaseName}].[dbo].[TblDeliveryTakeOrders_Dutchmill] AS v
-    INNER JOIN [Stock].[dbo].[TPRDelto] AS o ON o.DefId = v.[DeltoId];
+                        SET v.[DelTo] = o.[DelTo]
+                        FROM [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill] AS v
+                        INNER JOIN [Stock].[dbo].[TPRDelto] AS o ON o.DefId = v.[DeltoId];
 
-    UPDATE v
-    SET v.[DelTo] = o.[DelTo]
-    FROM [{DatabaseName}].[dbo].[TblDeliveryTakeOrders_DutchmillOrder] AS v
-    INNER JOIN [Stock].[dbo].[TPRDelto] AS o ON o.DefId = v.[DeltoId];
+                        UPDATE v
+                        SET v.[DelTo] = o.[DelTo]
+                        FROM [{0}].[dbo].[TblDeliveryTakeOrders_DutchmillOrder] AS v
+                        INNER JOIN [Stock].[dbo].[TPRDelto] AS o ON o.DefId = v.[DeltoId];
 
-    DECLARE @vRequiredDate AS DATE = N'{vRequiredDate:yyyy-MM-dd}';
-    DECLARE @vCusNum AS NVARCHAR(8) = N'{CusNum}';
-    SELECT [DelToId], [DelTo]
-    FROM (
-        SELECT 1 AS [Index], [DelToId], [DelTo]
-        FROM [{DatabaseName}].[dbo].[TblDeliveryTakeOrders_Dutchmill]
-        WHERE (CONVERT(DATE, [DateRequired]) = @vRequiredDate) AND ([CusNum] = @vCusNum OR N'CUS00000' = @vCusNum)
-        GROUP BY [DelToId], [DelTo]
-    ) LISTS
-    ORDER BY [Index], [DelTo];
+                        DECLARE @vRequiredDate AS DATE = N'{1:yyyy-MM-dd}';
+                        DECLARE @vCusNum AS NVARCHAR(8) = N'{2}';
+                        SELECT [DelToId],[DelTo]
+                        FROM (
+                            SELECT 1 AS [Index], [DelToId],[DelTo]
+                            FROM [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill]
+                            WHERE (CONVERT(DATE,[DateRequired]) = @vRequiredDate) AND ([CusNum] = @vCusNum OR N'CUS00000' = @vCusNum)
+                            GROUP BY [DelToId],[DelTo]
+                        ) LISTS
+                        ORDER BY [Index],[DelTo];
 ";
             query = string.Format(query, DatabaseName, vRequiredDate, CusNum);
             lists = Data.Selects(query, Initialized.GetConnectionType(Data, App));
@@ -487,17 +490,17 @@ WHERE [lc].[CusNum] = @lCusNum;";
                 }
             }
 
-            query = $@"
-    DECLARE @vCusNum AS NVARCHAR(8) = N'{CusNum}';
-    DECLARE @vDeltoId AS DECIMAL(18,0) = {vDeltoId};
-    SELECT [DateRequired]
-    FROM (
-        SELECT [DateRequired]
-        FROM [{DatabaseName}].[dbo].[TblDeliveryTakeOrders_Dutchmill]
-        --WHERE ([CusNum] = @vCusNum OR N'CUS00000' = @vCusNum) AND ([DelToId] = @vDeltoId OR 0 = @vDeltoId)
-        GROUP BY [DateRequired]
-    ) LISTS
-    ORDER BY [DateRequired];
+            query = @"
+ DECLARE @vCusNum AS NVARCHAR(8) = N'{1}';
+                DECLARE @vDeltoId AS DECIMAL(18,0) = {2};
+                SELECT [DateRequired]
+                FROM (
+                    SELECT [DateRequired]
+                    FROM [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill]
+                    --WHERE ([CusNum] = @vCusNum OR N'CUS00000' = @vCusNum) AND ([DelToId] = @vDeltoId OR 0 = @vDeltoId)
+                    GROUP BY [DateRequired]
+                ) LISTS
+                ORDER BY [DateRequired];
 ";
             query = string.Format(query, DatabaseName, CusNum, vDeltoId);
             lists = Data.Selects(query, Initialized.GetConnectionType(Data, App));
@@ -625,7 +628,8 @@ WHERE [lc].[CusNum] = @lCusNum;";
                 }
             }
 
-            if((CusNum.Trim().Equals("") == false) && (vDeltoId != 0)){
+            if ((CusNum.Trim().Equals("") == false) && (vDeltoId != 0))
+            {
                 query = @"DECLARE @RC INT;
 DECLARE @lRequiredDate DATE = N'{1:yyyy-MM-dd}';
 DECLARE @lCusNum NVARCHAR(8) = N'{2}';
@@ -656,7 +660,7 @@ EXECUTE @RC = [DBPickers].[dbo].[getTakeOrderDutchmillProcess] @lRequiredDate,
             int CountR;
             CountR = 0;
 
-            while(CountR < DgvShow.Rows.Count)
+            while (CountR < DgvShow.Rows.Count)
             {
                 if (CountR % 2 == 0)
                 {
@@ -679,15 +683,15 @@ EXECUTE @RC = [DBPickers].[dbo].[getTakeOrderDutchmillProcess] @lRequiredDate,
         {
             if (CmbCustomer.Text.Trim().Equals("") || CmbCustomer.Text.Trim().Equals("CUS00000"))
             {
-               MessageBox.Show("Please select any customer first.", "Select Customer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please select any customer first.", "Select Customer", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-               // DevExpress.XtraEditors.XtraMessageBox.Show("Please select any customer first.", "Select Customer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // DevExpress.XtraEditors.XtraMessageBox.Show("Please select any customer first.", "Select Customer", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CmbCustomer.Focus();
                 return;
             }
             else if (CmbDelto.Text.Trim().Equals(""))
             {
-               MessageBox.Show("Please select any delto.", "Select Delto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please select any delto.", "Select Delto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CmbDelto.Focus();
                 return;
             }
@@ -699,7 +703,7 @@ EXECUTE @RC = [DBPickers].[dbo].[getTakeOrderDutchmillProcess] @lRequiredDate,
             }
             else if (DgvShow.Rows.Count <= 0)
             {
-                    MessageBox.Show("No record to process finish.", "No Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No record to process finish.", "No Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -707,12 +711,11 @@ EXECUTE @RC = [DBPickers].[dbo].[getTakeOrderDutchmillProcess] @lRequiredDate,
             Todate = Data.Get_CURRENT_DATE(Initialized.GetConnectionType(Data, App));
             DateTime oMinRequiredDate = Todate;
             decimal oDayAllow = 0;
-            query = $@"
-    DECLARE @oCusNum AS NVARCHAR(8) = N'{CmbCustomer.SelectedValue}';
-    DECLARE @oDelToId AS DECIMAL(18,0) = {CmbDelto.SelectedValue};
-    SELECT ISNULL(MIN([DateRequired]),CAST(GETDATE() AS DATE)) AS [DateRequired]
-    FROM [{DatabaseName}].[dbo].[TblDeliveryTakeOrders_Dutchmill]
-    WHERE [CusNum] = @oCusNum AND [DelToId] = @oDelToId;
+            query = @"   DECLARE @oCusNum AS NVARCHAR(8) = N'{1}';
+                DECLARE @oDelToId AS DECIMAL(18,0) = {2};
+                SELECT ISNULL(MIN([DateRequired]),CAST(GETDATE() AS DATE)) AS [DateRequired]
+                FROM [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill]
+                WHERE [CusNum] = @oCusNum AND [DelToId] = @oDelToId;
 ";
             query = string.Format(query, DatabaseName, CmbCustomer.SelectedValue, CmbDelto.SelectedValue);
             lists = Data.Selects(query, Initialized.GetConnectionType(Data, App));
@@ -1055,13 +1058,13 @@ FROM v;";
                 RCom.ExecuteNonQuery();
                 if (Initialized.R_MessageAlert.Trim() != "")
                 {
-                    query = $@"
-        DECLARE @TakeOrderNumber AS NVARCHAR(25) = N'{vInvNo}';
-        DECLARE @Message AS NVARCHAR(100) = N'{Initialized.R_MessageAlert.Trim()}';
-        INSERT INTO [Stock].[dbo].[TPRDeliveryTakeOrderAlertToQsDelivery]([InvNo],[CusNum],[CusName],[DelTo],[DateOrd],[DateRequired],[Message],[RegisterDate])
-        SELECT [TakeOrderNumber],[CusNum],[CusName],[DelTo],[DateOrd],[DateRequired],@Message,GETDATE()
-        FROM [DBUNTWHOLESALECOLTD].[dbo].[TblDeliveryTakeOrders]
-        WHERE [TakeOrderNumber] = @TakeOrderNumber;
+                    query = @"
+             DECLARE @TakeOrderNumber AS NVARCHAR(25) = N'{1}';
+                        DECLARE @Message AS NVARCHAR(100) = N'{2}';
+                        INSERT INTO [Stock].[dbo].[TPRDeliveryTakeOrderAlertToQsDelivery]([InvNo],[CusNum],[CusName],[DelTo],[DateOrd],[DateRequired],[Message],[RegisterDate])
+                        SELECT [TakeOrderNumber],[CusNum],[CusName],[DelTo],[DateOrd],[DateRequired],@Message,GETDATE()
+                        FROM [DBUNTWHOLESALECOLTD].[dbo].[TblDeliveryTakeOrders]
+                        WHERE [TakeOrderNumber] = @TakeOrderNumber;
     ";
                     query = string.Format(query, DatabaseName, vInvNo, Initialized.R_MessageAlert.Trim());
                     RCom.CommandText = query;
@@ -1070,14 +1073,15 @@ FROM v;";
 
                 if (Initialized.R_DocumentNumber.Trim() != "" && Initialized.R_LineCode.Trim() != "" && Initialized.R_DeptCode.Trim() != "")
                 {
-                    query = $@"
-        DECLARE @TakeOrderNumber AS NVARCHAR(25) = N'{vInvNo}';
-        DECLARE @CusNum AS NVARCHAR(8) = N'{CusNum}';
-        DECLARE @DocumentNumber AS NVARCHAR(20) = N'{Initialized.R_DocumentNumber.Trim()}';
-        DECLARE @LineCode AS NVARCHAR(14) = N'{Initialized.R_LineCode.Trim()}';
-        DECLARE @DeptCode AS NVARCHAR(14) = N'{Initialized.R_DeptCode.Trim()}';
-        INSERT INTO [Stock].[dbo].[TPRDeliveryTakeOrder_ForAEON]([SupervisorID],[CusNum],[DocumentNumber],[LineCode],[DeptCode],[TakeOrderID],[DeliveryID])
-        VALUES(NULL,@CusNum,@DocumentNumber,@LineCode,@DeptCode,@TakeOrderNumber,NULL);
+                    query = @"
+       DECLARE @TakeOrderNumber AS NVARCHAR(25) = N'{1}';
+                        DECLARE @CusNum AS NVARCHAR(8) = N'{2}';
+                        DECLARE @DocumentNumber AS NVARCHAR(20) = N'{3}';
+                        DECLARE @LineCode AS NVARCHAR(14) = N'{4}';
+                        DECLARE @DeptCode AS NVARCHAR(14) = N'{5}';
+                        INSERT INTO [Stock].[dbo].[TPRDeliveryTakeOrder_ForAEON]([SupervisorID],[CusNum],[DocumentNumber],[LineCode],[DeptCode],[TakeOrderID],[DeliveryID])
+                        VALUES(NULL,@CusNum,@DocumentNumber,@LineCode,@DeptCode,@TakeOrderNumber,NULL);
+
     ";
                     query = string.Format(query, DatabaseName, vInvNo, CusNum, Initialized.R_DocumentNumber.Trim(), Initialized.R_LineCode.Trim(), Initialized.R_DeptCode.Trim());
                     RCom.CommandText = query;
@@ -1103,7 +1107,7 @@ FROM v;";
                 RCom.CommandText = "UPDATE [Stock].[dbo].[TPRDeliveryTakeOrdPrintInvNo] SET [IsBusy] = 0";
                 RCom.ExecuteNonQuery();
                 RCon.Close();
-               MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -1336,180 +1340,188 @@ DROP TABLE #credit;
 DROP TABLE #credit_amount;
 DROP TABLE #customer;
 ';
-EXEC (@vquery);";
+EXEC (@vquery);
+";
+            query = string.Format(query, DatabaseName, RequiredDate);
+            var oPaymentlists = Data.Selects(query, Initialized.GetConnectionType(Data, App));
+            var vreport = new sCredit();
+            var vadapter = new OleDbDataAdapter();
+            var vds = new DataSet();
+            ReportPrintTool vtool;
+            Application.DoEvents();
 
-            //query = string.Format(query, DatabaseName , RequiredDate);
-            //lists = Data.Selects(query, Initialized.GetConnectionType(Data, App));
-            //DataTable oPaymentlists = Data.Selects(query, Initialized.GetConnectionType(Data, App));
-            //DeliveryTakeOrder.sCredit vreport;
-            //OleDbDataAdapter vadapter;
-            //DataSet vds;
-            //ReportPrintTool vtool;
-            //Application.DoEvents();
-            //query = string.Format(query, DatabaseName, RequiredDate);
-            //lists = Data.Selects(query, Initialized.GetConnectionType(Data, App));
-            //DataTable oPaymentlists = Data.Selects(query, Initialized.GetConnectionType(Data, App));
-            //DeliveryTakeOrder.sCredit vreport;
-            //OleDbDataAdapter vadapter;
-            //DataSet vds;
-            //ReportPrintTool vtool;
-            //Application.DoEvents();
+            if (oPaymentlists != null)
+            {
+                if (oPaymentlists.Rows.Count > 0)
+                {
+                    vreport = new sCredit();
+                    vadapter = new OleDbDataAdapter();
+                    vds = new DataSet();
+                    vtool = new ReportPrintTool(vreport);
 
-            //if (oPaymentlists != null)
-            //{
-            //    if (oPaymentlists.Rows.Count > 0)
-            //    {
-            //        vreport = new DeliveryTakeOrder.sCredit();
-            //        vadapter = new OleDbDataAdapter();
-            //        vds = new DataSet();
-            //        vtool = new ReportPrintTool(vreport);
-            //        vreport.Parameters["companyname"].Value = string.Format("{0}{1}{2}", Initialized.R_CompanyKhmerName, Environment.NewLine, Initialized.R_CompanyName);
-            //        vreport.Parameters["companyaddress"].Value = string.Format("{0}{1}{2}{1}Tel:{3}", Initialized.R_CompanyKhmAddress.Replace(Environment.NewLine, "").Trim(), Environment.NewLine, Initialized.R_CompanyAddress.Replace(Environment.NewLine, "").Trim(), Initialized.R_CompanyTelephone);
-            //        vreport.Parameters["currentdate"].Value = oTodate;
-            //        vreport.DataSource = oPaymentlists;
-            //        vreport.DataAdapter = vadapter;
-            //        vreport.DataMember = "dtOverCredit";
-            //        vreport.RequestParameters = false;
-            //        //vtool.AutoShowParametersPanel = false;
-            //        //vtool.PrinterSettings.Copies = 1;
-            //        //vtool.ShowRibbonPreviewDialog();
-            //        gui_preview gui1_ = new gui_preview { WindowState = FormWindowState.Maximized };
-            //        gui1_.docviewer.DocumentSource = vreport;
-            //        gui1_.docviewer.PrintingSystem.SetCommandVisibility(DevExpress.XtraPrinting.PrintingSystemCommand.Customize, DevExpress.XtraPrinting.CommandVisibility.None);
-            //        gui1_.docviewer.PrintingSystem.SetCommandVisibility(DevExpress.XtraPrinting.PrintingSystemCommand.Parameters, DevExpress.XtraPrinting.CommandVisibility.None);
-            //        vreport.CreateDocument(true);
-            //        gui1_.ShowDialog(this);
-            //        return;
-            //    }
-            //}
-            //        query = @" DECLARE @DateRequired AS DATE = N'{1:yyyy-MM-dd}';
-            //            WITH o AS (
-            //             SELECT v.ProID,v.ProNumY,v.ProNumYP,v.ProNumYC,v.ProName,v.ProPacksize,v.ProQtyPCase,v.ProQtyPPack,v.ProCat
-            //             FROM [Stock].[dbo].[TPRProducts] v
-            //             UNION ALL
-            //                SELECT v.ProID,v.ProNumY,v.ProNumYP,v.ProNumYC,v.ProName,v.ProPacksize,v.ProQtyPCase,v.ProQtyPPack,v.ProCat
-            //             FROM [Stock].[dbo].[TPRProductsDeactivated] v
-            //             UNION ALL
-            //                SELECT v.ProID,o.OldProNumy AS ProNumY,v.ProNumYP,v.ProNumYC,v.ProName,v.ProPacksize,v.ProQtyPCase,v.ProQtyPPack,v.ProCat
-            //             FROM [Stock].[dbo].[TPRProducts] v 
-            //             INNER JOIN [Stock].[dbo].[TPRProductsOldCode] o ON o.ProId = v.ProID
-            //             UNION ALL
-            //                SELECT v.ProID,o.OldProNumy AS ProNumY,v.ProNumYP,v.ProNumYC,v.ProName,v.ProPacksize,v.ProQtyPCase,v.ProQtyPPack,v.ProCat
-            //             FROM [Stock].[dbo].[TPRProductsDeactivated] v 
-            //             INNER JOIN [Stock].[dbo].[TPRProductsOldCode] o ON o.ProId = v.ProID
-            //            )
-            //            SELECT o.*
-            //            INTO #vList
-            //            FROM o;
+                    vreport.Parameters["companyname"].Value = string.Format("{0}{1}{2}", Initialized.R_CompanyKhmerName, Environment.NewLine, Initialized.R_CompanyName);
+                    vreport.Parameters["companyaddress"].Value = string.Format("{0}{1}{2}{1}Tel:{3}",
+                        Initialized.R_CompanyKhmAddress.Replace(Environment.NewLine, "").Trim(),
+                        Environment.NewLine,
+                        Initialized.R_CompanyAddress.Replace(Environment.NewLine, "").Trim(),
+                        Initialized.R_CompanyTelephone);
+                    vreport.Parameters["currentdate"].Value = oTodate;
 
-            //            UPDATE v
-            //            SET v.[ProName] = o.ProName
-            //            ,v.[Size] = o.ProPacksize
-            //            ,v.[QtyPCase] = CONVERT(INT,o.ProQtyPCase)
-            //            ,v.[QtyPPack] = CONVERT(INT,o.ProQtyPPack)
-            //            ,v.[Category] = o.ProCat
-            //            FROM [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill] v
-            //            INNER JOIN #vList o ON o.ProNumY = v.UnitNumber;
+                    vreport.DataSource = oPaymentlists;
+                    vreport.DataAdapter = vadapter;
+                    vreport.DataMember = "dtOverCredit";
+                    vreport.RequestParameters = false;
 
-            //            UPDATE v
-            //            SET v.ProName = o.ProName
-            //            ,v.Size = o.ProPacksize
-            //            ,v.QtyPCase = CONVERT(INT,o.ProQtyPCase)
-            //            FROM [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill_TraySetting] AS v
-            //            INNER JOIN #vList o ON o.ProNumY = v.Barcode;
+                    var gui1_ = new gui_preview { WindowState = FormWindowState.Maximized };
+                    gui1_.docviewer.DocumentSource = vreport;
+                    gui1_.docviewer.PrintingSystem.SetCommandVisibility(DevExpress.XtraPrinting.PrintingSystemCommand.Customize, DevExpress.XtraPrinting.CommandVisibility.None);
+                    gui1_.docviewer.PrintingSystem.SetCommandVisibility(DevExpress.XtraPrinting.PrintingSystemCommand.Parameters, DevExpress.XtraPrinting.CommandVisibility.None);
 
-            //            UPDATE v
-            //            SET v.[ProName] = o.ProName
-            //            ,v.[Size] = o.ProPacksize
-            //            ,v.[QtyPerCase] = CONVERT(INT,o.ProQtyPCase)
-            //            FROM [{0}].[dbo].[TblDeliveryTakeOrders_DutchmillOrder] v
-            //            INNER JOIN #vList o ON o.ProNumY = v.Barcode;
+                    vreport.CreateDocument(true);
+                    gui1_.ShowDialog(this);
+                    return;
+                }
+            }
+            query = @" DECLARE @DateRequired AS DATE = N'{1:yyyy-MM-dd}';
+                WITH o AS (
+	                SELECT v.ProID,v.ProNumY,v.ProNumYP,v.ProNumYC,v.ProName,v.ProPacksize,v.ProQtyPCase,v.ProQtyPPack,v.ProCat
+	                FROM [Stock].[dbo].[TPRProducts] v
+	                UNION ALL
+                    SELECT v.ProID,v.ProNumY,v.ProNumYP,v.ProNumYC,v.ProName,v.ProPacksize,v.ProQtyPCase,v.ProQtyPPack,v.ProCat
+	                FROM [Stock].[dbo].[TPRProductsDeactivated] v
+	                UNION ALL
+                    SELECT v.ProID,o.OldProNumy AS ProNumY,v.ProNumYP,v.ProNumYC,v.ProName,v.ProPacksize,v.ProQtyPCase,v.ProQtyPPack,v.ProCat
+	                FROM [Stock].[dbo].[TPRProducts] v 
+	                INNER JOIN [Stock].[dbo].[TPRProductsOldCode] o ON o.ProId = v.ProID
+	                UNION ALL
+                    SELECT v.ProID,o.OldProNumy AS ProNumY,v.ProNumYP,v.ProNumYC,v.ProName,v.ProPacksize,v.ProQtyPCase,v.ProQtyPPack,v.ProCat
+	                FROM [Stock].[dbo].[TPRProductsDeactivated] v 
+	                INNER JOIN [Stock].[dbo].[TPRProductsOldCode] o ON o.ProId = v.ProID
+                )
+                SELECT o.*
+                INTO #vList
+                FROM o;
 
-            //            DROP TABLE #vList;
+                UPDATE v
+                SET v.[ProName] = o.ProName
+                ,v.[Size] = o.ProPacksize
+                ,v.[QtyPCase] = CONVERT(INT,o.ProQtyPCase)
+                ,v.[QtyPPack] = CONVERT(INT,o.ProQtyPPack)
+                ,v.[Category] = o.ProCat
+                FROM [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill] v
+                INNER JOIN #vList o ON o.ProNumY = v.UnitNumber;
 
-            //            WITH v as (
-            //                SELECT [Barcode],[ProName],[Category] AS [Remark],[Size],[QtyPCase],ISNULL([DelTo],'') AS [CusName],SUM(ISNULL([TotalPcsOrder],0)) AS [TotalPcsOrder],[DateRequired],[DelToId],[PromotionMachanic]
-            //                FROM [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill]
-            //                WHERE DATEDIFF(DAY,[DateRequired],@DateRequired) = 0
-            //                GROUP BY [Barcode],[ProName],[Category],[Size],[QtyPCase],ISNULL([DelTo],''),[DateRequired],[DelToId],[PromotionMachanic]
-            //                UNION ALL
-            //                SELECT x.[Barcode],x.[ProName],x.[Category] AS [Remark],x.[Size],x.[QtyPCase],ISNULL(x.[DelTo],'') AS [CusName],NULL AS [TotalPcsOrder],[DateRequired],x.[DelToId],x.[PromotionMachanic]
-            //                FROM [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill] as x
-            //                WHERE DATEDIFF(DAY,x.[DateRequired],@DateRequired) = 0
-            //            ),
+                UPDATE v
+                SET v.ProName = o.ProName
+                ,v.Size = o.ProPacksize
+                ,v.QtyPCase = CONVERT(INT,o.ProQtyPCase)
+                FROM [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill_TraySetting] AS v
+                INNER JOIN #vList o ON o.ProNumY = v.Barcode;
 
-            //w AS (
-            //            SELECT v.[Barcode],v.[ProName],v.[Remark],v.[Size],v.[QtyPCase],v.[CusName],ISNULL(SUM(v.[TotalPcsOrder]),0) AS [TotalPcsOrder]
-            //            ,CASE WHEN ((DATENAME(WEEKDAY,v.[DateRequired]) = N'Monday' AND x.[Monday] = 1 AND v.[DelToId] = x.[DelToId])
-            //            OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Tuesday' AND x.[Tuesday] = 1 AND v.[DelToId] = x.[DelToId])
-            //            OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Wednesday' AND x.[Wednesday] = 1 AND v.[DelToId] = x.[DelToId])
-            //            OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Thursday' AND x.[Thursday] = 1 AND v.[DelToId] = x.[DelToId])
-            //            OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Friday' AND x.[Friday] = 1 AND v.[DelToId] = x.[DelToId])
-            //            OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Saturday' AND x.[Saturday] = 1 AND v.[DelToId] = x.[DelToId])
-            //            OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Sunday' AND x.[Sunday] = 1 AND v.[DelToId] = x.[DelToId]))
-            //            THEN 1 ELSE 0 END AS [Missing],v.[DelToId],
-            //            REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(v.[PromotionMachanic],N'1,',N''),N'1 ,',N''),N'1.',N''),N'1 .',N''),N'2,',N''),N'2 ,',N''),N'2.',N''),N'2 .',N''),N'3,',N''),N'3 ,',N''),N'3.',N''),N'3 .',N''),N'4,',N''),N'4 ,',N''),N'4.',N''),N'4 .',N''),N'5,',N''),N'5 ,',N''),N'5.',N''),N'5 .',N''),N'6,',N''),N'6 ,',N''),N'6.',N''),N'6 .',N''),N'7,',N''),N'7 ,',N''),N'7.',N''),N'7 .',N''),N'8,',N''),N'8 ,',N''),N'8.',N''),N'8 .',N''),N'9,',N''),N'9 ,',N''),N'9.',N''),N'9 .',N''),N'0,',N''),N'0 ,',N''),N'0.',N''),N'0 .',N'') [PromotionMachanic]
-            //            FROM v
-            //            LEFT OUTER JOIN [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill_DeltoSetting] AS x ON v.[DelToId] = x.[DelToId]
-            //            GROUP BY v.[Barcode],v.[ProName],v.[Remark],v.[Size],v.[QtyPCase],v.[CusName]
-            //            ,CASE WHEN ((DATENAME(WEEKDAY,v.[DateRequired]) = N'Monday' AND x.[Monday] = 1 AND v.[DelToId] = x.[DelToId])
-            //            OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Tuesday' AND x.[Tuesday] = 1 AND v.[DelToId] = x.[DelToId])
-            //            OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Wednesday' AND x.[Wednesday] = 1 AND v.[DelToId] = x.[DelToId])
-            //            OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Thursday' AND x.[Thursday] = 1 AND v.[DelToId] = x.[DelToId])
-            //            OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Friday' AND x.[Friday] = 1 AND v.[DelToId] = x.[DelToId])
-            //            OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Saturday' AND x.[Saturday] = 1 AND v.[DelToId] = x.[DelToId])
-            //            OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Sunday' AND x.[Sunday] = 1 AND v.[DelToId] = x.[DelToId]))
-            //            THEN 1 ELSE 0 END,v.[DelToId],
-            //            REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(v.[PromotionMachanic],N'1,',N''),N'1 ,',N''),N'1.',N''),N'1 .',N''),N'2,',N''),N'2 ,',N''),N'2.',N''),N'2 .',N''),N'3,',N''),N'3 ,',N''),N'3.',N''),N'3 .',N''),N'4,',N''),N'4 ,',N''),N'4.',N''),N'4 .',N''),N'5,',N''),N'5 ,',N''),N'5.',N''),N'5 .',N''),N'6,',N''),N'6 ,',N''),N'6.',N''),N'6 .',N''),N'7,',N''),N'7 ,',N''),N'7.',N''),N'7 .',N''),N'8,',N''),N'8 ,',N''),N'8.',N''),N'8 .',N''),N'9,',N''),N'9 ,',N''),N'9.',N''),N'9 .',N''),N'0,',N''),N'0 ,',N''),N'0.',N''),N'0 .',N''))
+                UPDATE v
+                SET v.[ProName] = o.ProName
+                ,v.[Size] = o.ProPacksize
+                ,v.[QtyPerCase] = CONVERT(INT,o.ProQtyPCase)
+                FROM [{0}].[dbo].[TblDeliveryTakeOrders_DutchmillOrder] v
+                INNER JOIN #vList o ON o.ProNumY = v.Barcode;
 
-            //SELECT w.[Barcode],w.[ProName],w.[Remark],REPLACE(w.[Size],' ','') AS [Size],w.[QtyPCase],w.[CusName],case when isnull(w.[TotalPcsOrder],0) = 0 then null else w.[TotalPcsOrder] end as [TotalPcsOrder],
-            //            CASE WHEN (w.[Missing] = 1 AND ISNULL(w.[TotalPcsOrder],0) <> 0) OR ISNULL(w.[DelToId],0) = 0 THEN 1 ELSE 0 END AS [Missing],
-            //            ISNULL(v.[PiecesPerTray],1) AS [PiecesPerTray],w.[DeltoId],w.[PromotionMachanic]
-            //INTO #vLists
-            //FROM w
-            //            LEFT OUTER JOIN [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill_TraySetting] AS v ON v.Barcode = w.Barcode
-            //            GROUP BY w.[Barcode],w.[ProName],w.[Remark],REPLACE(w.[Size],' ',''),w.[QtyPCase],w.[CusName],case when isnull(w.[TotalPcsOrder],0) = 0 then null else w.[TotalPcsOrder] end,
-            //            CASE WHEN (w.[Missing] = 1 AND ISNULL(w.[TotalPcsOrder],0) <> 0) OR ISNULL(w.[DelToId],0) = 0 THEN 1 ELSE 0 END,
-            //            ISNULL(v.[PiecesPerTray],1),w.[DeltoId],w.[PromotionMachanic]
-            //            ORDER BY w.[Remark],w.[ProName];
-            //SELECT v.Barcode,v.ProName,v.Remark,v.Size,v.QtyPCase,v.PiecesPerTray,SUM(v.TotalPcsOrder) AS [TotalOrder],((CEILING(SUM(v.TotalPcsOrder)/ISNULL(v.PiecesPerTray,1))*ISNULL(v.PiecesPerTray,1)) - SUM(v.TotalPcsOrder)) AS [TotalExtraLeft],(CEILING(SUM(v.TotalPcsOrder)/ISNULL(v.PiecesPerTray,1))*ISNULL(v.PiecesPerTray,1)) AS [TotalOrderToThailand],ROUND(((CEILING(SUM(v.TotalPcsOrder)/ISNULL(v.PiecesPerTray,1))*ISNULL(v.PiecesPerTray,1)) / ISNULL(v.PiecesPerTray,1)),2) AS [TotalTray],v.[PromotionMachanic]
-            //INTO #v
-            //FROM #vLists AS v
-            //GROUP BY v.Barcode,v.ProName,v.Remark,v.Size,v.QtyPCase,v.PiecesPerTray,v.[PromotionMachanic]
-            //ORDER BY v.Size,v.ProName;
+                DROP TABLE #vList;
 
-            //SELECT v.*
-            //FROM #v AS v
-            //ORDER BY v.Remark,v.Size,v.Barcode,v.ProName;
-            //DROP TABLE #vLists;
-            //DROP TABLE #v;";
+                WITH v as (
+                    SELECT [Barcode],[ProName],[Category] AS [Remark],[Size],[QtyPCase],ISNULL([DelTo],'') AS [CusName],SUM(ISNULL([TotalPcsOrder],0)) AS [TotalPcsOrder],[DateRequired],[DelToId],[PromotionMachanic]
+                    FROM [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill]
+                    WHERE DATEDIFF(DAY,[DateRequired],@DateRequired) = 0
+                    GROUP BY [Barcode],[ProName],[Category],[Size],[QtyPCase],ISNULL([DelTo],''),[DateRequired],[DelToId],[PromotionMachanic]
+                    UNION ALL
+                    SELECT x.[Barcode],x.[ProName],x.[Category] AS [Remark],x.[Size],x.[QtyPCase],ISNULL(x.[DelTo],'') AS [CusName],NULL AS [TotalPcsOrder],[DateRequired],x.[DelToId],x.[PromotionMachanic]
+                    FROM [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill] as x
+                    WHERE DATEDIFF(DAY,x.[DateRequired],@DateRequired) = 0
+                ),
 
-            //query = string.Format(query, DatabaseName, RequiredDate);
-            //lists = Data.Selects(query , Initialized.GetConnectionType(Data, App));
+				w AS (
+                SELECT v.[Barcode],v.[ProName],v.[Remark],v.[Size],v.[QtyPCase],v.[CusName],ISNULL(SUM(v.[TotalPcsOrder]),0) AS [TotalPcsOrder]
+                ,CASE WHEN ((DATENAME(WEEKDAY,v.[DateRequired]) = N'Monday' AND x.[Monday] = 1 AND v.[DelToId] = x.[DelToId])
+                OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Tuesday' AND x.[Tuesday] = 1 AND v.[DelToId] = x.[DelToId])
+                OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Wednesday' AND x.[Wednesday] = 1 AND v.[DelToId] = x.[DelToId])
+                OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Thursday' AND x.[Thursday] = 1 AND v.[DelToId] = x.[DelToId])
+                OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Friday' AND x.[Friday] = 1 AND v.[DelToId] = x.[DelToId])
+                OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Saturday' AND x.[Saturday] = 1 AND v.[DelToId] = x.[DelToId])
+                OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Sunday' AND x.[Sunday] = 1 AND v.[DelToId] = x.[DelToId]))
+                THEN 1 ELSE 0 END AS [Missing],v.[DelToId],
+                REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(v.[PromotionMachanic],N'1,',N''),N'1 ,',N''),N'1.',N''),N'1 .',N''),N'2,',N''),N'2 ,',N''),N'2.',N''),N'2 .',N''),N'3,',N''),N'3 ,',N''),N'3.',N''),N'3 .',N''),N'4,',N''),N'4 ,',N''),N'4.',N''),N'4 .',N''),N'5,',N''),N'5 ,',N''),N'5.',N''),N'5 .',N''),N'6,',N''),N'6 ,',N''),N'6.',N''),N'6 .',N''),N'7,',N''),N'7 ,',N''),N'7.',N''),N'7 .',N''),N'8,',N''),N'8 ,',N''),N'8.',N''),N'8 .',N''),N'9,',N''),N'9 ,',N''),N'9.',N''),N'9 .',N''),N'0,',N''),N'0 ,',N''),N'0.',N''),N'0 .',N'') [PromotionMachanic]
+                FROM v
+                LEFT OUTER JOIN [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill_DeltoSetting] AS x ON v.[DelToId] = x.[DelToId]
+                GROUP BY v.[Barcode],v.[ProName],v.[Remark],v.[Size],v.[QtyPCase],v.[CusName]
+                ,CASE WHEN ((DATENAME(WEEKDAY,v.[DateRequired]) = N'Monday' AND x.[Monday] = 1 AND v.[DelToId] = x.[DelToId])
+                OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Tuesday' AND x.[Tuesday] = 1 AND v.[DelToId] = x.[DelToId])
+                OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Wednesday' AND x.[Wednesday] = 1 AND v.[DelToId] = x.[DelToId])
+                OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Thursday' AND x.[Thursday] = 1 AND v.[DelToId] = x.[DelToId])
+                OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Friday' AND x.[Friday] = 1 AND v.[DelToId] = x.[DelToId])
+                OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Saturday' AND x.[Saturday] = 1 AND v.[DelToId] = x.[DelToId])
+                OR (DATENAME(WEEKDAY,v.[DateRequired]) = N'Sunday' AND x.[Sunday] = 1 AND v.[DelToId] = x.[DelToId]))
+                THEN 1 ELSE 0 END,v.[DelToId],
+                REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(v.[PromotionMachanic],N'1,',N''),N'1 ,',N''),N'1.',N''),N'1 .',N''),N'2,',N''),N'2 ,',N''),N'2.',N''),N'2 .',N''),N'3,',N''),N'3 ,',N''),N'3.',N''),N'3 .',N''),N'4,',N''),N'4 ,',N''),N'4.',N''),N'4 .',N''),N'5,',N''),N'5 ,',N''),N'5.',N''),N'5 .',N''),N'6,',N''),N'6 ,',N''),N'6.',N''),N'6 .',N''),N'7,',N''),N'7 ,',N''),N'7.',N''),N'7 .',N''),N'8,',N''),N'8 ,',N''),N'8.',N''),N'8 .',N''),N'9,',N''),N'9 ,',N''),N'9.',N''),N'9 .',N''),N'0,',N''),N'0 ,',N''),N'0.',N''),N'0 .',N''))
 
-            //OleDbDataAdapter vAdapter1 = new OleDbDataAdapter();
-            //XtraPODutchmills vReport1 = new XtraPODutchmills();
-            //ReportPrintTool vTool1 = new ReportPrintTool(vReport1);
-            //vReport1.Parameters["companyname"].Value = string.Format("{0}{1}{2}", Initialized.R_CompanyKhmerName, Environment.NewLine, Initialized.R_CompanyName);
-            //vReport1.Parameters["companyaddress"].Value = string.Format("{0}{1}{2}{1}Tel:{3}", Initialized.R_CompanyKhmAddress.Replace(Environment.NewLine, "").Trim(), Environment.NewLine, Initialized.R_CompanyAddress.Replace(Environment.NewLine, "").Trim(), Initialized.R_CompanyTelephone);
-            //vReport1.Parameters["planningorder"].Value = string.Format("DUTCHMILL ( {0:dddd} )", RequiredDate).ToUpper();
-            //vReport1.Parameters["planningdate"].Value = oTodate;
-            //vReport1.Parameters["shipmentdate"].Value = RequiredDate;
-            //vReport1.DataSource = lists;
-            //vReport1.DataAdapter = vAdapter1;
-            //vReport1.DataMember = "XrPODutchmill";
-            //vReport1.RequestParameters = false;
-            ////vTool1.AutoShowParametersPanel = false;
-            ////vTool1.PrinterSettings.Copies = 1;
-            ////vTool1.ShowRibbonPreviewDialog();
-            //gui_preview gui_ = new gui_preview { WindowState = FormWindowState.Maximized };
-            //gui_.docviewer.DocumentSource = vReport1;
-            //gui_.docviewer.PrintingSystem.SetCommandVisibility(DevExpress.XtraPrinting.PrintingSystemCommand.Customize, DevExpress.XtraPrinting.CommandVisibility.None);
-            //gui_.docviewer.PrintingSystem.SetCommandVisibility(DevExpress.XtraPrinting.PrintingSystemCommand.Parameters, DevExpress.XtraPrinting.CommandVisibility.None);
-            //vReport1.CreateDocument(true);
-            //gui_.ShowDialog(this);
+				SELECT w.[Barcode],w.[ProName],w.[Remark],REPLACE(w.[Size],' ','') AS [Size],w.[QtyPCase],w.[CusName],case when isnull(w.[TotalPcsOrder],0) = 0 then null else w.[TotalPcsOrder] end as [TotalPcsOrder],
+                CASE WHEN (w.[Missing] = 1 AND ISNULL(w.[TotalPcsOrder],0) <> 0) OR ISNULL(w.[DelToId],0) = 0 THEN 1 ELSE 0 END AS [Missing],
+                ISNULL(v.[PiecesPerTray],1) AS [PiecesPerTray],w.[DeltoId],w.[PromotionMachanic]
+				INTO #vLists
+				FROM w
+                LEFT OUTER JOIN [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill_TraySetting] AS v ON v.Barcode = w.Barcode
+                GROUP BY w.[Barcode],w.[ProName],w.[Remark],REPLACE(w.[Size],' ',''),w.[QtyPCase],w.[CusName],case when isnull(w.[TotalPcsOrder],0) = 0 then null else w.[TotalPcsOrder] end,
+                CASE WHEN (w.[Missing] = 1 AND ISNULL(w.[TotalPcsOrder],0) <> 0) OR ISNULL(w.[DelToId],0) = 0 THEN 1 ELSE 0 END,
+                ISNULL(v.[PiecesPerTray],1),w.[DeltoId],w.[PromotionMachanic]
+                ORDER BY w.[Remark],w.[ProName];
+				SELECT v.Barcode,v.ProName,v.Remark,v.Size,v.QtyPCase,v.PiecesPerTray,SUM(v.TotalPcsOrder) AS [TotalOrder],((CEILING(SUM(v.TotalPcsOrder)/ISNULL(v.PiecesPerTray,1))*ISNULL(v.PiecesPerTray,1)) - SUM(v.TotalPcsOrder)) AS [TotalExtraLeft],(CEILING(SUM(v.TotalPcsOrder)/ISNULL(v.PiecesPerTray,1))*ISNULL(v.PiecesPerTray,1)) AS [TotalOrderToThailand],ROUND(((CEILING(SUM(v.TotalPcsOrder)/ISNULL(v.PiecesPerTray,1))*ISNULL(v.PiecesPerTray,1)) / ISNULL(v.PiecesPerTray,1)),2) AS [TotalTray],v.[PromotionMachanic]
+				INTO #v
+				FROM #vLists AS v
+				GROUP BY v.Barcode,v.ProName,v.Remark,v.Size,v.QtyPCase,v.PiecesPerTray,v.[PromotionMachanic]
+				ORDER BY v.Size,v.ProName;
 
-            //this.Cursor = Cursors.Default;
+				SELECT v.*
+				FROM #v AS v
+				ORDER BY v.Remark,v.Size,v.Barcode,v.ProName;
+				DROP TABLE #vLists;
+				DROP TABLE #v;";
+
+            query = string.Format(query, DatabaseName, RequiredDate);
+            lists = Data.Selects(query, Initialized.GetConnectionType(Data, App));
+
+
+            var vAdapter1 = new OleDbDataAdapter();
+            var vReport1 = new XtraPODutchmills();
+            var vTool1 = new ReportPrintTool(vReport1);
+
+            vReport1.Parameters["companyname"].Value = string.Format("{0}{1}{2}", Initialized.R_CompanyKhmerName, Environment.NewLine, Initialized.R_CompanyName);
+            vReport1.Parameters["companyaddress"].Value = string.Format("{0}{1}{2}{1}Tel:{3}",
+                Initialized.R_CompanyKhmAddress.Replace(Environment.NewLine, "").Trim(),
+                Environment.NewLine,
+                Initialized.R_CompanyAddress.Replace(Environment.NewLine, "").Trim(),
+                Initialized.R_CompanyTelephone);
+            vReport1.Parameters["planningorder"].Value = string.Format("DUTCHMILL ( {0:dddd} )", RequiredDate).ToUpper();
+            vReport1.Parameters["planningdate"].Value = oTodate;
+            vReport1.Parameters["shipmentdate"].Value = RequiredDate;
+
+            vReport1.DataSource = lists;
+            vReport1.DataAdapter = vAdapter1;
+            vReport1.DataMember = "XrPODutchmill";
+            vReport1.RequestParameters = false;
+
+            // Uncomment to customize report tool if needed
+            // vTool1.AutoShowParametersPanel = false;
+            // vTool1.PrinterSettings.Copies = 1;
+            // vTool1.ShowRibbonPreviewDialog();
+
+            var gui_ = new gui_preview { WindowState = FormWindowState.Maximized };
+            gui_.docviewer.DocumentSource = vReport1;
+            gui_.docviewer.PrintingSystem.SetCommandVisibility(DevExpress.XtraPrinting.PrintingSystemCommand.Customize, DevExpress.XtraPrinting.CommandVisibility.None);
+            gui_.docviewer.PrintingSystem.SetCommandVisibility(DevExpress.XtraPrinting.PrintingSystemCommand.Parameters, DevExpress.XtraPrinting.CommandVisibility.None);
+
+            vReport1.CreateDocument(true);
+            gui_.ShowDialog(this);
+
+            this.Cursor = Cursors.Default;
+
 
 
 
@@ -1527,7 +1539,7 @@ EXECUTE @RC = [DBPickers].[dbo].[auto_check_item_separately];
             lTbl = Data.Selects(lSql, Initialized.GetConnectionType(Data, App));
 
         }
-        
+
         private void DgvShow_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int vSelected = 0;
@@ -1540,12 +1552,7 @@ EXECUTE @RC = [DBPickers].[dbo].[auto_check_item_separately];
 
             if (e.ColumnIndex == 0)
             {
-                    DgvShow.Rows[e.RowIndex].Cells["Tick"].Value = !Convert.ToBoolean(DgvShow.Rows[e.RowIndex].Cells["Tick"].Value);
-                   
-
-
-
-
+                DgvShow.Rows[e.RowIndex].Cells["Tick"].Value = !Convert.ToBoolean(DgvShow.Rows[e.RowIndex].Cells["Tick"].Value);
                 lSql = $@"
         DECLARE @CusNum AS NVARCHAR(8) = N'{DgvShow.Rows[e.RowIndex].Cells["CusNum"].Value}';
         SELECT [Id],[CusNum],[CusName],[CreatedDate]
@@ -1557,7 +1564,7 @@ EXECUTE @RC = [DBPickers].[dbo].[auto_check_item_separately];
 
                 foreach (DataGridViewRow row in DgvShow.Rows)
                 {
-                    if (Convert.ToBoolean( row.Cells["Tick"].Value))
+                    if (Convert.ToBoolean(row.Cells["Tick"].Value))
                     {
                         if (vSpecial) goto Err_Skip_SpecialInvoice;
                         if (!vCheckVAT)
@@ -1590,7 +1597,7 @@ EXECUTE @RC = [DBPickers].[dbo].[auto_check_item_separately];
                         {
                             if (vSelected >= 21)
                             {
-                               MessageBox.Show("The Invoice allows 21 rows only!", "21 Rows", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("The Invoice allows 21 rows only!", "21 Rows", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 DgvShow.Rows[e.RowIndex].Cells["Tick"].Value = false;
                                 break;
                             }
@@ -1664,12 +1671,12 @@ EXECUTE @RC = [DBPickers].[dbo].[auto_check_item_separately];
             Todate = Data.Get_CURRENT_DATE(Initialized.GetConnectionType(Data, App));
             DateTime oMinRequiredDate = Todate;
             decimal oDayAllow = 0;
-            query = $@"
-    DECLARE @oCusNum AS NVARCHAR(8) = N'{CmbCustomer.SelectedValue}';
-    DECLARE @oDelToId AS DECIMAL(18,0) = {CmbDelto.SelectedValue};
-    SELECT ISNULL(MIN([DateRequired]),CAST(GETDATE() AS DATE)) AS [DateRequired]
-    FROM [{DatabaseName}].[dbo].[TblDeliveryTakeOrders_Dutchmill]
-    WHERE [CusNum] = @oCusNum AND [DelToId] = @oDelToId;
+            query = @"
+     DECLARE @oCusNum AS NVARCHAR(8) = N'{1}';
+                DECLARE @oDelToId AS DECIMAL(18,0) = {2};
+                SELECT ISNULL(MIN([DateRequired]),CAST(GETDATE() AS DATE)) AS [DateRequired]
+                FROM [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill]
+                WHERE [CusNum] = @oCusNum AND [DelToId] = @oDelToId;
 ";
             query = string.Format(query, DatabaseName, CmbCustomer.SelectedValue, CmbDelto.SelectedValue);
             lists = Data.Selects(query, Initialized.GetConnectionType(Data, App));
@@ -2027,14 +2034,15 @@ FROM v;";
 
                 if (Initialized.R_DocumentNumber.Trim() != "" && Initialized.R_LineCode.Trim() != "" && Initialized.R_DeptCode.Trim() != "")
                 {
-                    query = $@"
-        DECLARE @TakeOrderNumber AS NVARCHAR(25) = N'{vInvNo}';
-        DECLARE @CusNum AS NVARCHAR(8) = N'{CusNum}';
-        DECLARE @DocumentNumber AS NVARCHAR(20) = N'{Initialized.R_DocumentNumber.Trim()}';
-        DECLARE @LineCode AS NVARCHAR(14) = N'{Initialized.R_LineCode.Trim()}';
-        DECLARE @DeptCode AS NVARCHAR(14) = N'{Initialized.R_DeptCode.Trim()}';
-        INSERT INTO [Stock].[dbo].[TPRDeliveryTakeOrder_ForAEON]([SupervisorID],[CusNum],[DocumentNumber],[LineCode],[DeptCode],[TakeOrderID],[DeliveryID])
-        VALUES(NULL,@CusNum,@DocumentNumber,@LineCode,@DeptCode,@TakeOrderNumber,NULL);
+                    query = @"
+            DECLARE @TakeOrderNumber AS NVARCHAR(25) = N'{1}';
+                        DECLARE @CusNum AS NVARCHAR(8) = N'{2}';
+                        DECLARE @DocumentNumber AS NVARCHAR(20) = N'{3}';
+                        DECLARE @LineCode AS NVARCHAR(14) = N'{4}';
+                        DECLARE @DeptCode AS NVARCHAR(14) = N'{5}';
+                        INSERT INTO [Stock].[dbo].[TPRDeliveryTakeOrder_ForAEON]([SupervisorID],[CusNum],[DocumentNumber],[LineCode],[DeptCode],[TakeOrderID],[DeliveryID])
+                        VALUES(NULL,@CusNum,@DocumentNumber,@LineCode,@DeptCode,@TakeOrderNumber,NULL);
+           
     ";
                     query = string.Format(query, DatabaseName, vInvNo, CusNum, Initialized.R_DocumentNumber.Trim(), Initialized.R_LineCode.Trim(), Initialized.R_DeptCode.Trim());
                     RCom.CommandText = query;

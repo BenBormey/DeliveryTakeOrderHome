@@ -1,18 +1,15 @@
 ﻿using DeliveryTakeOrder.ApplicationFrameworks;
 using DeliveryTakeOrder.DatabaseFrameworks;
 using DeliveryTakeOrder.Declares;
-using DevExpress.CodeParser;
-using DevExpress.XtraGauges.Core.Base;
+using DeliveryTakeOrder.Interfaces.distributor_under;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace DeliveryTakeOrder.Interfaces
@@ -28,6 +25,8 @@ namespace DeliveryTakeOrder.Interfaces
         private SqlTransaction RTran;
         private string vquery;
         private DataTable vlist;
+        BindingSource bsDistributor;
+        distributorModel distributorModelSelected;
 
         public FrmViewProcessingTakeOrder()
         {
@@ -35,8 +34,18 @@ namespace DeliveryTakeOrder.Interfaces
             Initialized.LoadingInitialized(Data, App);
             DatabaseName = string.Format("{0}{1}", Data.PrefixDatabase, Data.DatabaseName);
 
+            this.oBarcode_Search = "";
+            this.LblCompanyName.Text = Initialized.R_CompanyName.ToUpper();
+            this.PicLogo.Image = Initialized.R_Logo;
+            this.distributorModelSelected = null;
+            this.distributorLoading.Enabled = true;
         }
-        private void DataSources(ComboBox comboBoxName, DataTable dTable, string displayMember, string valueMember)
+        public void LoadingInitialized()
+        {
+            Initialized.LoadingInitialized(Data, App);
+            DatabaseName = String.Format("{0}{1}", Data.PrefixDatabase, Data.DatabaseName);
+        }
+        private void DataSources(System.Windows.Forms.ComboBox comboBoxName, DataTable dTable, string displayMember, string valueMember)
         {
             comboBoxName.DataSource = dTable;
             comboBoxName.DisplayMember = displayMember;
@@ -47,11 +56,6 @@ namespace DeliveryTakeOrder.Interfaces
         private void FrmViewProcessingTakeOrder_Activated(object sender, EventArgs e)
         {
             
-        }
-        private void CmbInvoiceNumber_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (CmbDate.SelectedValue is DataRowView || CmbDate.SelectedValue == null) return;
-            this.displayloading.Enabled = true;
         }
 
 
@@ -75,7 +79,11 @@ namespace DeliveryTakeOrder.Interfaces
         private void CmbCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (CmbCustomer.SelectedValue is DataRowView || CmbCustomer.SelectedValue == null) return;
-            if (CmbCustomer.Text.Trim().Equals("")) return;
+            if (CmbCustomer.Text.Trim().Equals("") == true) return;
+            if (this.cmbDistributor.Text.Trim().Equals("") == true) return;
+            if (this.cmbDistributor.Properties.DataSource == null) return;
+            if (this.cmbDistributor.InternalListBox == null) return;
+            if (this.cmbDistributor.InternalListBox.Items.GetCheckedValues().Count <= 0) return;
 
             string vCusNum = CmbCustomer.SelectedValue.ToString();
             Todate = Data.Get_CURRENT_DATE(Initialized.GetConnectionType(Data, App));
@@ -85,52 +93,44 @@ namespace DeliveryTakeOrder.Interfaces
             oDateFrom = Todate;
             oDateTo = Todate;
             oAllUnpaid = true;
-        
-
-            vquery = $@"
-    DECLARE @vCusNum AS NVARCHAR(8) = N'{vCusNum}';
-    WITH v AS (
-        SELECT MIN([DateRequired]) [InvDate]
-        FROM [Stock].[dbo].[TPRDeliveryTakeOrder]
-        WHERE ([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)
-        UNION ALL
-        SELECT MIN([DateRequired]) [InvDate]
-        FROM [Stock].[dbo].[TPRDeliveryTakeOrderAfterPrintWaitingPicking]
-        WHERE ([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)
-        UNION ALL
-        SELECT MIN([DateRequired]) [InvDate]
-        FROM [Stock].[dbo].[TPRDeliveryTakeOrderAfterPrintWaiting]
-        WHERE ([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)
-        UNION ALL
-        SELECT MIN([DateRequired]) [InvDate]
-        FROM [Stock].[dbo].[TPRDeliveryTakeOrderAfterPrint]
-        WHERE ([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)
-        UNION ALL
-        SELECT MIN([DateRequired]) [InvDate]
-        FROM [Stock].[dbo].[TPRDeliveryTakeOrderAfterPrintFinish]
-        WHERE ([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)
-    )
-    SELECT MIN([InvDate]) [InvDate]
-    FROM v;
+            string vquery = @"
+   
+DECLARE @vCusNum AS NVARCHAR(8) = N'{1}';
+                        WITH v AS (
+	                        SELECT MIN([DateRequired]) [InvDate]
+	                        FROM [Stock].[dbo].[TPRDeliveryTakeOrder]
+	                        WHERE ([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)
+                            UNION ALL
+	                        SELECT MIN([DateRequired]) [InvDate]
+	                        FROM [Stock].[dbo].[TPRDeliveryTakeOrderAfterPrintWaitingPicking]
+	                        WHERE ([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)
+	                        UNION ALL
+	                        SELECT MIN([DateRequired]) [InvDate]
+	                        FROM [Stock].[dbo].[TPRDeliveryTakeOrderAfterPrintWaiting]
+	                        WHERE ([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)
+	                        UNION ALL
+	                        SELECT MIN([DateRequired]) [InvDate]
+	                        FROM [Stock].[dbo].[TPRDeliveryTakeOrderAfterPrint]
+	                        WHERE ([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)
+                            UNION ALL
+	                        SELECT MIN([DateRequired]) [InvDate]
+	                        FROM [Stock].[dbo].[TPRDeliveryTakeOrderAfterPrintFinish]
+	                        WHERE ([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)
+                        )
+                        SELECT MIN([InvDate]) [InvDate]
+                        FROM v;
 ";
             vquery = string.Format(vquery, DatabaseName, vCusNum);
             vlist = Data.Selects(vquery, Initialized.GetConnectionType(Data, App));
-
             Initialized.R_AllUnpaid = true;
             Initialized.R_IsCancel = true;
-
-            FrmSelectedPayment oFr = new FrmSelectedPayment
-            {
-                DTable = vlist
-            };
+            FrmSelectedPayment oFr = new FrmSelectedPayment();
+            oFr.DTable = vlist;
             oFr.ShowDialog();
-
-            if (Initialized.R_IsCancel) return;
-
+            if (Initialized.R_IsCancel == true) return;
             oDateFrom = Initialized.R_DateFrom;
             oDateTo = Initialized.R_DateTo;
             oAllUnpaid = Initialized.R_AllUnpaid;
-
             this.DeltoLoading.Enabled = true;
             this.displayloading.Enabled = true;
 
@@ -145,30 +145,114 @@ namespace DeliveryTakeOrder.Interfaces
         {
             this.Cursor = Cursors.WaitCursor;
             this.CustomerLoading.Enabled = false;
+            string distributorSelected = $"";
+            if (this.cmbDistributor.Properties.DataSource != null && this.cmbDistributor.InternalListBox != null)
+            {
+                if (this.cmbDistributor.InternalListBox.Items[0].CheckState == CheckState.Checked)
+                {
+                    distributorSelected = $"( select all )";
+                }
+                else
+                {
+                    distributorSelected = string.Join(",", this.cmbDistributor.Properties.GetItems().GetCheckedValues().ToArray());
+                }
+            }
+
 
             string vquery = @"
-    WITH v AS (
-        SELECT 0 [Index], N'CUS00000' [CusNum], N'All Customers' [CusName]
-        UNION ALL 
-        SELECT 1 [Index], [CusNum], [CusName]
-        FROM [DBPickers].[dbo].[.tbldeliverytakeorders.dry]
-        GROUP BY [CusNum], [CusName]
-        UNION ALL 
-        SELECT 1 [Index], [CusNum], [CusName]
-        FROM [DBPickers].[dbo].[.tbldeliverytakeorders.dry.picking]
-        GROUP BY [CusNum], [CusName]
-        UNION ALL 
-        SELECT 1 [Index], [CusNum], [CusName]
-        FROM [DBPickers].[dbo].[.tbldeliverytakeorders.dry.invoicing]
-        GROUP BY [CusNum], [CusName]
-    )
-    SELECT v.[Index], v.CusNum, v.CusName
-    FROM v
-    GROUP BY v.[Index], v.CusNum, v.CusName
-    ORDER BY v.[Index], v.CusName;
+   DECLARE @distributorId NVARCHAR(MAX) = N'{1}';
+
+IF (
+       (@distributorId IS NULL)
+       OR (@distributorId = N'')
+       OR (@distributorId = N'( select all )')
+   )
+    SET @distributorId = CAST(CAST(0 AS BINARY) AS UNIQUEIDENTIFIER);
+
+SET @distributorId = CASE
+                         WHEN RIGHT(@distributorId, 1) = N',' THEN
+                             @distributorId
+                         ELSE
+                             CONCAT(@distributorId, N',')
+                     END;
+DECLARE @distributorIdList AS TABLE
+(
+    [distributorId] UNIQUEIDENTIFIER NULL
+);
+WITH distributorIdList ([distributorId], [items])
+AS (SELECT LEFT(@distributorId, CHARINDEX(N',', @distributorId) - 1) [distributorId],
+           STUFF(@distributorId, 1, CHARINDEX(N',', @distributorId), N'') [items]
+    UNION ALL
+    SELECT LEFT([items], CHARINDEX(N',', [items]) - 1) [distributorId],
+           STUFF([items], 1, CHARINDEX(N',', [items]), N'') [items]
+    FROM distributorIdList
+    WHERE [items] <> N'')
+INSERT INTO @distributorIdList
+(
+    [distributorId]
+)
+SELECT [distributorId]
+FROM distributorIdList
+GROUP BY [distributorId]
+OPTION (MAXRECURSION 32767);
+
+WITH customerList
+AS (SELECT [lc].[CusNum],
+           [lc].[CusName]
+    FROM [Stock].[dbo].[TPRCustomer] lc
+    WHERE ([lc].[Status] = 'Activate')
+          AND
+          (
+              ([lc].[distributorUnderId] IN
+               (
+                   SELECT [distributorId] FROM @distributorIdList GROUP BY [distributorId]
+               )
+              )
+              OR (CAST(CAST(0 AS BINARY) AS UNIQUEIDENTIFIER)IN
+                  (
+                      SELECT [distributorId] FROM @distributorIdList GROUP BY [distributorId]
+                  )
+                 )
+          )),
+     pickingList
+AS (SELECT 0 [Index],
+           N'CUS00000' [CusNum],
+           N'All Customers' [CusName]
+    UNION ALL
+    SELECT 1 [Index],
+           [CusNum],
+           [CusName]
+    FROM [DBPickers].[dbo].[.tbldeliverytakeorders.dry]
+    GROUP BY [CusNum],
+             [CusName]
+    UNION ALL
+    SELECT 1 [Index],
+           [CusNum],
+           [CusName]
+    FROM [DBPickers].[dbo].[.tbldeliverytakeorders.dry.picking]
+    GROUP BY [CusNum],
+             [CusName]
+    UNION ALL
+    SELECT 1 [Index],
+           [CusNum],
+           [CusName]
+    FROM [DBPickers].[dbo].[.tbldeliverytakeorders.dry.invoicing]
+    GROUP BY [CusNum],
+             [CusName])
+SELECT v.[Index],
+       v.CusNum,
+       v.CusName
+FROM pickingList v
+    INNER JOIN customerList lc
+        ON ([lc].[CusNum] = [v].[CusNum])
+GROUP BY v.[Index],
+         v.CusNum,
+         v.CusName
+ORDER BY v.[Index],
+         v.CusName;
 ";
-            vquery = string.Format(vquery, DatabaseName);
-            DataTable vlist = Data.Selects(vquery, Initialized.GetConnectionType(Data, App));
+            vquery = string.Format(vquery, DatabaseName, distributorSelected);
+             vlist = Data.Selects(vquery, Initialized.GetConnectionType(Data, App));
             DataSources(CmbCustomer, vlist, "CusName", "CusNum");
 
             if (CmbCustomer.Items.Count > 0) CmbCustomer.SelectedIndex = 0;
@@ -183,7 +267,9 @@ namespace DeliveryTakeOrder.Interfaces
             this.DateLoading.Enabled = false;
 
             string vCusNum = "";
-            if (CmbCustomer.Text.Trim().Equals("") || CmbCustomer.SelectedValue is DataRowView || CmbCustomer.SelectedValue == null)
+            if (string.IsNullOrWhiteSpace(CmbCustomer.Text) ||
+                CmbCustomer.SelectedValue is DataRowView ||
+                CmbCustomer.SelectedValue == null)
             {
                 vCusNum = "";
             }
@@ -193,7 +279,9 @@ namespace DeliveryTakeOrder.Interfaces
             }
 
             decimal vdeltoid = 0;
-            if (CmbDelto.Text.Trim().Equals("") || CmbDelto.SelectedValue is DataRowView || CmbDelto.SelectedValue == null)
+            if (string.IsNullOrWhiteSpace(CmbDelto.Text) ||
+                CmbDelto.SelectedValue is DataRowView ||
+                CmbDelto.SelectedValue == null)
             {
                 vdeltoid = 0;
             }
@@ -202,32 +290,32 @@ namespace DeliveryTakeOrder.Interfaces
                 vdeltoid = Convert.ToDecimal(CmbDelto.SelectedValue);
             }
 
-            string vquery = $@"
-    DECLARE @vCusNum AS NVARCHAR(8) = N'{vCusNum}';
-    DECLARE @vdeltoid AS DECIMAL(18,0) = {vdeltoid};
-    WITH v AS (
-        SELECT CONVERT(DATE, [daterequired]) [Date]
-        FROM [DBPickers].[dbo].[.tbldeliverytakeorders.dry]
-        WHERE (([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)) AND ([deltoid] = @vdeltoid)
-        GROUP BY CONVERT(DATE, [daterequired])
-        UNION ALL 
-        SELECT CONVERT(DATE, [daterequired]) [Date]
-        FROM [DBPickers].[dbo].[.tbldeliverytakeorders.dry.picking]
-        WHERE (([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)) AND ([deltoid] = @vdeltoid)
-        GROUP BY CONVERT(DATE, [daterequired])
-        UNION ALL 
-        SELECT CONVERT(DATE, [daterequired]) [Date]
-        FROM [DBPickers].[dbo].[.tbldeliverytakeorders.dry.invoicing]
-        WHERE (([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)) AND ([deltoid] = @vdeltoid)
-        GROUP BY CONVERT(DATE, [daterequired])
-    )
-    SELECT v.[Date]
-    FROM v
-    GROUP BY v.[Date]
-    ORDER BY v.[Date];
+            string vquery = @"
+               DECLARE @vCusNum AS NVARCHAR(8) = N'{1}';
+                        DECLARE @vdeltoid AS DECIMAL(18,0) = {2};
+                        WITH v AS (
+	                        SELECT CONVERT(DATE,[daterequired]) [Date]
+	                        FROM [DBPickers].[dbo].[.tbldeliverytakeorders.dry]
+                            WHERE (([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)) AND ([deltoid] = @vdeltoid)
+	                        GROUP BY CONVERT(DATE,[daterequired])
+                            UNION ALL 
+	                        SELECT CONVERT(DATE,[daterequired]) [Date]
+	                        FROM [DBPickers].[dbo].[.tbldeliverytakeorders.dry.picking]
+                            WHERE (([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)) AND ([deltoid] = @vdeltoid)
+	                        GROUP BY CONVERT(DATE,[daterequired])
+                            UNION ALL 
+	                        SELECT CONVERT(DATE,[daterequired]) [Date]
+	                        FROM [DBPickers].[dbo].[.tbldeliverytakeorders.dry.invoicing]
+                            WHERE (([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)) AND ([deltoid] = @vdeltoid)
+	                        GROUP BY CONVERT(DATE,[daterequired])
+                        )
+                        SELECT v.[Date]
+                        FROM v
+                        GROUP BY v.[Date]
+                        ORDER BY v.[Date];
 ";
             vquery = string.Format(vquery, DatabaseName, vCusNum, vdeltoid);
-            DataTable vlist = Data.Selects(vquery, Initialized.GetConnectionType(Data, App));
+             vlist = Data.Selects(vquery, Initialized.GetConnectionType(Data, App));
             DataSources(CmbDate, vlist, "Date", "Date");
 
             this.Cursor = Cursors.Default;
@@ -309,7 +397,7 @@ namespace DeliveryTakeOrder.Interfaces
                         ORDER BY v.[DateRequired],v.[CusName],v.[ProName];";
 
             vquery = string.Format(vquery, DatabaseName, vCusNum, vdeltoid, vDate, oDateFrom, oDateTo, oAllUnpaid ? "--" : "", oAllUnpaid ? "" : "--", oBarcode_Search, oBarcode_Search.Trim().Equals("") ? "--" : "");
-            DataTable vlist = Data.Selects(vquery, Initialized.GetConnectionType(Data, App));
+             vlist = Data.Selects(vquery, Initialized.GetConnectionType(Data, App));
             DgvShow.DataSource = vlist;
             DgvShow.Refresh();
             LblCountRow.Text = string.Format("Count Row : {0:N0}", DgvShow.RowCount);
@@ -321,13 +409,48 @@ namespace DeliveryTakeOrder.Interfaces
 
         private void DeltoLoading_Tick(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+            this.DeltoLoading.Enabled = false;
+            string vCusNum = "";
+            if(CmbCustomer.Text.Trim().Equals("") == true || CmbCustomer.SelectedValue is DataRowView  || CmbCustomer.SelectedValue == null)
+            {
+                vCusNum = "";
 
+            }
+            else
+            {
+                vCusNum = CmbCustomer.SelectedValue.ToString();
+            }
+            vquery = @"DECLARE @vCusNum AS NVARCHAR(8) = N'{1}';
+                        WITH v AS (
+	                        SELECT [deltoid],[DelTo]
+	                        FROM [DBPickers].[dbo].[.tbldeliverytakeorders.dry]
+                            WHERE ([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)
+	                        GROUP BY [deltoid],[DelTo]
+                            UNION ALL 
+	                        SELECT [deltoid],[DelTo]
+	                        FROM [DBPickers].[dbo].[.tbldeliverytakeorders.dry.picking]
+                            WHERE ([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)
+	                        GROUP BY [deltoid],[DelTo]
+                            UNION ALL 
+	                        SELECT [deltoid],[DelTo]
+	                        FROM [DBPickers].[dbo].[.tbldeliverytakeorders.dry.invoicing]
+                            WHERE ([CusNum] = @vCusNum) OR (N'CUS00000' = @vCusNum)
+	                        GROUP BY [deltoid],[DelTo]
+                        )
+                        SELECT v.[deltoid],v.[DelTo]
+                        FROM v
+                        GROUP BY v.[deltoid],v.[DelTo]
+                        ORDER BY v.[DelTo];";
+            vquery = string.Format(vquery, DatabaseName, vCusNum);
+            vlist = Data.Selects(vquery, Initialized.GetConnectionType(Data, App));
+            DataSources(CmbDelto, vlist, "DelTo", "deltoid");
+            this.Cursor = Cursors.Default;
         }
 
         private void FrmViewProcessingTakeOrder_Paint(object sender, PaintEventArgs e)
         {
-            PicLogo.Image = Initialized.R_Logo;
-            LblCompanyName.Text = Initialized.R_CompanyName;
+         
         }
         private DateTime oDateFrom;
         private DateTime oDateTo;
@@ -448,5 +571,102 @@ namespace DeliveryTakeOrder.Interfaces
             CmbCustomer_SelectedIndexChanged(CmbCustomer, e);
 
         }
+
+        private void distributorLoading_Tick(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            this.distributorLoading.Enabled = false;
+
+            string sql = @"
+SELECT [lu].[id],
+       [lu].[companyName],
+       [lu].[remark],
+       [lu].[allowManuallyPromotion],
+       [lu].[createdDate]
+FROM [DBWarehouses].[dbo].[tblDistributorUnder] lu
+ORDER BY [lu].[companyName];";
+
+            DataTable tbl = Data.Selects(sql, Initialized.GetConnectionType(Data, App));
+
+            List<distributorModel> distributorModel = this.GetDataTableToObject<distributorModel>(tbl);
+            this.bsDistributor = new BindingSource(distributorModel, null);
+            this.cmbDistributor.Properties.DataSource = this.bsDistributor;
+            this.cmbDistributor.Properties.ValueMember = "id";
+            this.cmbDistributor.Properties.DisplayMember = "companyName";
+
+            foreach (CheckedListBoxItem l in this.cmbDistributor.Properties.GetItems())
+            {
+                l.CheckState = CheckState.Unchecked;
+            }
+
+            this.Cursor = Cursors.Default;
+
+
+
+        }
+        public List<T> GetDataTableToObject<T>(DataTable pDataTable) where T : new()
+        {
+            List<T> ls = new List<T>();
+
+            foreach (DataRow dr in pDataTable.Rows)
+            {
+                T o = new T();
+
+                foreach (PropertyInfo p in typeof(T).GetProperties())
+                {
+                    try
+                    {
+                        if (pDataTable.Columns.Contains(p.Name))
+                        {
+                            Type propType = p.PropertyType;
+                            object value = dr[p.Name] == DBNull.Value ? null : Convert.ChangeType(dr[p.Name], propType);
+                            p.SetValue(o, value);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        // Handle or log exception if needed
+                    }
+                }
+                ls.Add(o);
+            }
+
+            return ls;
+        }
+
+        private void cmbDistributor_Closed(object sender, ClosedEventArgs e)
+        {
+            if (e.CloseMode == PopupCloseMode.Cancel) return;
+            if (e.CloseMode == PopupCloseMode.Immediate) return;
+
+            if (this.cmbDistributor.Text.Trim().Equals("")) return;
+            if (this.cmbDistributor.Properties.DataSource == null) return;
+            if (this.cmbDistributor.InternalListBox == null) return;
+            if (this.cmbDistributor.InternalListBox.Items.GetCheckedValues().Count <= 0) return;
+
+            this.CustomerLoading.Enabled = true;
+
+        }
+
+        private void cmbDistributor_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
+        {
+            if (this.cmbDistributor.Properties.DataSource == null) return;
+            if (this.cmbDistributor.InternalListBox == null) return;
+            if (this.cmbDistributor.InternalListBox.Items.GetCheckedValues().Count <= 0) return;
+            if (this.cmbDistributor.InternalListBox.Items[0].CheckState == CheckState.Checked)
+                e.DisplayText = "( select all )";
+
+        }
+
+        private void CmbInvoiceNumber_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CmbDate.SelectedValue is DataRowView || CmbDate.SelectedValue == null)
+            {
+                return;
+            }
+            this.displayloading.Enabled = true;
+
+        }
     }
 }
+

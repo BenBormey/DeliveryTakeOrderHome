@@ -62,12 +62,9 @@
     <Reference Include="DevExpress.AspNetCore.Core.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.AspNetCore.Core.19.1.3\lib\netstandard2.0\DevExpress.AspNetCore.Core.v19.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Charts.v24.2.Core, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-    </Reference>
+    <Reference Include="DevExpress.Charts.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.CodeParser.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.CodeParser.19.1.3\lib\net452\DevExpress.CodeParser.v19.1.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.CodeParser.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
     </Reference>
     <Reference Include="DevExpress.Data.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Data.19.1.3\lib\net452\DevExpress.Data.v19.1.dll</HintPath>
@@ -81,45 +78,25 @@
     <Reference Include="DevExpress.Diagram.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Diagram.Core.19.1.3\lib\net452\DevExpress.Diagram.v19.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Drawing.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-    </Reference>
-    <Reference Include="DevExpress.Data.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-    </Reference>
-    <Reference Include="DevExpress.DataAccess.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-    </Reference>
     <Reference Include="DevExpress.Images.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Images.19.1.3\lib\net452\DevExpress.Images.v19.1.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Images.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
     </Reference>
     <Reference Include="DevExpress.Office.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Office.Core.19.1.3\lib\net452\DevExpress.Office.v19.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Office.v24.2.Core, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-    </Reference>
     <Reference Include="DevExpress.Pdf.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Pdf.Core.19.1.3\lib\net452\DevExpress.Pdf.v19.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Pdf.v24.2.Core, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-    </Reference>
-    <Reference Include="DevExpress.PivotGrid.v24.2.Core, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Printing.Core.19.1.3\lib\net452\DevExpress.Printing.v19.1.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Printing.v24.2.Core, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
     </Reference>
     <Reference Include="DevExpress.RichEdit.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.RichEdit.Core.19.1.3\lib\net452\DevExpress.RichEdit.v19.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.RichEdit.v24.2.Core, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-    </Reference>
-    <Reference Include="DevExpress.RichEdit.v24.2.Export, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-    </Reference>
+    <Reference Include="DevExpress.RichEdit.v19.1.Export, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Sparkline.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Sparkline.Core.19.1.3\lib\net452\DevExpress.Sparkline.v19.1.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Sparkline.v24.2.Core, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
     </Reference>
     <Reference Include="DevExpress.Utils.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Utils.19.1.3\lib\net452\DevExpress.Utils.v19.1.dll</HintPath>
@@ -130,21 +107,17 @@
     <Reference Include="DevExpress.Xpo.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Xpo.19.1.3\lib\net452\DevExpress.Xpo.v19.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpo.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-    </Reference>
     <Reference Include="DevExpress.XtraBars.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Win.Navigation.19.1.3\lib\net452\DevExpress.XtraBars.v19.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraCharts.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraDiagram.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Win.Diagram.19.1.3\lib\net452\DevExpress.XtraDiagram.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraEditors.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Win.Navigation.19.1.3\lib\net452\DevExpress.XtraEditors.v19.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraGauges.v24.2.Core, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-    </Reference>
+    <Reference Include="DevExpress.XtraGauges.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Win.Grid.19.1.3\lib\net452\DevExpress.XtraGrid.v19.1.dll</HintPath>
     </Reference>
@@ -154,8 +127,8 @@
     <Reference Include="DevExpress.XtraPrinting.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Win.Printing.19.1.3\lib\net452\DevExpress.XtraPrinting.v19.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraReports.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-    </Reference>
+    <Reference Include="DevExpress.XtraReports.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v19.1.Extensions, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraRichEdit.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Win.RichEdit.19.1.3\lib\net452\DevExpress.XtraRichEdit.v19.1.dll</HintPath>
     </Reference>
@@ -209,6 +182,21 @@
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.29.2.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.29.2\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.ByteCode, Version=9.3.0.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>packages\IKVM.ByteCode.9.3.0\lib\net472\IKVM.ByteCode.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.CoreLib, Version=8.11.0.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>packages\IKVM.8.11.0\lib\net472\IKVM.CoreLib.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Java, Version=8.11.0.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>packages\IKVM.8.11.0\lib\net472\IKVM.Java.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Reflection, Version=8.11.0.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>packages\IKVM.8.11.0\lib\net472\IKVM.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime, Version=8.11.0.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>packages\IKVM.8.11.0\lib\net472\IKVM.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="K4os.Compression.LZ4, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
       <HintPath>..\packages\K4os.Compression.LZ4.1.3.8\lib\net462\K4os.Compression.LZ4.dll</HintPath>
@@ -540,14 +528,78 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App\SendMailDCSKU\MailDCSKUReport.cs">
+    <Compile Include="App\CustomerAging\aging-callcard_class_ramark.cs" />
+    <Compile Include="App\CustomerAging\AgingCallcardAllDetailReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="App\CustomerAging\AgingCallcardAllDetailReport.Designer.cs">
+      <DependentUpon>AgingCallcardAllDetailReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\CustomerAging\AgingCallcardAuditReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="App\CustomerAging\AgingCallcardAuditReport.Designer.cs">
+      <DependentUpon>AgingCallcardAuditReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\CustomerAging\AgingCallcardFilterForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\CustomerAging\AgingCallcardFilterForm.Designer.cs">
+      <DependentUpon>AgingCallcardFilterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\CustomerAging\AgingInvoiceDetailReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="App\CustomerAging\AgingInvoiceDetailReport.Designer.cs">
+      <DependentUpon>AgingInvoiceDetailReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\CustomerAging\ar-aging.form.bank-guarantee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\CustomerAging\ar-aging.form.bank-guarantee.Designer.cs">
+      <DependentUpon>ar-aging.form.bank-guarantee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\CustomerAging\ar-aging_class.cs" />
+    <Compile Include="App\CustomerAging\ar-aging_class_detail.cs" />
+    <Compile Include="App\CustomerAging\ar-aging_init.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\CustomerAging\ar-aging_init.Designer.cs">
+      <DependentUpon>ar-aging_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\CustomerAging\ar-aging_report.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="App\CustomerAging\ar-aging_report.Designer.cs">
+      <DependentUpon>ar-aging_report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\CustomerAging\ar-aging_report_detail.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="App\CustomerAging\ar-aging_report_detail.Designer.cs">
+      <DependentUpon>ar-aging_report_detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\CustomerAging\ARAging.cs" />
+    <Compile Include="App\CustomerAging\ARAgingDetail.cs" />
+    <Compile Include="App\CustomerAging\ar-aging_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\CustomerAging\ar_agingform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\CustomerAging\general-controller_class.cs" />
+    <Compile Include="App\CustomerAging\invoice-detail_class.cs" />
+    <Compile Include="App\SendMailDCSKU\MailDCSKUReport.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="App\SendMailDCSKU\MailDCSKUReport.Designer.cs">
       <DependentUpon>MailDCSKUReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Controller\APIsController.cs" />
     <Compile Include="Controller\ImageShackUploader.cs" />
+    <Compile Include="Dataset\ArrivalTransaction.cs">
+      <DependentUpon>ArrivalTransaction.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Dataset\ArrivalTransaction.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -577,18 +629,61 @@
     <Compile Include="Declares\Company.cs" />
     <Compile Include="Declares\GeneralModule.cs" />
     <Compile Include="Declares\Initialized.cs" />
+    <Compile Include="Declares\msr_declares.cs" />
     <Compile Include="Declares\RMDB.cs" />
     <Compile Include="Declares\SortableBindingList.cs" />
+    <Compile Include="Dev\PreviewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dev\PreviewControl.Designer.cs">
+      <DependentUpon>PreviewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dev\PreviewFor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dev\PreviewFor.Designer.cs">
+      <DependentUpon>PreviewFor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dev\PreviewForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dev\PreviewForm.Designer.cs">
       <DependentUpon>PreviewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dev\sCredit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dev\sCredit.Designer.cs">
+      <DependentUpon>sCredit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dev\sExpiryDate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dev\sExpiryDate.Designer.cs">
+      <DependentUpon>sExpiryDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dev\sExportPlanningOrder.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dev\sExportPlanningOrder.Designer.cs">
+      <DependentUpon>sExportPlanningOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frameworks\ApplicationFramework.cs" />
     <Compile Include="Frameworks\Configuration.cs" />
     <Compile Include="Frameworks\DatabaseFramework.cs" />
     <Compile Include="Interfaces\check_stock\cls_check_stock.cs" />
+    <Compile Include="Interfaces\check_stock\gui_check_stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\check_stock\gui_check_stock.Designer.cs">
+      <DependentUpon>gui_check_stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\check_stock\rpt_check_stock.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Interfaces\check_stock\rpt_check_stock.Designer.cs">
+      <DependentUpon>rpt_check_stock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\customer-e-commerce\FrmCustomersECommerce.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -643,6 +738,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>oDelto.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\distributor-under\distributorModel.cs" />
+    <Compile Include="Interfaces\distributor-under\warehouseStockInExpiryModel.cs" />
     <Compile Include="Interfaces\FrmAlertBadPayment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -660,6 +757,12 @@
     </Compile>
     <Compile Include="Interfaces\FrmAlertCreditAmount.Designer.cs">
       <DependentUpon>FrmAlertCreditAmount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\FrmAlertCustomerHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\FrmAlertCustomerHistory.Designer.cs">
+      <DependentUpon>FrmAlertCustomerHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\FrmAlertTakeorderDeleted.cs">
       <SubType>Form</SubType>
@@ -685,6 +788,12 @@
     <Compile Include="Interfaces\FrmDelayPrintInvoicingForDutchmill.Designer.cs">
       <DependentUpon>FrmDelayPrintInvoicingForDutchmill.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\FrmDelayPrintInvoicingForDutchmillSelected.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\FrmDelayPrintInvoicingForDutchmillSelected.Designer.cs">
+      <DependentUpon>FrmDelayPrintInvoicingForDutchmillSelected.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\FrmDeliveryTakeOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -708,6 +817,12 @@
     </Compile>
     <Compile Include="Interfaces\FrmDeltoListForDutchmillPO.Designer.cs">
       <DependentUpon>FrmDeltoListForDutchmillPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\FrmDownloadSaleTeam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\FrmDownloadSaleTeam.Designer.cs">
+      <DependentUpon>FrmDownloadSaleTeam.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\FrmDutchmillTakeOrder.cs">
       <SubType>Form</SubType>
@@ -744,6 +859,12 @@
     </Compile>
     <Compile Include="Interfaces\FrmDutchmillTakeOrderRetrieve.Designer.cs">
       <DependentUpon>FrmDutchmillTakeOrderRetrieve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\FrmDutchmillTakeOrderViewCredit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\FrmDutchmillTakeOrderViewCredit.Designer.cs">
+      <DependentUpon>FrmDutchmillTakeOrderViewCredit.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\FrmDutchmillTakeOrderViewSummaryCredit.cs">
       <SubType>Form</SubType>
@@ -793,6 +914,12 @@
     <Compile Include="Interfaces\FrmPODutchmillDate_.Designer.cs">
       <DependentUpon>FrmPODutchmillDate_.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\FrmPODutchmillSelected.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\FrmPODutchmillSelected.Designer.cs">
+      <DependentUpon>FrmPODutchmillSelected.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\FrmProcessTakeOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -829,6 +956,12 @@
     <Compile Include="Interfaces\FrmSelectedPayment.Designer.cs">
       <DependentUpon>FrmSelectedPayment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\FrmSetExpiryForPicking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\FrmSetExpiryForPicking.Designer.cs">
+      <DependentUpon>FrmSetExpiryForPicking.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\FrmSetPiecesPerTray.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -853,6 +986,19 @@
     <Compile Include="Interfaces\MDI.Designer.cs">
       <DependentUpon>MDI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\preview\gui_preview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\preview\gui_preview.Designer.cs">
+      <DependentUpon>gui_preview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\promotion-Id\deliveryTakeOrderPromotionIdModel.cs" />
+    <Compile Include="Interfaces\promotion-Id\guiDeliveryTakeOrderPromotionId.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\promotion-Id\guiDeliveryTakeOrderPromotionId.Designer.cs">
+      <DependentUpon>guiDeliveryTakeOrderPromotionId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\Teamleader\select-team.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -866,27 +1012,49 @@
     <Compile Include="Interfaces\UrgentStockToClear.Designer.cs">
       <DependentUpon>UrgentStockToClear.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\WS Products List\Class1.cs" />
     <Compile Include="Interfaces\WS Products List\cls_ws_products_list.cs" />
+    <Compile Include="Interfaces\WS Products List\FrmOverCreditAmountOrCreditTerm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\WS Products List\FrmOverCreditAmountOrCreditTerm.Designer.cs">
+      <DependentUpon>FrmOverCreditAmountOrCreditTerm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\WS Products List\gui_ws_products_messagebox.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Interfaces\WS Products List\gui_ws_products_messagebox.Designer.cs">
       <DependentUpon>gui_ws_products_messagebox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\WS Products List\rpt_check_stock.cs" />
-    <Compile Include="message\gui_message_box.cs">
+    <Compile Include="Interfaces\WS Products List\rpt_ws_products_list.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Interfaces\WS Products List\rpt_ws_products_list.Designer.cs">
+      <DependentUpon>rpt_ws_products_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\message\gui_message_box.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="message\gui_message_box.Designer.cs">
+    <Compile Include="Interfaces\message\gui_message_box.Designer.cs">
       <DependentUpon>gui_message_box.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\AllowanceModel.cs" />
+    <Compile Include="Model\BrandModel.cs" />
     <Compile Include="Model\ClassstoreModel.cs" />
     <Compile Include="Model\cls_detail_takeorder.cs" />
     <Compile Include="Model\cls_main_takeorder.cs" />
+    <Compile Include="Model\CurrencyModel.cs" />
+    <Compile Include="Model\DetailProductsModel.cs" />
+    <Compile Include="Model\FileModel.cs" />
+    <Compile Include="Model\ImageModel.cs" />
+    <Compile Include="Model\ItemModel.cs" />
     <Compile Include="Model\LoginModel.cs" />
+    <Compile Include="Model\ProductsModel.cs" />
+    <Compile Include="Model\PurchaseOrderModel.cs" />
     <Compile Include="Model\SDModel.cs" />
+    <Compile Include="Model\SellingToModel.cs" />
     <Compile Include="Model\SupervisorModel.cs" />
+    <Compile Include="Model\UNTSupervisorModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\WS Products List\gui_ws_products_list.cs">
@@ -895,11 +1063,68 @@
     <Compile Include="Interfaces\WS Products List\gui_ws_products_list.Designer.cs">
       <DependentUpon>gui_ws_products_list.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\XtraPODutchmills.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XtraPODutchmills.Designer.cs">
+      <DependentUpon>XtraPODutchmills.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="App\CustomerAging\AgingCallcardAllDetailReport.resx">
+      <DependentUpon>AgingCallcardAllDetailReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\CustomerAging\AgingCallcardAuditReport.resx">
+      <DependentUpon>AgingCallcardAuditReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\CustomerAging\AgingCallcardFilterForm.resx">
+      <DependentUpon>AgingCallcardFilterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\CustomerAging\AgingInvoiceDetailReport.resx">
+      <DependentUpon>AgingInvoiceDetailReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\CustomerAging\ar-aging.form.bank-guarantee.resx">
+      <DependentUpon>ar-aging.form.bank-guarantee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\CustomerAging\ar-aging_init.resx">
+      <DependentUpon>ar-aging_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\CustomerAging\ar-aging_report.resx">
+      <DependentUpon>ar-aging_report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\CustomerAging\ar-aging_report_detail.resx">
+      <DependentUpon>ar-aging_report_detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\CustomerAging\ar-aging_form.resx">
+      <DependentUpon>ar-aging_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\CustomerAging\ar_agingform.resx">
+      <DependentUpon>ar_agingform.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="App\SendMailDCSKU\MailDCSKUReport.resx">
       <DependentUpon>MailDCSKUReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dev\PreviewControl.resx">
+      <DependentUpon>PreviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dev\PreviewFor.resx">
+      <DependentUpon>PreviewFor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dev\PreviewForm.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dev\sCredit.resx">
+      <DependentUpon>sCredit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dev\sExpiryDate.resx">
+      <DependentUpon>sExpiryDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dev\sExportPlanningOrder.resx">
+      <DependentUpon>sExportPlanningOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\check_stock\gui_check_stock.resx">
+      <DependentUpon>gui_check_stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\check_stock\rpt_check_stock.resx">
+      <DependentUpon>rpt_check_stock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\customer-e-commerce\FrmCustomersECommerce.resx">
       <DependentUpon>FrmCustomersECommerce.cs</DependentUpon>
@@ -934,6 +1159,9 @@
     <EmbeddedResource Include="Interfaces\FrmAlertCreditAmount.resx">
       <DependentUpon>FrmAlertCreditAmount.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\FrmAlertCustomerHistory.resx">
+      <DependentUpon>FrmAlertCustomerHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\FrmAlertTakeorderDeleted.resx">
       <DependentUpon>FrmAlertTakeorderDeleted.cs</DependentUpon>
     </EmbeddedResource>
@@ -946,6 +1174,9 @@
     <EmbeddedResource Include="Interfaces\FrmDelayPrintInvoicingForDutchmill.resx">
       <DependentUpon>FrmDelayPrintInvoicingForDutchmill.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\FrmDelayPrintInvoicingForDutchmillSelected.resx">
+      <DependentUpon>FrmDelayPrintInvoicingForDutchmillSelected.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\FrmDeliveryTakeOrder.resx">
       <DependentUpon>FrmDeliveryTakeOrder.cs</DependentUpon>
     </EmbeddedResource>
@@ -957,6 +1188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\FrmDeltoListForDutchmillPO.resx">
       <DependentUpon>FrmDeltoListForDutchmillPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\FrmDownloadSaleTeam.resx">
+      <DependentUpon>FrmDownloadSaleTeam.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\FrmDutchmillTakeOrder.resx">
       <DependentUpon>FrmDutchmillTakeOrder.cs</DependentUpon>
@@ -975,6 +1209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\FrmDutchmillTakeOrderRetrieve.resx">
       <DependentUpon>FrmDutchmillTakeOrderRetrieve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\FrmDutchmillTakeOrderViewCredit.resx">
+      <DependentUpon>FrmDutchmillTakeOrderViewCredit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\FrmDutchmillTakeOrderViewSummaryCredit.resx">
       <DependentUpon>FrmDutchmillTakeOrderViewSummaryCredit.cs</DependentUpon>
@@ -1000,6 +1237,9 @@
     <EmbeddedResource Include="Interfaces\FrmPODutchmillDate_.resx">
       <DependentUpon>FrmPODutchmillDate_.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\FrmPODutchmillSelected.resx">
+      <DependentUpon>FrmPODutchmillSelected.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\FrmProcessTakeOrder.resx">
       <DependentUpon>FrmProcessTakeOrder.cs</DependentUpon>
     </EmbeddedResource>
@@ -1018,6 +1258,9 @@
     <EmbeddedResource Include="Interfaces\FrmSelectedPayment.resx">
       <DependentUpon>FrmSelectedPayment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\FrmSetExpiryForPicking.resx">
+      <DependentUpon>FrmSetExpiryForPicking.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\FrmSetPiecesPerTray.resx">
       <DependentUpon>FrmSetPiecesPerTray.cs</DependentUpon>
     </EmbeddedResource>
@@ -1030,18 +1273,31 @@
     <EmbeddedResource Include="Interfaces\MDI.resx">
       <DependentUpon>MDI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\preview\gui_preview.resx">
+      <DependentUpon>gui_preview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\promotion-Id\guiDeliveryTakeOrderPromotionId.resx">
+      <DependentUpon>guiDeliveryTakeOrderPromotionId.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Teamleader\select-team.resx">
       <DependentUpon>select-team.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\UrgentStockToClear.resx">
       <DependentUpon>UrgentStockToClear.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\WS Products List\FrmOverCreditAmountOrCreditTerm.resx">
+      <DependentUpon>FrmOverCreditAmountOrCreditTerm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\WS Products List\gui_ws_products_messagebox.resx">
       <DependentUpon>gui_ws_products_messagebox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="message\gui_message_box.resx">
+    <EmbeddedResource Include="Interfaces\WS Products List\rpt_ws_products_list.resx">
+      <DependentUpon>rpt_ws_products_list.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\message\gui_message_box.resx">
       <DependentUpon>gui_message_box.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -1055,9 +1311,10 @@
     <EmbeddedResource Include="Interfaces\WS Products List\gui_ws_products_list.resx">
       <DependentUpon>gui_ws_products_list.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\xOverCreditNOverTerm.resx" />
-    <EmbeddedResource Include="Reports\XtraPODutchmill.resx" />
-    <EmbeddedResource Include="Reports\XtraPODutchmills.resx" />
+    <Compile Include="App\CustomerAging\aging-callcard.class.detail.cs" />
+    <EmbeddedResource Include="Reports\XtraPODutchmills.resx">
+      <DependentUpon>XtraPODutchmills.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Dataset\ArrivalTransaction.xsc">
       <DependentUpon>ArrivalTransaction.xsd</DependentUpon>
     </None>
@@ -1139,14 +1396,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\CustomerAging\" />
+    <Folder Include="a\" />
     <Folder Include="Classes\" />
     <Folder Include="Fakes\" />
-    <Folder Include="Interfaces\preview\" />
-    <Folder Include="WS Products List\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Reports\Backup_PODutchmill.rdlc" />
+    <None Include="Reports\Class1.rdlc" />
     <None Include="Reports\PODutchmill.rdlc" />
     <None Include="Reports\PrintArrivalTransaction.rdlc" />
     <None Include="Reports\PrintRequestAdvanceBankTT.rdlc" />
@@ -1758,11 +2014,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
-    <Content Include="Reports\xOverCreditNOverTerm.Designer.vb" />
-    <Content Include="Reports\xOverCreditNOverTerm.vb" />
-    <Content Include="Reports\XtraPODutchmill.Designer.vb" />
-    <Content Include="Reports\XtraPODutchmills.Designer.vb" />
-    <Content Include="Reports\XtraPODutchmills.vb" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup Condition="$(VisualStudioVersion) == '17.0'">

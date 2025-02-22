@@ -1,4 +1,5 @@
-﻿using DeliveryTakeOrder.ApplicationFrameworks;
+﻿using DeliveryTakeOrder.App.CustomerAging;
+using DeliveryTakeOrder.ApplicationFrameworks;
 using DeliveryTakeOrder.DatabaseFrameworks;
 using DeliveryTakeOrder.Declares;
 using Microsoft.Reporting.WinForms;
@@ -85,9 +86,15 @@ namespace DeliveryTakeOrder.Interfaces
         private void btnPreviewAging_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            //ARAgingForm frm = new ARAgingForm();
-            //frm.CusNum = oCusNum;
-            //frm.Show();
+            ar_aging_form frm = new ar_aging_form();
+            frm.CusNum = oCusNum;
+            frm.Show();
+
+
+        }
+
+        private void BtnOK_Click(object sender, EventArgs e)
+        {
 
         }
     }

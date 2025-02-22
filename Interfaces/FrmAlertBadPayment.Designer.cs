@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAlertBadPayment));
             this.DgvShow = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -113,8 +113,8 @@
             // AlertDate
             // 
             this.AlertDate.DataPropertyName = "AlertDate";
-            dataGridViewCellStyle3.Format = "dd-MMM-yy";
-            this.AlertDate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "dd-MMM-yy";
+            this.AlertDate.DefaultCellStyle = dataGridViewCellStyle1;
             this.AlertDate.HeaderText = "Alert Date";
             this.AlertDate.Name = "AlertDate";
             this.AlertDate.ReadOnly = true;
@@ -123,8 +123,8 @@
             // BlockDate
             // 
             this.BlockDate.DataPropertyName = "BlockDate";
-            dataGridViewCellStyle4.Format = "dd-MMM-yy";
-            this.BlockDate.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Format = "dd-MMM-yy";
+            this.BlockDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.BlockDate.HeaderText = "Block Date";
             this.BlockDate.Name = "BlockDate";
             this.BlockDate.ReadOnly = true;
@@ -201,6 +201,7 @@
             this.BtnYes.TabIndex = 114;
             this.BtnYes.Text = "&Yes";
             this.BtnYes.UseVisualStyleBackColor = true;
+            this.BtnYes.Click += new System.EventHandler(this.BtnYes_Click);
             // 
             // Panel1
             // 
@@ -246,7 +247,7 @@
             this.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmAlertBadPayment";
             this.Padding = new System.Windows.Forms.Padding(5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -56,6 +56,13 @@ namespace DeliveryTakeOrder.Interfaces
             DatabaseName = string.Format("{0}{1}", Data.PrefixDatabase, Data.DatabaseName);
 
         }
+       private void LoadingInitialized()
+        {
+            Initialized.LoadingInitialized(Data, App);
+            DatabaseName = String.Format("{0}{1}", Data.PrefixDatabase, Data.DatabaseName);
+
+
+        }
         private void DataSources(ComboBox comboBoxName, DataTable dTable, string displayMember, string valueMember)
         {
             comboBoxName.DataSource = dTable;
@@ -82,34 +89,32 @@ namespace DeliveryTakeOrder.Interfaces
 
         }
         private DataTable oDayOfWeekList;
-        private void dayofweekloading_Tick(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.WaitCursor;
-            this.dayofweekloading.Enabled = false;
-            if (this.oDayOfWeekList != null) this.oDayOfWeekList = null;
-            this.oDayOfWeekList = new DataTable();
-            this.oDayOfWeekList.Columns.Add("value", typeof(string));
-            this.oDayOfWeekList.Columns.Add("display", typeof(string));
-
-            DataRow oRow = null;
-            for (decimal o = 1; o <= 7; o++)
-            {
-                string oDayName = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName((DayOfWeek)((int)o % 7)).ToUpper();
-                oRow = this.oDayOfWeekList.NewRow();
-                oRow["value"] = oDayName;
-                oRow["display"] = oDayName;
-                this.oDayOfWeekList.Rows.Add(oRow);
-            }
-
-            this.DataSources(CmbDayOfWeek, this.oDayOfWeekList, "display", "value");
-            this.Cursor = Cursors.Default;
-
+            this.Close();
         }
-
         private void FrmPlanningOrder_Paint(object sender, PaintEventArgs e)
         {
             PicLogo.Image = Initialized.R_Logo;
             LblCompanyName.Text = Initialized.R_DatabaseName.ToUpper();
+        }
+        private void DgvShow_DoubleClick(object sender, EventArgs e)
+        {
+            if (DgvShow.Rows.Count <= 0)
+            {
+                MessageBox.Show("No record to update!", "No Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var currentRow = DgvShow.Rows[DgvShow.CurrentRow.Index];
+            string oPlanning = DBNull.Value.Equals(currentRow.Cells["PlanningOrder"].Value) ? "" : currentRow.Cells["PlanningOrder"].Value.ToString().Trim();
+            string oDayofWeek = DBNull.Value.Equals(currentRow.Cells["DayOfWeek"].Value) ? "" : currentRow.Cells["DayOfWeek"].Value.ToString().Trim();
+
+            this.TxtPlanningOrder.Text = oPlanning.Trim();
+            this.CmbDayOfWeek.SelectedValue = oDayofWeek;
+            BtnAdd.Text = "&Update";
+            BtnAdd.Image = DeliveryTakeOrder.Properties.Resources.update_blue;
+
         }
 
         private void BtnAdd_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -234,24 +239,7 @@ namespace DeliveryTakeOrder.Interfaces
 
         }
 
-        private void DgvShow_DoubleClick(object sender, EventArgs e)
-        {
-            if (DgvShow.Rows.Count <= 0)
-            {
-                MessageBox.Show("No record to update!", "No Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            var currentRow = DgvShow.Rows[DgvShow.CurrentRow.Index];
-            string oPlanning = DBNull.Value.Equals(currentRow.Cells["PlanningOrder"].Value) ? "" : currentRow.Cells["PlanningOrder"].Value.ToString().Trim();
-            string oDayofWeek = DBNull.Value.Equals(currentRow.Cells["DayOfWeek"].Value) ? "" : currentRow.Cells["DayOfWeek"].Value.ToString().Trim();
-
-            this.TxtPlanningOrder.Text = oPlanning.Trim();
-            this.CmbDayOfWeek.SelectedValue = oDayofWeek;
-            BtnAdd.Text = "&Update";
-            BtnAdd.Image = DeliveryTakeOrder.Properties.Resources.update_blue;
-
-        }
+      
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
@@ -369,15 +357,44 @@ namespace DeliveryTakeOrder.Interfaces
 
         }
 
-        private void BtnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        
 
         private void FrmPlanningOrder_Load(object sender, EventArgs e)
         {
             this.dayofweekloading.Enabled = true;
             this.DisplayLoading.Enabled  =true; 
+        }
+        private void dayofweekloading_Tick(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            this.dayofweekloading.Enabled = false;
+            if (this.oDayOfWeekList != null) this.oDayOfWeekList = null;
+            this.oDayOfWeekList = new DataTable();
+            this.oDayOfWeekList.Columns.Add("value", typeof(string));
+            this.oDayOfWeekList.Columns.Add("display", typeof(string));
+
+            DataRow oRow = null;
+            for (decimal o = 1; o <= 7; o++)
+            {
+                string oDayName = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName((DayOfWeek)((int)o % 7)).ToUpper();
+                oRow = this.oDayOfWeekList.NewRow();
+                oRow["value"] = oDayName;
+                oRow["display"] = oDayName;
+                this.oDayOfWeekList.Rows.Add(oRow);
+            }
+
+            this.DataSources(CmbDayOfWeek, this.oDayOfWeekList, "display", "value");
+            this.Cursor = Cursors.Default;
+
+        }
+
+        private void Panel5_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                FrmPlanningOrder_PreviewKeyDown(this, e);
+            }
+
         }
     }
 }

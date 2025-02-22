@@ -63,12 +63,14 @@
             this.ToolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.MnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.AlertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MnuTODeleted = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuurgentstocktoclear = new System.Windows.Forms.ToolStripMenuItem();
             this.Loading = new System.Windows.Forms.Timer(this.components);
+            this.XtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.MnuTODeleted = new System.Windows.Forms.ToolStripMenuItem();
             this.StatusStrip1.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.XtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // StatusStrip1
@@ -145,6 +147,7 @@
             this.mnuSetExpiryForPicking.Size = new System.Drawing.Size(239, 22);
             this.mnuSetExpiryForPicking.Text = "&Set Period Expiry For Picking";
             this.mnuSetExpiryForPicking.Visible = false;
+            this.mnuSetExpiryForPicking.Click += new System.EventHandler(this.mnuSetExpiryForPicking_Click);
             // 
             // ToolStripSeparator3
             // 
@@ -277,6 +280,7 @@
             this.MnuTakeOrderProcessing.Name = "MnuTakeOrderProcessing";
             this.MnuTakeOrderProcessing.Size = new System.Drawing.Size(295, 22);
             this.MnuTakeOrderProcessing.Text = "&Take Order Processing";
+            this.MnuTakeOrderProcessing.Click += new System.EventHandler(this.MnuTakeOrderProcessing_Click);
             // 
             // ToolStripSeparator2
             // 
@@ -347,14 +351,6 @@
             this.AlertToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.AlertToolStripMenuItem.Text = "Alert     ";
             // 
-            // MnuTODeleted
-            // 
-            this.MnuTODeleted.Image = global::DeliveryTakeOrder.Properties.Resources.Deleted16;
-            this.MnuTODeleted.Name = "MnuTODeleted";
-            this.MnuTODeleted.Size = new System.Drawing.Size(198, 22);
-            this.MnuTODeleted.Text = "T.O Deleted";
-            this.MnuTODeleted.Click += new System.EventHandler(this.MnuTODeleted_Click);
-            // 
             // ToolStripMenuItem5
             // 
             this.ToolStripMenuItem5.Name = "ToolStripMenuItem5";
@@ -366,11 +362,24 @@
             this.mnuurgentstocktoclear.Name = "mnuurgentstocktoclear";
             this.mnuurgentstocktoclear.Size = new System.Drawing.Size(198, 22);
             this.mnuurgentstocktoclear.Text = "&Urgent Stock to Clear";
+            this.mnuurgentstocktoclear.Click += new System.EventHandler(this.mnuurgentstocktoclear_Click);
             // 
             // Loading
             // 
             this.Loading.Interval = 5;
             this.Loading.Tick += new System.EventHandler(this.Loading_Tick);
+            // 
+            // XtraTabbedMdiManager1
+            // 
+            this.XtraTabbedMdiManager1.MdiParent = this;
+            // 
+            // MnuTODeleted
+            // 
+            this.MnuTODeleted.Image = global::DeliveryTakeOrder.Properties.Resources.Deleted16;
+            this.MnuTODeleted.Name = "MnuTODeleted";
+            this.MnuTODeleted.Size = new System.Drawing.Size(198, 22);
+            this.MnuTODeleted.Text = "T.O Deleted";
+            this.MnuTODeleted.Click += new System.EventHandler(this.MnuTODeleted_Click_1);
             // 
             // MDI
             // 
@@ -385,11 +394,13 @@
             this.IsMdiContainer = true;
             this.Name = "MDI";
             this.Text = "Delivery Take Order";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MDI_FormClosed);
             this.Load += new System.EventHandler(this.MDI_Load);
             this.StatusStrip1.ResumeLayout(false);
             this.StatusStrip1.PerformLayout();
             this.MenuStrip1.ResumeLayout(false);
             this.MenuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.XtraTabbedMdiManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -428,10 +439,11 @@
         internal System.Windows.Forms.ToolStripSeparator ToolStripSeparator4;
         internal System.Windows.Forms.ToolStripMenuItem MnuExit;
         internal System.Windows.Forms.ToolStripMenuItem AlertToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem MnuTODeleted;
         internal System.Windows.Forms.ToolStripSeparator ToolStripMenuItem5;
         internal System.Windows.Forms.ToolStripMenuItem mnuurgentstocktoclear;
         internal System.Windows.Forms.Timer Loading;
+        internal DevExpress.XtraTabbedMdi.XtraTabbedMdiManager XtraTabbedMdiManager1;
+        internal System.Windows.Forms.ToolStripMenuItem MnuTODeleted;
     }
 }
 

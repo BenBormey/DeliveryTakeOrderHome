@@ -28,6 +28,7 @@ namespace DeliveryTakeOrder.Interfaces.Teamleader
         public string status { get; set; }
         public DateTime createddate { get; set; }
         public string url { get; set; }
+        public bool allowManuallyPromotion { get; set; }
         public string urlGallery
         {
             get

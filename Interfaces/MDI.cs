@@ -2,6 +2,7 @@
 using DeliveryTakeOrder.DatabaseFrameworks;
 using DeliveryTakeOrder.Declares;
 using DeliveryTakeOrder.Interfaces.Teamleader;
+using DeliveryTakeOrder.WS_Products_List;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -181,8 +182,8 @@ WHERE ([s].[app_id] = @app_id);
                 {
                     this.ToolStripMenuItem5.Visible = true;
                     this.mnuurgentstocktoclear.Visible = true;
-               //     UrgentStockToClear frmUrgent = new UrgentStockToClear();
-                  //  if (frmUrgent.IsShow) frmUrgent.ShowDialog(this);
+                    UrgentStockToClear frmUrgent = new UrgentStockToClear();
+                    if (frmUrgent.IsShow) frmUrgent.ShowDialog(this);
                 }
                 else
                 {
@@ -215,12 +216,12 @@ FROM v;
 
                 if (this.lists != null && this.lists.Rows.Count > 0)
                 {
-                  //  FrmAlertTakeorderDeleted vFrm = new FrmAlertTakeorderDeleted
-                //    {
-                //        MdiParent = this,
-                //        WindowState = FormWindowState.Maximized
-                //    };
-                  //  vFrm.Show();
+                    FrmAlertTakeorderDeleted vFrm = new FrmAlertTakeorderDeleted(this,warehouseName)
+                    {
+                        MdiParent = this,
+                        WindowState = FormWindowState.Maximized
+                    };
+                    vFrm.Show();
                 }
             }
             else
@@ -233,12 +234,12 @@ FROM v;
                 Environment.Exit(0);
             }
         }
-        public class msr_declares
-        {
-            public decimal app_id { get; set; } = 10;
-            public string app_name { get; set; } = "Qs Delivery Take Order (UNT Wholesale)";
-            public string app_version { get; set; } = "2.4.4";
-        }
+        //public class msr_declares
+        //{
+        //    public decimal app_id { get; set; } = 10;
+        //    public string app_name { get; set; } = "Qs Delivery Take Order (UNT Wholesale)";
+        //    public string app_version { get; set; } = "2.4.4";
+        //}
 
         private void MnuDeliveryTakeOrder__Click(object sender, EventArgs e)
         {
@@ -257,7 +258,7 @@ FROM v;
 
         private void MnuDeliveryTakeOrder_Click(object sender, EventArgs e)
         {
-            FrmDutchmillTakeOrder frm = new FrmDutchmillTakeOrder(this)
+            FrmDutchmillTakeOrder frm = new FrmDutchmillTakeOrder(this,warehouseName)
             {
                 MdiParent = this,
                 WindowState = FormWindowState.Maximized,
@@ -358,7 +359,10 @@ FROM v;
 
         private void MnuChangePassword_Click(object sender, EventArgs e)
         {
-            
+            FrmChangePassword fui = new FrmChangePassword();
+            fui.MdiParent = this;
+            fui.ProgramName = "TakeOrder";
+            fui.Show();
         }
 
         private void MnuProcessTakeOrder_Click(object sender, EventArgs e)
@@ -408,11 +412,11 @@ FROM v;
 
         private void mnuwsproductslist_Click(object sender, EventArgs e)
         {
-            //gui_ws_products_list gui_ = new gui_ws_products_list
-            //{
-            //    MdiParent = this
-            //};
-            //gui_.Show();
+            gui_ws_products_list gui_ = new gui_ws_products_list(this,warehouseName)
+            {
+                MdiParent = this
+            };
+            gui_.Show();
 
         }
 
@@ -425,6 +429,39 @@ FROM v;
             };
             vFrm.Show();
 
+        }
+
+        private void mnuurgentstocktoclear_Click(object sender, EventArgs e)
+        {
+            UrgentStockToClear frm = new UrgentStockToClear();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void mnuSetExpiryForPicking_Click(object sender, EventArgs e)
+        {
+            FrmSetExpiryForPicking vFrm = new FrmSetExpiryForPicking();
+            vFrm.MdiParent = this;
+            vFrm.WindowState = FormWindowState.Maximized;
+            this.Show();
+        }
+
+        private void MDI_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void MnuTakeOrderProcessing_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MnuTODeleted_Click_1(object sender, EventArgs e)
+        {
+            FrmAlertTakeorderDeleted gui = new FrmAlertTakeorderDeleted(this, this.warehouseName);
+            gui.MdiParent = this;
+            WindowState = FormWindowState.Maximized;
+            gui.Show();
         }
     }
    

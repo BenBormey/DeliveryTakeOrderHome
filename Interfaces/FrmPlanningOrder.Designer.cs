@@ -223,6 +223,7 @@
             this.Panel5.Padding = new System.Windows.Forms.Padding(2);
             this.Panel5.Size = new System.Drawing.Size(196, 50);
             this.Panel5.TabIndex = 129;
+            this.Panel5.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Panel5_PreviewKeyDown);
             // 
             // CmbDayOfWeek
             // 

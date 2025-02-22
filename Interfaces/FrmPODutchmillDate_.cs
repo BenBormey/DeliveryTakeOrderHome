@@ -167,13 +167,14 @@ namespace DeliveryTakeOrder.Interfaces
                 if (ChkLock.Checked)
                 {
                     query = $@"
-            DECLARE @oPlanningOrder AS NVARCHAR(100) = N'{oplanningorder}';
-            DECLARE @vDateRequired AS DATE = N'{CmbRequiredDate.SelectedValue:yyyy-MM-dd}';
-            INSERT INTO [{DatabaseName}].[dbo].[TblDeliveryTakeOrders_DutchmillOrder_Locked]([DateRequired],[Department],[PlanningOrder],[CreatedDate])
-            SELECT [DateRequired],[Remark],[PromotionMachanic],GETDATE()
-            FROM [{DatabaseName}].[dbo].[TblDeliveryTakeOrders_Dutchmill]
-            WHERE (ISNULL([PlanningOrder],N'') = @oPlanningOrder) AND (DATEDIFF(DAY,[DateRequired],@vDateRequired) = 0)
-            GROUP BY [DateRequired],[Remark],[PromotionMachanic];
+             DECLARE @oPlanningOrder AS NVARCHAR(100) = N'{1}';
+                                DECLARE @vDateRequired AS DATE = N'{2:yyyy-MM-dd}';
+                                INSERT INTO [{0}].[dbo].[TblDeliveryTakeOrders_DutchmillOrder_Locked]([DateRequired],[Department],[PlanningOrder],[CreatedDate])
+                                SELECT [DateRequired],[Remark],[PromotionMachanic],GETDATE()
+                                FROM [{0}].[dbo].[TblDeliveryTakeOrders_Dutchmill]
+                                WHERE (ISNULL([PlanningOrder],N'') = @oPlanningOrder) AND (DATEDIFF(DAY,[DateRequired],@vDateRequired) = 0)
+                                GROUP BY [DateRequired],[Remark],[PromotionMachanic];
+                  
         ";
                     query = string.Format(query, DatabaseName, oplanningorder, CmbRequiredDate.SelectedValue);
                     RCon = new SqlConnection(Data.ConnectionString(Initialized.GetConnectionType(Data, App)));
@@ -181,14 +182,12 @@ namespace DeliveryTakeOrder.Interfaces
                     RTran = RCon.BeginTransaction();
                     try
                     {
-                        RCom = new SqlCommand
-                        {
-                            Transaction = RTran,
-                            Connection = RCon,
-                            CommandType = CommandType.Text,
-                            CommandText = query
-                        };
-                        RCom.ExecuteNonQuery();
+                        RCom = new SqlCommand();
+                        RCom.Transaction = RTran;
+                        RCom.Connection = RCon;
+                        RCom.CommandType = CommandType.Text;
+                        RCom.CommandText = query;
+                    RCom.ExecuteNonQuery();
                         RTran.Commit();
                         RCon.Close();
                     }

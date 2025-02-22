@@ -68,10 +68,10 @@
             this.LblCountRow = new System.Windows.Forms.Label();
             this.BtnClose = new System.Windows.Forms.Button();
             this.Panel1 = new System.Windows.Forms.Panel();
+            this.PicLogo = new System.Windows.Forms.PictureBox();
             this.Panel4 = new System.Windows.Forms.Panel();
             this.LblCompanyName = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
-            this.PicLogo = new System.Windows.Forms.PictureBox();
             this.TimerDeltoLoading = new System.Windows.Forms.Timer(this.components);
             this.TimerDisplayLoading = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DgvShow)).BeginInit();
@@ -537,6 +537,18 @@
             this.Panel1.Size = new System.Drawing.Size(803, 103);
             this.Panel1.TabIndex = 114;
             // 
+            // PicLogo
+            // 
+            this.PicLogo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PicLogo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PicLogo.Image = global::DeliveryTakeOrder.Properties.Resources.Logo;
+            this.PicLogo.Location = new System.Drawing.Point(0, 0);
+            this.PicLogo.Name = "PicLogo";
+            this.PicLogo.Size = new System.Drawing.Size(94, 101);
+            this.PicLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PicLogo.TabIndex = 3;
+            this.PicLogo.TabStop = false;
+            // 
             // Panel4
             // 
             this.Panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -567,18 +579,6 @@
             this.Label1.TabIndex = 0;
             this.Label1.Text = "Q\'s MANAGEMENT SYSTEM";
             // 
-            // PicLogo
-            // 
-            this.PicLogo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PicLogo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.PicLogo.Image = global::DeliveryTakeOrder.Properties.Resources.Logo;
-            this.PicLogo.Location = new System.Drawing.Point(0, 0);
-            this.PicLogo.Name = "PicLogo";
-            this.PicLogo.Size = new System.Drawing.Size(94, 101);
-            this.PicLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PicLogo.TabIndex = 3;
-            this.PicLogo.TabStop = false;
-            // 
             // TimerDeltoLoading
             // 
             this.TimerDeltoLoading.Interval = 5;
@@ -600,7 +600,7 @@
             this.Controls.Add(this.Panel1);
             this.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmDeltoListForDutchmillPO";
             this.Padding = new System.Windows.Forms.Padding(5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

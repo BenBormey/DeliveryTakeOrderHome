@@ -43,6 +43,57 @@ public class RMDB
             }
         }
     }
+    public static string SqlDateNull(DateTime pDate)
+    {
+        if (pDate.Year == 1)
+        {
+            return "NULL";
+        }
+        else
+        {
+            return string.Format("'{0:yyyy-MM-dd}'", pDate);
+        }
+    }
+
+    public static string SqlDate(DateTime dt)
+    {
+        return string.Format("'{0:yyyy-MM-dd}'", dt);
+    }
+    public static string SqlDateTimeNull(DateTime? pDate)
+    {
+        if (!pDate.HasValue)
+        {
+            return "NULL";
+        }
+
+        if (pDate.Value.Year == 1)
+        {
+            return "NULL";
+        }
+        else
+        {
+            return string.Format("'{0:yyyy-MM-dd hh:mm:ss}'", pDate);
+        }
+    }
+
+    public static string SqlDateTime(DateTime dt)
+    {
+        return string.Format("'{0:yyyy-MM-dd HH:mm:ss:fff}'", dt);
+    }
+
+    public static string SqlInt(string num)
+    {
+        try
+        {
+            int nums = Convert.ToInt32(num);
+            return num;
+        }
+        catch (Exception)
+        {
+            return "NULL";
+        }
+    }
+
 
     public object ExecuteScalar(string pSql, Dictionary<string, object> pParam = null)
     {
