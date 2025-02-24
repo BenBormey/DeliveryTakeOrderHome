@@ -36,6 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDeliveryTakeOrder));
             this.TimerCustomerLoading = new System.Windows.Forms.Timer(this.components);
             this.TimerLoading = new System.Windows.Forms.Timer(this.components);
             this.TimerSalemanLoading = new System.Windows.Forms.Timer(this.components);
@@ -2427,6 +2428,7 @@
             this.Controls.Add(this.PanelBillTo);
             this.Controls.Add(this.Panel1);
             this.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmDeliveryTakeOrder";
             this.Padding = new System.Windows.Forms.Padding(5);

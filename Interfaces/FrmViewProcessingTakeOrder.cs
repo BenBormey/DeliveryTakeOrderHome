@@ -143,7 +143,7 @@ DECLARE @vCusNum AS NVARCHAR(8) = N'{1}';
 
         private void CustomerLoading_Tick(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.WaitCursor;
+             this.Cursor = Cursors.WaitCursor;
             this.CustomerLoading.Enabled = false;
             string distributorSelected = $"";
             if (this.cmbDistributor.Properties.DataSource != null && this.cmbDistributor.InternalListBox != null)
@@ -666,6 +666,11 @@ ORDER BY [lu].[companyName];";
             }
             this.displayloading.Enabled = true;
 
+        }
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

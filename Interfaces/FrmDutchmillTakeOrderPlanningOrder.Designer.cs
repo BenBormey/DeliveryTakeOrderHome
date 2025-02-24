@@ -335,6 +335,7 @@
             this.BtnUpdate.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.BtnUpdate.Dock = System.Windows.Forms.DockStyle.Right;
             this.BtnUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnUpdate.Image = global::DeliveryTakeOrder.Properties.Resources.refresh_16;
             this.BtnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnUpdate.Location = new System.Drawing.Point(121, 3);
             this.BtnUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -351,6 +352,7 @@
             this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancel.Dock = System.Windows.Forms.DockStyle.Right;
             this.BtnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnCancel.Image = global::DeliveryTakeOrder.Properties.Resources.Cancel16;
             this.BtnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCancel.Location = new System.Drawing.Point(250, 3);
             this.BtnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

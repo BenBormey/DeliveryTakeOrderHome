@@ -393,13 +393,13 @@ namespace DeliveryTakeOrder.App.CustomerAging
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnSetRemark = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
             this.btnAudit = new System.Windows.Forms.Button();
             this.btnSelectInvoice = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.panTitle.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -429,6 +429,34 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(744, 43);
             this.panel1.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(634, 3);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 13);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Over Term";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(634, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(96, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Over Term && Credit";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(634, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Over Credit";
             // 
             // btnSetRemark
             // 
@@ -475,34 +503,6 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.btnSelectInvoice.Text = "Select Invoice";
             this.btnSelectInvoice.UseVisualStyleBackColor = true;
             this.btnSelectInvoice.Click += new System.EventHandler(this.btnSelectInvoice_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(634, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Over Credit";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(634, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Over Term && Credit";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(634, 3);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 13);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Over Term";
             // 
             // ar_aging_form
             // 

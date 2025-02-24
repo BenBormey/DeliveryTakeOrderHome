@@ -799,7 +799,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
         internal DevExpress.XtraReports.UI.XRLabel XrLabel9;
         internal DevExpress.XtraReports.UI.XRLine XrLine1;
         internal DevExpress.XtraReports.UI.XRLabel XrLabel4;
-        private DevExpress.DataAccess.ObjectBinding.ObjectDataSource objectDataSource1;
         public DevExpress.XtraReports.Parameters.Parameter paramAsOfDate;
+        public DevExpress.DataAccess.ObjectBinding.ObjectDataSource objectDataSource1;
     }
 }

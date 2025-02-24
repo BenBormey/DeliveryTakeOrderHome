@@ -923,6 +923,8 @@ ORDER BY                i.[CusName] ,
                 decimal vPcsOrder = Convert.ToDecimal(string.IsNullOrWhiteSpace(TxtPcsOrder.Text.Trim()) ? "0" : TxtPcsOrder.Text.Trim());
                 decimal vCTNOrder = Convert.ToDecimal(string.IsNullOrWhiteSpace(TxtCTNOrder.Text.Trim()) ? "0" : TxtCTNOrder.Text.Trim());
 
+                // Check barcode
+
                 string query = @"
  DECLARE @vCusNum AS NVARCHAR(8) = N'{1}';
                     DECLARE @vDeltoId AS DECIMAL(18,0) = {2};

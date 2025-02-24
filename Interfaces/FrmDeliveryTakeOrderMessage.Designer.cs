@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDeliveryTakeOrderMessage));
             this.Panel1 = new System.Windows.Forms.Panel();
             this.TxtRemark = new System.Windows.Forms.TextBox();
             this.Label28 = new System.Windows.Forms.Label();
@@ -199,6 +200,7 @@
             this.Controls.Add(this.PanelPONumber);
             this.Controls.Add(this.Panel44);
             this.Controls.Add(this.Panel2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmDeliveryTakeOrderMessage";
             this.Padding = new System.Windows.Forms.Padding(5);
             this.Text = "Remark";

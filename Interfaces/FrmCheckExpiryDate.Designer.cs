@@ -230,6 +230,7 @@
             this.BtnOK.Dock = System.Windows.Forms.DockStyle.Right;
             this.BtnOK.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnOK.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BtnOK.Image = global::DeliveryTakeOrder.Properties.Resources.OK;
             this.BtnOK.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnOK.Location = new System.Drawing.Point(374, 1);
             this.BtnOK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -247,6 +248,7 @@
             this.BtnExport.Dock = System.Windows.Forms.DockStyle.Right;
             this.BtnExport.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnExport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BtnExport.Image = global::DeliveryTakeOrder.Properties.Resources.view_takeorder;
             this.BtnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnExport.Location = new System.Drawing.Point(505, 1);
             this.BtnExport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

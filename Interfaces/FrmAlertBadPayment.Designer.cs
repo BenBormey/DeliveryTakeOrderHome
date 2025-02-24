@@ -173,6 +173,7 @@
             this.BtnExit.TabIndex = 116;
             this.BtnExit.Text = "&Cancel";
             this.BtnExit.UseVisualStyleBackColor = true;
+            this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // BtnNo
             // 

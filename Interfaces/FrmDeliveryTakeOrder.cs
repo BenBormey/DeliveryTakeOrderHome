@@ -5384,16 +5384,6 @@ FROM v;
                 }
 
 
-
-
-
-
-
-
-
-
-
-
                 //   'Begin Check Division
                 //  REM Check Division
                 string vDivision = "1";
@@ -5535,22 +5525,6 @@ WHERE ( [CusNum] = @CusNum );
                 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 // Check Credit Amount
                 if (!IsDutchmill)
                 {
@@ -5683,23 +5657,6 @@ SELECT CASE WHEN @QtyOnHand <= (@QtyReserve * @QtyPerCase) THEN 'NOT ENOUGH' ELS
                     MessageBox.Show("Need Add special code first." + Environment.NewLine + "Please contact to Office Manager...", "Not Allow To Continue", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -5982,10 +5939,6 @@ WHERE [Cusnum] = @CusNum AND [ProNumY] = @Barcode;
                             return;
                         }
                     }
-
-
-
-
                 }
                 else if (IsProductListExisted && !IsProductList1WeekExisted)
                 {
@@ -6001,39 +5954,39 @@ WHERE [Cusnum] = @CusNum AND [ProNumY] = @Barcode;
                             return;
                         }
                         MessageBox.Show("Your last previous updated price was on '" + string.Format("{0:dd-MMM-yyyy}", iDate) + "' is " + string.Format("{0:N2}", iWSCurrent) + "/" + iQtyPerCase + " PCS. " + Environment.NewLine + "Once is one month old, you must update Customer product list first.", "Confirm Update Price", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //            query = @"
-                        //    DECLARE @DateOrd AS DATE = '{1:yyyy-MM-dd}';
-                        //    DECLARE @CusNum AS NVARCHAR(8) = '{2}';
-                        //    DECLARE @CusName AS NVARCHAR(100) = '';
-                        //    DECLARE @Barcode AS NVARCHAR(MAX) = '{3}';
-                        //    DECLARE @ProName AS NVARCHAR(100) = '';
-                        //    DECLARE @Size AS NVARCHAR(30) = '';
-                        //    DECLARE @QtyPerCase AS INT = 0;
-                        //    DECLARE @WsPrice AS MONEY = {4};
-                        //    DECLARE @PreviousWsPrice AS MONEY = {5};
-                        //    SELECT @CusName = ISNULL([CusName], '') FROM [Stock].[dbo].[TPRCustomer] WHERE [CusNum] = @CusNum;
-                        //    SELECT @ProName = [ProName], @Size = [ProPacksize], @QtyPerCase = [ProQtyPCase]
-                        //    FROM (
-                        //        SELECT [ProNumY], [ProNumYP], [ProNumYC], [ProName], [ProPacksize], [ProQtyPCase], [ProQtyPPack], [ProTotQty], [ProCurr], [ProImpPri], [ProDis], [ProVAT], [ProFinBuyin], [Average], [ProUPrSE], [ProUPriSeH], LEFT([Sup1], 8) AS [SupNum], LTRIM(RTRIM(SUBSTRING([Sup1], 9, LEN([Sup1])))) AS [SupName]
-                        //        FROM [Stock].[dbo].[TPRProducts]
-                        //        WHERE (ISNULL([ProNumY], '') = @Barcode OR ISNULL([ProNumYP], '') = @Barcode OR ISNULL([ProNumYC], '') = @Barcode)
-                        //        UNION ALL
-                        //        SELECT B.[OldProNumy] AS [ProNumY], A.[ProNumYP], A.[ProNumYC], A.[ProName], A.[ProPacksize], A.[ProQtyPCase], A.[ProQtyPPack], B.[Stock] AS [ProTotQty], A.[ProCurr], A.[ProImpPri], A.[ProDis], A.[ProVAT], A.[ProFinBuyin], A.[Average], A.[ProUPrSE], A.[ProUPriSeH], LEFT(A.[Sup1], 8) AS [SupNum], LTRIM(RTRIM(SUBSTRING(A.[Sup1], 9, LEN(A.[Sup1])))) AS [SupName]
-                        //        FROM [Stock].[dbo].[TPRProducts] AS A INNER JOIN [Stock].[dbo].[TPRProductsOldCode] AS B ON A.[ProID] = B.[ProId]
-                        //        WHERE B.[OldProNumy] = @Barcode
-                        //        UNION ALL
-                        //        SELECT [ProNumY], [ProNumYP], [ProNumYC], [ProName], [ProPacksize], [ProQtyPCase], [ProQtyPPack], [ProTotQty], [ProCurr], [ProImpPri], [ProDis], [ProVAT], [ProFinBuyin], [Average], [ProUPrSE], [ProUPriSeH], LEFT([Sup1], 8) AS [SupNum], LTRIM(RTRIM(SUBSTRING([Sup1], 9, LEN([Sup1])))) AS [SupName]
-                        //        FROM [Stock].[dbo].[TPRProductsDeactivated]
-                        //        WHERE (ISNULL([ProNumY], '') = @Barcode OR ISNULL([ProNumYP], '') = @Barcode OR ISNULL([ProNumYC], '') = @Barcode)
-                        //        UNION ALL
-                        //        SELECT B.[OldProNumy] AS [ProNumY], A.[ProNumYP], A.[ProNumYC], A.[ProName], A.[ProPacksize], A.[ProQtyPCase], A.[ProQtyPPack], B.[Stock] AS [ProTotQty], A.[ProCurr], A.[ProImpPri], A.[ProDis], A.[ProVAT], A.[ProFinBuyin], A.[Average], A.[ProUPrSE], A.[ProUPriSeH], LEFT(A.[Sup1], 8) AS [SupNum], LTRIM(RTRIM(SUBSTRING(A.[Sup1], 9, LEN(A.[Sup1])))) AS [SupName]
-                        //        FROM [Stock].[dbo].[TPRProductsDeactivated] AS A INNER JOIN [Stock].[dbo].[TPRProductsOldCode] AS B ON A.[ProID] = B.[ProId]
-                        //        WHERE B.[OldProNumy] = @Barcode
-                        //    ) LISTS;
-                        //    INSERT INTO [Stock].[dbo].[TPRWSCusProductListReminder]([DateOrd], [CusNum], [CusName], [ProNumy], [ProName], [ProPackSize], [ProQtyPCase], [WsPrice], [PreviousWsPrice])
-                        //    VALUES(@DateOrd, @CusNum, @CusName, @Barcode, @ProName, @Size, @QtyPerCase, @WsPrice, @PreviousWsPrice);
-                        //";
-                        query = "";
+                        query = @"
+                            DECLARE @DateOrd AS DATE = '{1:yyyy-MM-dd}';
+                            DECLARE @CusNum AS NVARCHAR(8) = '{2}';
+                            DECLARE @CusName AS NVARCHAR(100) = '';
+                            DECLARE @Barcode AS NVARCHAR(MAX) = '{3}';
+                            DECLARE @ProName AS NVARCHAR(100) = '';
+                            DECLARE @Size AS NVARCHAR(30) = '';
+                            DECLARE @QtyPerCase AS INT = 0;
+                            DECLARE @WsPrice AS MONEY = {4};
+                            DECLARE @PreviousWsPrice AS MONEY = {5};
+                            SELECT @CusName = ISNULL([CusName], '') FROM [Stock].[dbo].[TPRCustomer] WHERE [CusNum] = @CusNum;
+                            SELECT @ProName = [ProName], @Size = [ProPacksize], @QtyPerCase = [ProQtyPCase]
+                            FROM (
+                                SELECT [ProNumY], [ProNumYP], [ProNumYC], [ProName], [ProPacksize], [ProQtyPCase], [ProQtyPPack], [ProTotQty], [ProCurr], [ProImpPri], [ProDis], [ProVAT], [ProFinBuyin], [Average], [ProUPrSE], [ProUPriSeH], LEFT([Sup1], 8) AS [SupNum], LTRIM(RTRIM(SUBSTRING([Sup1], 9, LEN([Sup1])))) AS [SupName]
+                                FROM [Stock].[dbo].[TPRProducts]
+                                WHERE (ISNULL([ProNumY], '') = @Barcode OR ISNULL([ProNumYP], '') = @Barcode OR ISNULL([ProNumYC], '') = @Barcode)
+                                UNION ALL
+                                SELECT B.[OldProNumy] AS [ProNumY], A.[ProNumYP], A.[ProNumYC], A.[ProName], A.[ProPacksize], A.[ProQtyPCase], A.[ProQtyPPack], B.[Stock] AS [ProTotQty], A.[ProCurr], A.[ProImpPri], A.[ProDis], A.[ProVAT], A.[ProFinBuyin], A.[Average], A.[ProUPrSE], A.[ProUPriSeH], LEFT(A.[Sup1], 8) AS [SupNum], LTRIM(RTRIM(SUBSTRING(A.[Sup1], 9, LEN(A.[Sup1])))) AS [SupName]
+                                FROM [Stock].[dbo].[TPRProducts] AS A INNER JOIN [Stock].[dbo].[TPRProductsOldCode] AS B ON A.[ProID] = B.[ProId]
+                                WHERE B.[OldProNumy] = @Barcode
+                                UNION ALL
+                                SELECT [ProNumY], [ProNumYP], [ProNumYC], [ProName], [ProPacksize], [ProQtyPCase], [ProQtyPPack], [ProTotQty], [ProCurr], [ProImpPri], [ProDis], [ProVAT], [ProFinBuyin], [Average], [ProUPrSE], [ProUPriSeH], LEFT([Sup1], 8) AS [SupNum], LTRIM(RTRIM(SUBSTRING([Sup1], 9, LEN([Sup1])))) AS [SupName]
+                                FROM [Stock].[dbo].[TPRProductsDeactivated]
+                                WHERE (ISNULL([ProNumY], '') = @Barcode OR ISNULL([ProNumYP], '') = @Barcode OR ISNULL([ProNumYC], '') = @Barcode)
+                                UNION ALL
+                                SELECT B.[OldProNumy] AS [ProNumY], A.[ProNumYP], A.[ProNumYC], A.[ProName], A.[ProPacksize], A.[ProQtyPCase], A.[ProQtyPPack], B.[Stock] AS [ProTotQty], A.[ProCurr], A.[ProImpPri], A.[ProDis], A.[ProVAT], A.[ProFinBuyin], A.[Average], A.[ProUPrSE], A.[ProUPriSeH], LEFT(A.[Sup1], 8) AS [SupNum], LTRIM(RTRIM(SUBSTRING(A.[Sup1], 9, LEN(A.[Sup1])))) AS [SupName]
+                                FROM [Stock].[dbo].[TPRProductsDeactivated] AS A INNER JOIN [Stock].[dbo].[TPRProductsOldCode] AS B ON A.[ProID] = B.[ProId]
+                                WHERE B.[OldProNumy] = @Barcode
+                            ) LISTS;
+                            INSERT INTO [Stock].[dbo].[TPRWSCusProductListReminder]([DateOrd], [CusNum], [CusName], [ProNumy], [ProName], [ProPackSize], [ProQtyPCase], [WsPrice], [PreviousWsPrice])
+                            VALUES(@DateOrd, @CusNum, @CusName, @Barcode, @ProName, @Size, @QtyPerCase, @WsPrice, @PreviousWsPrice);
+                        ";
+
                         //query = string.Format(query, DatabaseName, Convert.ToDateTime(string.IsNullOrWhiteSpace(TxtOrderDate.Text.Trim()) ? Todate : TxtOrderDate.Text.Trim()), CmbBillTo.SelectedValue, CmbProducts.SelectedValue, iWSAfter, iWSCurrent);
                         query = string.Format(query, DatabaseName, DateTime.Parse(TxtOrderDate.Text.Trim()), CmbBillTo.SelectedValue, CmbProducts.SelectedValue, iWSAfter, iWSCurrent);
                         Data.ExecuteCommand(query, Initialized.GetConnectionType(Data, App));
@@ -6668,6 +6621,8 @@ WHERE ([x].[DefId] = @vid_);
             DateTime vDeliveryDate = Todate.Date;
             string sql_ = "";
             DataTable lst_ = null;
+
+            //alert Date 
             sql_ = @" DECLARE @vCusNum AS NVARCHAR(8) = N'{1}';
                         SELECT [Id],[CusNum],[CusName],[AlertDay],[IncludeDay],[CreatedDate]
                         FROM [{0}].[dbo].[TblCustomerAlertDeliveryDate]
@@ -7195,6 +7150,11 @@ END;
 
 
                             }
+
+
+
+
+
 
                             if (this.rdbcostlowecommerence.Checked == true)
                             {

@@ -119,7 +119,7 @@ namespace DeliveryTakeOrder.Interfaces
                 if (lists.Rows.Count > 0)
                 {
                     string ProgramName = "TakeOrder";
-                  //  this.Hide();
+                    this.Hide();
                     MDI Frm = new MDI(this.warehouseName);
                     Frm.Show();
                     Frm.ProgramName = ProgramName;

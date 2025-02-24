@@ -31,7 +31,6 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
         {
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(guiDeliveryTakeOrderPromotionId));
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -41,6 +40,7 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(guiDeliveryTakeOrderPromotionId));
             this.Panel3 = new System.Windows.Forms.Panel();
             this.lstmain = new DevExpress.XtraGrid.GridControl();
             this.gvmain = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -95,7 +95,7 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             this.Panel3.Location = new System.Drawing.Point(5, 73);
             this.Panel3.Name = "Panel3";
             this.Panel3.Padding = new System.Windows.Forms.Padding(2);
-            this.Panel3.Size = new System.Drawing.Size(768, 476);
+            this.Panel3.Size = new System.Drawing.Size(762, 469);
             this.Panel3.TabIndex = 109;
             // 
             // lstmain
@@ -108,7 +108,7 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             this.lstmain.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.btnDelete,
             this.btnModify});
-            this.lstmain.Size = new System.Drawing.Size(764, 347);
+            this.lstmain.Size = new System.Drawing.Size(758, 340);
             this.lstmain.TabIndex = 20;
             this.lstmain.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvmain});
@@ -207,7 +207,6 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             // btnDelete
             // 
             this.btnDelete.AutoHeight = false;
-            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
             editorButtonImageOptions1.SvgImageSize = new System.Drawing.Size(16, 16);
             this.btnDelete.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
@@ -228,7 +227,6 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             // btnModify
             // 
             this.btnModify.AutoHeight = false;
-            editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
             editorButtonImageOptions2.SvgImageSize = new System.Drawing.Size(16, 16);
             this.btnModify.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
@@ -243,9 +241,9 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             this.Panel6.Controls.Add(this.lblcountrow);
             this.Panel6.Controls.Add(this.btnclose);
             this.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Panel6.Location = new System.Drawing.Point(2, 439);
+            this.Panel6.Location = new System.Drawing.Point(2, 432);
             this.Panel6.Name = "Panel6";
-            this.Panel6.Size = new System.Drawing.Size(764, 35);
+            this.Panel6.Size = new System.Drawing.Size(758, 35);
             this.Panel6.TabIndex = 25;
             // 
             // btnexporttoexcel
@@ -260,7 +258,7 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             this.btnexporttoexcel.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnexporttoexcel.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnexporttoexcel.ImageOptions.SvgImage")));
             this.btnexporttoexcel.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.btnexporttoexcel.Location = new System.Drawing.Point(473, 0);
+            this.btnexporttoexcel.Location = new System.Drawing.Point(467, 0);
             this.btnexporttoexcel.Name = "btnexporttoexcel";
             this.btnexporttoexcel.Size = new System.Drawing.Size(176, 35);
             this.btnexporttoexcel.TabIndex = 24;
@@ -270,7 +268,7 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             // 
             this.SeparatorControl1.Dock = System.Windows.Forms.DockStyle.Right;
             this.SeparatorControl1.LineOrientation = System.Windows.Forms.Orientation.Vertical;
-            this.SeparatorControl1.Location = new System.Drawing.Point(649, 0);
+            this.SeparatorControl1.Location = new System.Drawing.Point(643, 0);
             this.SeparatorControl1.Name = "SeparatorControl1";
             this.SeparatorControl1.Padding = new System.Windows.Forms.Padding(4);
             this.SeparatorControl1.Size = new System.Drawing.Size(10, 35);
@@ -299,7 +297,7 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             this.btnclose.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnclose.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnclose.ImageOptions.SvgImage")));
             this.btnclose.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.btnclose.Location = new System.Drawing.Point(659, 0);
+            this.btnclose.Location = new System.Drawing.Point(653, 0);
             this.btnclose.Name = "btnclose";
             this.btnclose.Size = new System.Drawing.Size(105, 35);
             this.btnclose.TabIndex = 22;
@@ -317,7 +315,7 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             this.Panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel5.Location = new System.Drawing.Point(2, 2);
             this.Panel5.Name = "Panel5";
-            this.Panel5.Size = new System.Drawing.Size(764, 90);
+            this.Panel5.Size = new System.Drawing.Size(758, 90);
             this.Panel5.TabIndex = 0;
             // 
             // cmbPromotionId
@@ -419,7 +417,7 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(5, 5);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(768, 68);
+            this.Panel1.Size = new System.Drawing.Size(762, 68);
             this.Panel1.TabIndex = 108;
             // 
             // Panel2
@@ -473,7 +471,7 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             this.Panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Panel4.Location = new System.Drawing.Point(0, 66);
             this.Panel4.Name = "Panel4";
-            this.Panel4.Size = new System.Drawing.Size(768, 2);
+            this.Panel4.Size = new System.Drawing.Size(762, 2);
             this.Panel4.TabIndex = 7;
             // 
             // loading
@@ -490,7 +488,7 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 554);
+            this.ClientSize = new System.Drawing.Size(772, 547);
             this.Controls.Add(this.Panel3);
             this.Controls.Add(this.Panel1);
             this.Name = "guiDeliveryTakeOrderPromotionId";

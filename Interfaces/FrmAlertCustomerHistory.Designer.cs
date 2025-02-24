@@ -30,7 +30,9 @@ namespace DeliveryTakeOrder.Interfaces
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAlertCustomerHistory));
             this.DgvShow = new System.Windows.Forms.DataGridView();
             this.InvNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShipDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,12 +59,20 @@ namespace DeliveryTakeOrder.Interfaces
             this.CusNum,
             this.CusCom,
             this.Division});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvShow.DefaultCellStyle = dataGridViewCellStyle2;
             this.DgvShow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgvShow.Location = new System.Drawing.Point(5, 5);
             this.DgvShow.Name = "DgvShow";
             this.DgvShow.ReadOnly = true;
             this.DgvShow.RowHeadersWidth = 25;
-            this.DgvShow.Size = new System.Drawing.Size(583, 214);
+            this.DgvShow.Size = new System.Drawing.Size(577, 207);
             this.DgvShow.TabIndex = 114;
             // 
             // InvNumber
@@ -111,10 +121,10 @@ namespace DeliveryTakeOrder.Interfaces
             // 
             this.Panel2.Controls.Add(this.BtnOK);
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Panel2.Location = new System.Drawing.Point(5, 219);
+            this.Panel2.Location = new System.Drawing.Point(5, 212);
             this.Panel2.Name = "Panel2";
             this.Panel2.Padding = new System.Windows.Forms.Padding(200, 2, 200, 2);
-            this.Panel2.Size = new System.Drawing.Size(583, 36);
+            this.Panel2.Size = new System.Drawing.Size(577, 36);
             this.Panel2.TabIndex = 115;
             // 
             // BtnOK
@@ -126,7 +136,7 @@ namespace DeliveryTakeOrder.Interfaces
             this.BtnOK.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnOK.Location = new System.Drawing.Point(200, 2);
             this.BtnOK.Name = "BtnOK";
-            this.BtnOK.Size = new System.Drawing.Size(183, 32);
+            this.BtnOK.Size = new System.Drawing.Size(177, 32);
             this.BtnOK.TabIndex = 113;
             this.BtnOK.Text = "&OK";
             this.BtnOK.UseVisualStyleBackColor = true;
@@ -140,9 +150,10 @@ namespace DeliveryTakeOrder.Interfaces
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 260);
+            this.ClientSize = new System.Drawing.Size(587, 253);
             this.Controls.Add(this.DgvShow);
             this.Controls.Add(this.Panel2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmAlertCustomerHistory";
             this.Padding = new System.Windows.Forms.Padding(5);
             this.Text = "History Customer Delivery";

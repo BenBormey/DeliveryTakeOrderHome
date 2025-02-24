@@ -9,6 +9,9 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Unt Complete %281%29.ico</ApplicationIcon>
+  </PropertyGroup>
   <Import Project="..\packages\FastReport.Net.Demo.2025.1.10\build\net462\FastReport.Net.Demo.props" Condition="Exists('..\packages\FastReport.Net.Demo.2025.1.10\build\net462\FastReport.Net.Demo.props')" />
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -18,7 +21,7 @@
     <ProjectGuid>{FCDFAE6C-D96A-4096-AEB8-84B3BD860411}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>DeliveryTakeOrder</RootNamespace>
-    <AssemblyName>DeliveryTakeOrder</AssemblyName>
+    <AssemblyName>Qs Delivery Take Order %28UNT Wholesale%29</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -584,9 +587,7 @@
     <Compile Include="App\CustomerAging\ar-aging_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App\CustomerAging\ar_agingform.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="App\CustomerAging\ar_agingform.cs" />
     <Compile Include="App\CustomerAging\general-controller_class.cs" />
     <Compile Include="App\CustomerAging\invoice-detail_class.cs" />
     <Compile Include="App\SendMailDCSKU\MailDCSKUReport.cs">
@@ -595,6 +596,7 @@
     <Compile Include="App\SendMailDCSKU\MailDCSKUReport.Designer.cs">
       <DependentUpon>MailDCSKUReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\ClsDeliveryTakeOrder.cs" />
     <Compile Include="Controller\APIsController.cs" />
     <Compile Include="Controller\ImageShackUploader.cs" />
     <Compile Include="Dataset\ArrivalTransaction.cs">
@@ -637,12 +639,6 @@
     </Compile>
     <Compile Include="Dev\PreviewControl.Designer.cs">
       <DependentUpon>PreviewControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Dev\PreviewFor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dev\PreviewFor.Designer.cs">
-      <DependentUpon>PreviewFor.cs</DependentUpon>
     </Compile>
     <Compile Include="Dev\PreviewForm.cs">
       <SubType>Form</SubType>
@@ -1105,9 +1101,6 @@
     <EmbeddedResource Include="Dev\PreviewControl.resx">
       <DependentUpon>PreviewControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dev\PreviewFor.resx">
-      <DependentUpon>PreviewFor.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Dev\PreviewForm.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1397,7 +1390,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="a\" />
-    <Folder Include="Classes\" />
     <Folder Include="Fakes\" />
   </ItemGroup>
   <ItemGroup>
@@ -2014,6 +2006,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+    <Content Include="Unt Complete %281%29.ico" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup Condition="$(VisualStudioVersion) == '17.0'">

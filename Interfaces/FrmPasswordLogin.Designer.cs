@@ -30,6 +30,7 @@ namespace DeliveryTakeOrder.Interfaces
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPasswordLogin));
             this.lblWarehouseName = new System.Windows.Forms.Label();
             this.Panel1 = new System.Windows.Forms.Panel();
             this.LblCompanyName = new System.Windows.Forms.Label();
@@ -213,6 +214,7 @@ namespace DeliveryTakeOrder.Interfaces
             this.Controls.Add(this.BtnExit);
             this.Controls.Add(this.Panel2);
             this.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmPasswordLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

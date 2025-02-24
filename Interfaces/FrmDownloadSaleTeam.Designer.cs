@@ -30,6 +30,7 @@ namespace DeliveryTakeOrder.Interfaces
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DgvShow = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TakeOrderNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -130,12 +131,20 @@ namespace DeliveryTakeOrder.Interfaces
             this.Remark,
             this.Saleman,
             this.CreatedDate});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvShow.DefaultCellStyle = dataGridViewCellStyle1;
             this.DgvShow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgvShow.Location = new System.Drawing.Point(5, 108);
             this.DgvShow.Name = "DgvShow";
             this.DgvShow.ReadOnly = true;
             this.DgvShow.RowHeadersWidth = 25;
-            this.DgvShow.Size = new System.Drawing.Size(824, 366);
+            this.DgvShow.Size = new System.Drawing.Size(818, 359);
             this.DgvShow.TabIndex = 114;
             this.DgvShow.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvShow_CellContentClick);
             this.DgvShow.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DgvShow_MouseDown);
@@ -373,10 +382,10 @@ namespace DeliveryTakeOrder.Interfaces
             this.Panel44.Controls.Add(this.LblCountRow);
             this.Panel44.Controls.Add(this.BtnClose);
             this.Panel44.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Panel44.Location = new System.Drawing.Point(5, 474);
+            this.Panel44.Location = new System.Drawing.Point(5, 467);
             this.Panel44.Name = "Panel44";
             this.Panel44.Padding = new System.Windows.Forms.Padding(2);
-            this.Panel44.Size = new System.Drawing.Size(824, 35);
+            this.Panel44.Size = new System.Drawing.Size(818, 35);
             this.Panel44.TabIndex = 113;
             // 
             // BtnExportToExcel
@@ -384,8 +393,9 @@ namespace DeliveryTakeOrder.Interfaces
             this.BtnExportToExcel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnExportToExcel.Dock = System.Windows.Forms.DockStyle.Right;
             this.BtnExportToExcel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnExportToExcel.Image = global::DeliveryTakeOrder.Properties.Resources.Excel;
             this.BtnExportToExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnExportToExcel.Location = new System.Drawing.Point(593, 2);
+            this.BtnExportToExcel.Location = new System.Drawing.Point(587, 2);
             this.BtnExportToExcel.Name = "BtnExportToExcel";
             this.BtnExportToExcel.Size = new System.Drawing.Size(137, 31);
             this.BtnExportToExcel.TabIndex = 12;
@@ -408,8 +418,9 @@ namespace DeliveryTakeOrder.Interfaces
             this.BtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnClose.Dock = System.Windows.Forms.DockStyle.Right;
             this.BtnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnClose.Image = global::DeliveryTakeOrder.Properties.Resources.cancel_16;
             this.BtnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnClose.Location = new System.Drawing.Point(730, 2);
+            this.BtnClose.Location = new System.Drawing.Point(724, 2);
             this.BtnClose.Name = "BtnClose";
             this.BtnClose.Size = new System.Drawing.Size(92, 31);
             this.BtnClose.TabIndex = 9;
@@ -428,7 +439,7 @@ namespace DeliveryTakeOrder.Interfaces
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(5, 5);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(824, 103);
+            this.Panel1.Size = new System.Drawing.Size(818, 103);
             this.Panel1.TabIndex = 112;
             // 
             // PanelHeader
@@ -436,7 +447,7 @@ namespace DeliveryTakeOrder.Interfaces
             this.PanelHeader.Controls.Add(this.Panel2);
             this.PanelHeader.Controls.Add(this.Panel3);
             this.PanelHeader.Dock = System.Windows.Forms.DockStyle.Right;
-            this.PanelHeader.Location = new System.Drawing.Point(388, 0);
+            this.PanelHeader.Location = new System.Drawing.Point(382, 0);
             this.PanelHeader.Name = "PanelHeader";
             this.PanelHeader.Size = new System.Drawing.Size(436, 101);
             this.PanelHeader.TabIndex = 8;
@@ -526,6 +537,7 @@ namespace DeliveryTakeOrder.Interfaces
             // 
             this.PicLogo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PicLogo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PicLogo.Image = global::DeliveryTakeOrder.Properties.Resources.Logo;
             this.PicLogo.Location = new System.Drawing.Point(0, 0);
             this.PicLogo.Name = "PicLogo";
             this.PicLogo.Size = new System.Drawing.Size(94, 101);
@@ -539,7 +551,7 @@ namespace DeliveryTakeOrder.Interfaces
             this.Panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Panel4.Location = new System.Drawing.Point(0, 101);
             this.Panel4.Name = "Panel4";
-            this.Panel4.Size = new System.Drawing.Size(824, 2);
+            this.Panel4.Size = new System.Drawing.Size(818, 2);
             this.Panel4.TabIndex = 7;
             // 
             // LblCompanyName
@@ -635,7 +647,7 @@ namespace DeliveryTakeOrder.Interfaces
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 514);
+            this.ClientSize = new System.Drawing.Size(828, 507);
             this.Controls.Add(this.DgvShow);
             this.Controls.Add(this.Panel44);
             this.Controls.Add(this.Panel1);

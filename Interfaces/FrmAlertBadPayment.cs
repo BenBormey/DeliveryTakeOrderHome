@@ -60,5 +60,10 @@ namespace DeliveryTakeOrder.Interfaces
         {
 
         }
+
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+         
+        }
     }
 }

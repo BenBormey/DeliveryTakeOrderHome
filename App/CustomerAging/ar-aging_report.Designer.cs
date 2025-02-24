@@ -29,6 +29,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary2 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary3 = new DevExpress.XtraReports.UI.XRSummary();
@@ -118,11 +119,13 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.paramAsOfDate = new DevExpress.XtraReports.Parameters.Parameter();
             this.paramContact = new DevExpress.XtraReports.Parameters.Parameter();
             this.paramFilterName = new DevExpress.XtraReports.Parameters.Parameter();
+            this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.xtblHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtblData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtblSum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // TopMargin
@@ -794,6 +797,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.DetailReport.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.Detail1,
             this.ReportHeader1});
+            this.DetailReport.DataSource = this.objectDataSource1;
             this.DetailReport.Level = 0;
             this.DetailReport.Name = "DetailReport";
             // 
@@ -1270,6 +1274,11 @@ namespace DeliveryTakeOrder.App.CustomerAging
             // 
             this.paramFilterName.Name = "paramFilterName";
             // 
+            // objectDataSource1
+            // 
+            this.objectDataSource1.DataSource = typeof(DeliveryTakeOrder.App.CustomerAging.ARAging);
+            this.objectDataSource1.Name = "objectDataSource1";
+            // 
             // AgingReport
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1282,6 +1291,9 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.GroupFooter1,
             this.ReportFooter,
             this.PageFooter});
+            this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
+            this.objectDataSource1});
+            this.DataSource = this.objectDataSource1;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
             this.Margins = new System.Drawing.Printing.Margins(49, 49, 50, 50);
             this.PageHeight = 1169;
@@ -1300,6 +1312,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             ((System.ComponentModel.ISupportInitialize)(this.XrTable2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.XrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtblSum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -1385,5 +1398,6 @@ namespace DeliveryTakeOrder.App.CustomerAging
         public DevExpress.XtraReports.Parameters.Parameter paramAsOfDate;
         public DevExpress.XtraReports.Parameters.Parameter paramContact;
         public DevExpress.XtraReports.Parameters.Parameter paramFilterName;
+        public DevExpress.DataAccess.ObjectBinding.ObjectDataSource objectDataSource1;
     }
 }
