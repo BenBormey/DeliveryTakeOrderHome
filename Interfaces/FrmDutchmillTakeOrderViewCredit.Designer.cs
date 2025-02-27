@@ -30,8 +30,9 @@ namespace DeliveryTakeOrder.Interfaces
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDutchmillTakeOrderViewCredit));
             this.DgvShow = new System.Windows.Forms.DataGridView();
             this.InvNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PONumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,7 +70,7 @@ namespace DeliveryTakeOrder.Interfaces
             this.DgvShow.Name = "DgvShow";
             this.DgvShow.ReadOnly = true;
             this.DgvShow.RowHeadersWidth = 25;
-            this.DgvShow.Size = new System.Drawing.Size(774, 388);
+            this.DgvShow.Size = new System.Drawing.Size(768, 381);
             this.DgvShow.TabIndex = 114;
             // 
             // InvNumber
@@ -107,8 +108,8 @@ namespace DeliveryTakeOrder.Interfaces
             // ShipDate
             // 
             this.ShipDate.DataPropertyName = "ShipDate";
-            dataGridViewCellStyle9.Format = "dd-MMM-yyyy";
-            this.ShipDate.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Format = "dd-MMM-yyyy";
+            this.ShipDate.DefaultCellStyle = dataGridViewCellStyle1;
             this.ShipDate.HeaderText = "Ship Date";
             this.ShipDate.Name = "ShipDate";
             this.ShipDate.ReadOnly = true;
@@ -125,9 +126,9 @@ namespace DeliveryTakeOrder.Interfaces
             // GrandTotal
             // 
             this.GrandTotal.DataPropertyName = "GrandTotal";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "N2";
-            this.GrandTotal.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            this.GrandTotal.DefaultCellStyle = dataGridViewCellStyle2;
             this.GrandTotal.HeaderText = "Amount";
             this.GrandTotal.Name = "GrandTotal";
             this.GrandTotal.ReadOnly = true;
@@ -139,11 +140,11 @@ namespace DeliveryTakeOrder.Interfaces
             this.Panel44.Controls.Add(this.BtnExportToExcel);
             this.Panel44.Controls.Add(this.BtnCancel);
             this.Panel44.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Panel44.Location = new System.Drawing.Point(6, 395);
+            this.Panel44.Location = new System.Drawing.Point(6, 388);
             this.Panel44.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Panel44.Name = "Panel44";
             this.Panel44.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.Panel44.Size = new System.Drawing.Size(774, 36);
+            this.Panel44.Size = new System.Drawing.Size(768, 36);
             this.Panel44.TabIndex = 113;
             // 
             // LblCountRow
@@ -163,7 +164,7 @@ namespace DeliveryTakeOrder.Interfaces
             this.BtnExportToExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.BtnExportToExcel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BtnExportToExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnExportToExcel.Location = new System.Drawing.Point(495, 3);
+            this.BtnExportToExcel.Location = new System.Drawing.Point(489, 3);
             this.BtnExportToExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnExportToExcel.Name = "BtnExportToExcel";
             this.BtnExportToExcel.Size = new System.Drawing.Size(184, 30);
@@ -180,7 +181,7 @@ namespace DeliveryTakeOrder.Interfaces
             this.BtnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.BtnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BtnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnCancel.Location = new System.Drawing.Point(679, 3);
+            this.BtnCancel.Location = new System.Drawing.Point(673, 3);
             this.BtnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(93, 30);
@@ -199,11 +200,12 @@ namespace DeliveryTakeOrder.Interfaces
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(786, 438);
+            this.ClientSize = new System.Drawing.Size(780, 431);
             this.Controls.Add(this.DgvShow);
             this.Controls.Add(this.Panel44);
             this.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmDutchmillTakeOrderViewCredit";
             this.Padding = new System.Windows.Forms.Padding(6, 7, 6, 7);

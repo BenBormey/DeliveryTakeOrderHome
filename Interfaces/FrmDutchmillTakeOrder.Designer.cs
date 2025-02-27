@@ -1384,7 +1384,7 @@
             this.ToolStripSeparator1,
             this.MnuChangePlanningOrder});
             this.Popmain.Name = "ContextMenuStrip1";
-            this.Popmain.Size = new System.Drawing.Size(199, 76);
+            this.Popmain.Size = new System.Drawing.Size(199, 54);
             // 
             // MnuChangeCustomer
             // 

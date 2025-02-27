@@ -2787,7 +2787,9 @@ EXECUTE @RC = [DBUNTWHOLESALECOLTD].[dbo].[getCustomerListOfCreditAmountForAdmin
                 this.TimerCustomerLoading.Enabled = true;
             }
         }
+
         private DataTable DeliveryTakeOrderList;
+
         private DataTable vPromotionList;
         private DataTable vFixedPriceList;
 
@@ -2807,6 +2809,7 @@ EXECUTE @RC = [DBUNTWHOLESALECOLTD].[dbo].[getCustomerListOfCreditAmountForAdmin
                 }
             }
         }
+
         private bool IsKeyPress;
 
         private void CmbBillTo_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -2831,14 +2834,10 @@ EXECUTE @RC = [DBUNTWHOLESALECOLTD].[dbo].[getCustomerListOfCreditAmountForAdmin
             return Math.Ceiling(value * Math.Pow(10, decimals)) / Math.Pow(10, decimals);
         }
 
-
-
         private bool IsNumeric(string value)
         {
             return decimal.TryParse(value, out _);
         }
-
-
 
         private void TimerChecking_Tick(object sender, EventArgs e)
         {
@@ -3629,9 +3628,10 @@ WHERE (([ln].[warehouseId] = @warehouseId)
 
         }
 
-
         private bool IsCheckPromotion;
+
         private int oQtyInvoicing;
+
         private decimal oPromotionId;
 
         private void TimerCheckPromotion_Tick(object sender, EventArgs e)
@@ -4447,9 +4447,6 @@ WHERE [GroupNumber] = @GroupNumber AND [Barcode] = @Barcode;
 
         }
 
-
-
-
         private void check_pending_stock_Tick(object sender, EventArgs e)
         {
 
@@ -4476,10 +4473,8 @@ EXECUTE @RC = [DBPickers].[dbo].[sum_purcashorder] @barcode_;
             this.txtpendingstock.Text = string.Format("{0:N0}", _pending_stock);
 
         }
+
         List<cls_check_stock> lst_check_stock_;
-
-
-
 
         private decimal GetDigitsValue(int Digit)
         {
@@ -4492,8 +4487,6 @@ EXECUTE @RC = [DBPickers].[dbo].[sum_purcashorder] @barcode_;
             value = Convert.ToDecimal(value.ToString() + vZero);
             return value;
         }
-
-
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
@@ -4572,26 +4565,26 @@ EXECUTE @RC = [DBPickers].[dbo].[sum_purcashorder] @barcode_;
                 {
                     string[] barcodeFree = this.TxtBarcodeFree.Text.Split(new[] { "   " }, StringSplitOptions.None);
                     sql = $@"
-DECLARE @Barcode AS NVARCHAR(15) = N'{barcodeFree[0].Trim()}';
-SELECT [ProNumY],[ProNumYP],[ProNumYC],[ProName],[ProPacksize],[ProQtyPCase],[ProQtyPPack],[ProTotQty],[ProCurr],[ProImpPri],[ProDis],[ProVAT],[ProFinBuyin],[Average],[ProUPrSE],[ProUPriSeH],[SupNum],[SupName],[ProCat]
-FROM (
-	SELECT [ProNumY],[ProNumYP],[ProNumYC],[ProName],[ProPacksize],[ProQtyPCase],[ProQtyPPack],[ProTotQty],[ProCurr],[ProImpPri],[ProDis],[ProVAT],[ProFinBuyin],[Average],[ProUPrSE],[ProUPriSeH],LEFT([Sup1],8) AS [SupNum],LTRIM(RTRIM(SUBSTRING([Sup1],9,LEN([Sup1])))) AS [SupName],[ProCat]
-	FROM [Stock].[dbo].[TPRProducts]
-	WHERE (ISNULL([ProNumY],'') = @Barcode OR ISNULL([ProNumYP],'') = @Barcode OR ISNULL([ProNumYC],'') = @Barcode)
-	UNION ALL
-	SELECT B.[OldProNumy] AS [ProNumY],A.[ProNumYP],A.[ProNumYC],A.[ProName],A.[ProPacksize],A.[ProQtyPCase],A.[ProQtyPPack],B.[Stock] AS [ProTotQty],A.[ProCurr],A.[ProImpPri],A.[ProDis],A.[ProVAT],A.[ProFinBuyin],A.[Average],A.[ProUPrSE],A.[ProUPriSeH],LEFT(A.[Sup1],8) AS [SupNum],LTRIM(RTRIM(SUBSTRING(A.[Sup1],9,LEN(A.[Sup1])))) AS [SupName],A.[ProCat]
-	FROM [Stock].[dbo].[TPRProducts] AS A INNER JOIN [Stock].[dbo].[TPRProductsOldCode] AS B ON A.[ProID] = B.[ProId]
-	WHERE B.[OldProNumy] = @Barcode
-    UNION ALL
-    SELECT [ProNumY],[ProNumYP],[ProNumYC],[ProName],[ProPacksize],[ProQtyPCase],[ProQtyPPack],[ProTotQty],[ProCurr],[ProImpPri],[ProDis],[ProVAT],[ProFinBuyin],[Average],[ProUPrSE],[ProUPriSeH],LEFT([Sup1],8) AS [SupNum],LTRIM(RTRIM(SUBSTRING([Sup1],9,LEN([Sup1])))) AS [SupName],[ProCat]
-	FROM [Stock].[dbo].[TPRProductsDeactivated]
-	WHERE (ISNULL([ProNumY],'') = @Barcode OR ISNULL([ProNumYP],'') = @Barcode OR ISNULL([ProNumYC],'') = @Barcode)
-	UNION ALL
-	SELECT B.[OldProNumy] AS [ProNumY],A.[ProNumYP],A.[ProNumYC],A.[ProName],A.[ProPacksize],A.[ProQtyPCase],A.[ProQtyPPack],B.[Stock] AS [ProTotQty],A.[ProCurr],A.[ProImpPri],A.[ProDis],A.[ProVAT],A.[ProFinBuyin],A.[Average],A.[ProUPrSE],A.[ProUPriSeH],LEFT(A.[Sup1],8) AS [SupNum],LTRIM(RTRIM(SUBSTRING(A.[Sup1],9,LEN(A.[Sup1])))) AS [SupName],A.[ProCat]
-	FROM [Stock].[dbo].[TPRProductsDeactivated] AS A INNER JOIN [Stock].[dbo].[TPRProductsOldCode] AS B ON A.[ProID] = B.[ProId]
-	WHERE B.[OldProNumy] = @Barcode
-) LISTS;
-";
+                        DECLARE @Barcode AS NVARCHAR(15) = N'{barcodeFree[0].Trim()}';
+                        SELECT [ProNumY],[ProNumYP],[ProNumYC],[ProName],[ProPacksize],[ProQtyPCase],[ProQtyPPack],[ProTotQty],[ProCurr],[ProImpPri],[ProDis],[ProVAT],[ProFinBuyin],[Average],[ProUPrSE],[ProUPriSeH],[SupNum],[SupName],[ProCat]
+                        FROM (
+	                        SELECT [ProNumY],[ProNumYP],[ProNumYC],[ProName],[ProPacksize],[ProQtyPCase],[ProQtyPPack],[ProTotQty],[ProCurr],[ProImpPri],[ProDis],[ProVAT],[ProFinBuyin],[Average],[ProUPrSE],[ProUPriSeH],LEFT([Sup1],8) AS [SupNum],LTRIM(RTRIM(SUBSTRING([Sup1],9,LEN([Sup1])))) AS [SupName],[ProCat]
+	                        FROM [Stock].[dbo].[TPRProducts]
+	                        WHERE (ISNULL([ProNumY],'') = @Barcode OR ISNULL([ProNumYP],'') = @Barcode OR ISNULL([ProNumYC],'') = @Barcode)
+	                        UNION ALL
+	                        SELECT B.[OldProNumy] AS [ProNumY],A.[ProNumYP],A.[ProNumYC],A.[ProName],A.[ProPacksize],A.[ProQtyPCase],A.[ProQtyPPack],B.[Stock] AS [ProTotQty],A.[ProCurr],A.[ProImpPri],A.[ProDis],A.[ProVAT],A.[ProFinBuyin],A.[Average],A.[ProUPrSE],A.[ProUPriSeH],LEFT(A.[Sup1],8) AS [SupNum],LTRIM(RTRIM(SUBSTRING(A.[Sup1],9,LEN(A.[Sup1])))) AS [SupName],A.[ProCat]
+	                        FROM [Stock].[dbo].[TPRProducts] AS A INNER JOIN [Stock].[dbo].[TPRProductsOldCode] AS B ON A.[ProID] = B.[ProId]
+	                        WHERE B.[OldProNumy] = @Barcode
+                            UNION ALL
+                            SELECT [ProNumY],[ProNumYP],[ProNumYC],[ProName],[ProPacksize],[ProQtyPCase],[ProQtyPPack],[ProTotQty],[ProCurr],[ProImpPri],[ProDis],[ProVAT],[ProFinBuyin],[Average],[ProUPrSE],[ProUPriSeH],LEFT([Sup1],8) AS [SupNum],LTRIM(RTRIM(SUBSTRING([Sup1],9,LEN([Sup1])))) AS [SupName],[ProCat]
+	                        FROM [Stock].[dbo].[TPRProductsDeactivated]
+	                        WHERE (ISNULL([ProNumY],'') = @Barcode OR ISNULL([ProNumYP],'') = @Barcode OR ISNULL([ProNumYC],'') = @Barcode)
+	                        UNION ALL
+	                        SELECT B.[OldProNumy] AS [ProNumY],A.[ProNumYP],A.[ProNumYC],A.[ProName],A.[ProPacksize],A.[ProQtyPCase],A.[ProQtyPPack],B.[Stock] AS [ProTotQty],A.[ProCurr],A.[ProImpPri],A.[ProDis],A.[ProVAT],A.[ProFinBuyin],A.[Average],A.[ProUPrSE],A.[ProUPriSeH],LEFT(A.[Sup1],8) AS [SupNum],LTRIM(RTRIM(SUBSTRING(A.[Sup1],9,LEN(A.[Sup1])))) AS [SupName],A.[ProCat]
+	                        FROM [Stock].[dbo].[TPRProductsDeactivated] AS A INNER JOIN [Stock].[dbo].[TPRProductsOldCode] AS B ON A.[ProID] = B.[ProId]
+	                        WHERE B.[OldProNumy] = @Barcode
+                        ) LISTS;
+                        ";
 
                     tbl = Data.Selects(sql, Initialized.GetConnectionType(Data, App));
 
@@ -6030,6 +6023,8 @@ WHERE [Cusnum] = @CusNum AND [ProNumY] = @Barcode;
                 DataRow Row = null;
                 int vTotalTO = 0;
                 bool vAcceptPromotionSetting = false;
+
+
                 // CHECK T.O FOR PROMOTION 
                 if (oQtyInvoicing > 0)
                 {
@@ -6157,7 +6152,7 @@ DROP TABLE #oPromotion;";
                             Row["ItemDiscount"] = 0;
                             Row["PromotionMachanic"] = "";
                             Row["Remark"] = this.rdbcostlowecommerence.Checked ? this.rdbcostlowecommerence.Text : "";
-                            //   Row["Reason_Continue"] = _reason_continue;
+                            Row["Reason_Continue"] = _reason_continue;
                             ;
 
                             Row["TotalAmount"] = 0;
@@ -6244,7 +6239,6 @@ DROP TABLE #oPromotion;";
                 CmbProducts.Focus();
                 DgvShow.Sort(DgvShow.Columns["Division"], System.ComponentModel.ListSortDirection.Ascending);
                 LblCountRow.Text = string.Format("Count Row : {0}", DgvShow.RowCount);
-
 
             }
         }
@@ -6778,7 +6772,6 @@ WHERE ([x].[DefId] = @vid_);
                     InvNo = 0;
                     RCon.Close();
                     InvNo += 1;
-
                     // Key
                     decimal Key = 0;
                     sql_ = @"
@@ -7712,7 +7705,11 @@ DROP TABLE #lst_takeorder_{4};
                                 RCom.CommandText = sql_;
                                 RCom.ExecuteNonQuery();
 
+
+
                             }
+
+
                             decimal vaddmore_ = 0;
                             if (CusVAT.Trim().Equals("") || CusVAT.Trim().Equals("0"))
                             {
@@ -7730,18 +7727,14 @@ DROP TABLE #lst_takeorder_{4};
                             }
                             InvNo += vaddmore_;
                             InvNo += 1;
-                        }
 
 
+                            if (names.ToList().Count > 0)
+                            {
 
-
-
-                        if (names.ToList().Count > 0)
-                        {
-
-                            InvNo -= 1;
-                        }
-                        sql_ = @"DECLARE @cusNum AS NVARCHAR(8) = N'{0}';
+                                InvNo -= 1;
+                            }
+                            sql_ = @"DECLARE @cusNum AS NVARCHAR(8) = N'{0}';
 DECLARE @takeOrderNumber AS NVARCHAR(25) = N'{1}';
 UPDATE lu
 SET [lu].[allowedqtyinv] = ISNULL([lu].[allowedqtyinv], 0) - 1
@@ -7753,28 +7746,29 @@ WHERE (
 
 DELETE FROM [DBUNTWHOLESALECOLTD].[dbo].[TblDeliveryTakeOrders] WHERE ([TakeOrderNumber] = @takeOrderNumber);";
 
-                        sql_ = string.Format(sql_, this.CmbBillTo.SelectedValue, InvNo);
-                        RCom.CommandText = sql_;
-                        RCom.ExecuteNonQuery();
-                        RCom.CommandText = "UPDATE [Stock].[dbo].[TPRDeliveryTakeOrdPrintInvNo] SET [IsBusy] = 0, [PrintInvNo] = " + InvNo;
-                        RCom.ExecuteNonQuery();
-                        RTran.Commit();
-                        RCon.Close();
+                            sql_ = string.Format(sql_, this.CmbBillTo.SelectedValue, InvNo);
+                            RCom.CommandText = sql_;
+                            RCom.ExecuteNonQuery();
+                            RCom.CommandText = "UPDATE [Stock].[dbo].[TPRDeliveryTakeOrdPrintInvNo] SET [IsBusy] = 0, [PrintInvNo] = " + InvNo;
+                            RCom.ExecuteNonQuery();
+                            RTran.Commit();
+                            RCon.Close();
 
-                        MessageBox.Show("The processing have been finished.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("The processing have been finished.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        if (RdbOnlinePO.Checked == true)
-                        {
+                            if (RdbOnlinePO.Checked == true)
+                            {
 
-                            this.TimerCustomerLoading.Enabled = true;
-                            this.refreshonlinepo.Interval = 1;
+                                this.TimerCustomerLoading.Enabled = true;
+                                this.refreshonlinepo.Interval = 1;
 
+                            }
+                            TimerLoading.Enabled = true;
+                            CreateDeliveryTakeOrderList();
+                            ClearProductItems();
+                            App.SetEnableController(true, PanelHeader, PanelBillTo, CmbSaleman);
+                            CmbProducts.Focus();
                         }
-                        TimerLoading.Enabled = true;
-                        CreateDeliveryTakeOrderList();
-                        ClearProductItems();
-                        App.SetEnableController(true, PanelHeader, PanelBillTo, CmbSaleman);
-                        CmbProducts.Focus();
                     }
                     catch (SqlException ex)
                     {
@@ -7946,6 +7940,7 @@ DELETE FROM [DBUNTWHOLESALECOLTD].[dbo].[TblDeliveryTakeOrders] WHERE ([TakeOrde
             App.KeyPress(sender, e, ApplicationFramework.TypeKeyPress.Format_Number, null, 10);
 
         }
+
         private void Wait(int interval)
         {
             Stopwatch sw = new Stopwatch();
@@ -7977,6 +7972,7 @@ DELETE FROM [DBUNTWHOLESALECOLTD].[dbo].[TblDeliveryTakeOrders] WHERE ([TakeOrde
             }
 
         }
+
         private void DeactivatedProduct()
         {
             if (CmbProducts.Items.Count == 0) return;
@@ -8020,7 +8016,6 @@ DELETE FROM [DBUNTWHOLESALECOLTD].[dbo].[TblDeliveryTakeOrders] WHERE ([TakeOrde
             TotalPcsOrder();
         }
 
-
         private void TxtPackOrder_TextChanged(object sender, EventArgs e)
         {
             TotalPcsOrder();
@@ -8042,7 +8037,6 @@ DELETE FROM [DBUNTWHOLESALECOLTD].[dbo].[TblDeliveryTakeOrders] WHERE ([TakeOrde
         {
 
         }
-
 
         private void txtCustomerCode_TextChanged(object sender, EventArgs e)
         {
@@ -8156,6 +8150,7 @@ EXECUTE @RC = [DBUNTWHOLESALECOLTD].[dbo].[getDeliveryTakeOrderPromotionId];
 
             this.Cursor = Cursors.Default;
         }
+
         public static DataTable ConvertToDataTable<T>(List<T> list)
         {
             DataTable table = new DataTable();
@@ -8229,6 +8224,11 @@ EXECUTE @RC = [DBUNTWHOLESALECOLTD].[dbo].[getDeliveryTakeOrderPromotionId];
             this.pnlnone.Top = 65; // 45
             this.pnlnone.Left = (this.Width - this.pnlnone.Width) - 170; // 110
             this.pnlnone.Visible = true;
+        }
+
+        private void lblalarm_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

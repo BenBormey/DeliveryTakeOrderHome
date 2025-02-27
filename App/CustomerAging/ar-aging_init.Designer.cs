@@ -304,7 +304,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(433, 339);
+            this.ClientSize = new System.Drawing.Size(433, 351);
             this.Controls.Add(this.rbTeam);
             this.Controls.Add(this.cboTeam);
             this.Controls.Add(this.rbSupplier);

@@ -107,7 +107,7 @@
             this.BtnOK.ForeColor = System.Drawing.Color.Teal;
             this.BtnOK.Image = global::DeliveryTakeOrder.Properties.Resources._verify;
             this.BtnOK.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnOK.Location = new System.Drawing.Point(93, 298);
+            this.BtnOK.Location = new System.Drawing.Point(93, 295);
             this.BtnOK.Name = "BtnOK";
             this.BtnOK.Size = new System.Drawing.Size(146, 42);
             this.BtnOK.TabIndex = 107;

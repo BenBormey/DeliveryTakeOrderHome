@@ -17,7 +17,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
         public ar_aging(string pCusNum, DateTime pDueDate )
         {
             InitializeComponent();
-            RMDB db = new RMDB(AppSetting.ConnectionString);
+             db = new RMDB(AppSetting.ConnectionString);
             DataTable dt = GetData(pCusNum);
             if (dt.Rows.Count == 0)
             {
@@ -38,7 +38,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
                 lblExpiryDate.ForeColor = Color.IndianRed;
             }
             lblExpiryDate.Text = string.Format("{0}   {1}", expDate.ToString("yyyy-MM-dd"), dayLeftText);
-
+           // db = new RMDB(AppSetting.ConnectionString);
         }
         RMDB db;
             string cusNum;
@@ -50,18 +50,18 @@ namespace DeliveryTakeOrder.App.CustomerAging
         private DataTable GetData(string pCusNum)
         {
             string sqlQuery = @"
-        SELECT Id,
-               CusId,
-               CusName,
-               CreditLimit,
-               Expiry,
-               AlertDate
-        FROM Stock.dbo.TPRCustomerBankGarantee
-        WHERE CusId = N'{0}';
+      SELECT Id,
+       CusId,
+       CusName,
+       CreditLimit,
+       Expiry,
+       AlertDate
+FROM Stock.dbo.TPRCustomerBankGarantee
+WHERE CusId = N'{0}';
     ";
 
             sqlQuery = string.Format(sqlQuery, pCusNum);
-            return db.GetDataTable(sqlQuery);
+            return this.db.GetDataTable(sqlQuery);
         }
 
     }

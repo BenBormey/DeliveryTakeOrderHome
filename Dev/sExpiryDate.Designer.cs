@@ -864,11 +864,11 @@ namespace DeliveryTakeOrder.Dev
         internal DevExpress.XtraReports.UI.XRCrossBandLine XrCrossBandLine1;
         internal DevExpress.XtraReports.UI.XRCrossBandBox XrCrossBandBox1;
         internal DevExpress.XtraReports.UI.XRPageInfo XrPageInfo1;
-        private DevExpress.DataAccess.ObjectBinding.ObjectDataSource OverCreditNTerm1;
         private DevExpress.XtraReports.Parameters.Parameter companyname;
         private DevExpress.XtraReports.Parameters.Parameter companyaddress;
         private DevExpress.XtraReports.Parameters.Parameter cusnum;
         private DevExpress.XtraReports.Parameters.Parameter cusname;
         private DevExpress.XtraReports.Parameters.Parameter currentdate;
+        public DevExpress.DataAccess.ObjectBinding.ObjectDataSource OverCreditNTerm1;
     }
 }

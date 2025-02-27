@@ -587,7 +587,6 @@
     <Compile Include="App\CustomerAging\ar-aging_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App\CustomerAging\ar_agingform.cs" />
     <Compile Include="App\CustomerAging\general-controller_class.cs" />
     <Compile Include="App\CustomerAging\invoice-detail_class.cs" />
     <Compile Include="App\SendMailDCSKU\MailDCSKUReport.cs">
@@ -1091,9 +1090,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App\CustomerAging\ar-aging_form.resx">
       <DependentUpon>ar-aging_form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App\CustomerAging\ar_agingform.resx">
-      <DependentUpon>ar_agingform.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\SendMailDCSKU\MailDCSKUReport.resx">
       <DependentUpon>MailDCSKUReport.cs</DependentUpon>

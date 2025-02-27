@@ -162,7 +162,6 @@ namespace DeliveryTakeOrder.App.CustomerAging
             BindingSource bsDatasource = (BindingSource)((PreviewControl)page.Controls[0]).Datasource;
 
             AgingCallcardFilterForm frmFilter = new AgingCallcardFilterForm();
-
             frmFilter.FillSortableList<ARAgingDetail>(bsDatasource);
             frmFilter.ShowDialog(this);
 
@@ -183,13 +182,26 @@ namespace DeliveryTakeOrder.App.CustomerAging
 
             if (page.Name.Contains("All Invoices"))
             {
-                //    NewAllDetailReport(bs, $"Filtered {page.Text}");
+                NewAllDetailReport(bs, $"Filtered {page.Text}");
             }
             else
             {
                 NewDetailReport(bs, $"Filtered {page.Text}");
             }
+
         }
+        private void NewAllDetailReport(BindingSource pBs, string pText)
+        {
+            AgingCallcardAllDetailReport rpt = new AgingCallcardAllDetailReport
+            {
+                Name = $"{DateTime.Now.Ticks} {pText}"
+            };
+
+            rpt.DataSource = pBs;
+            rpt.paramAsOfDate.Value = this.DueDate;
+            PreviewReport(rpt, pText);
+        }
+
         private void NewAllDatailReport(BindingSource pBs, string pText)
         {
 
@@ -228,7 +240,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             rpt.paramAsOfDate.Value = this.DueDate;
 
             rpt.cellInvoiceNumber.PreviewClick += ShowInvoiceDetail;
-            rpt.cellGrandTotal.PreviewClick += ShowInvoiceDetail;
+            //rpt.cellGrandTotal.PreviewClick += ShowInvoiceDetail;
 
             PreviewReport(rpt, pText);
         }
@@ -259,9 +271,9 @@ namespace DeliveryTakeOrder.App.CustomerAging
         private void RenderDetailReport(ARAging pObjectAging, int pStartAge, int pEndAge)
         {
             ARAging oAge = pObjectAging;
-            //   var bs = new BindingSource(GetARAgingDetail(pStartAge, pEndAge, oAge.CusNum), null);
+              var bs = new BindingSource(GetARAgingDetail(pStartAge, pEndAge, oAge.CusNum), null);
             string text = $"Invoice - {oAge.CusName}";
-            //  NewDetailReport(bs, text);
+              NewDetailReport(bs, text);
         }
 
         // Method to show the invoice detail when clicked
@@ -381,6 +393,8 @@ namespace DeliveryTakeOrder.App.CustomerAging
 
 
             // Set parameters for the report
+          this.tabMain.SelectedPageChanged += DoPageChanged;
+
             xReport.RequestParameters = false;
             xReport.paramAsOfDate.Value = this.DueDate;
             xReport.paramFilterName.Value = filterName;
@@ -414,7 +428,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             // 
             this.pcMain.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.pcMain.Appearance.Options.UseFont = true;
-            this.pcMain.Size = new System.Drawing.Size(1032, 465);
+            this.pcMain.Size = new System.Drawing.Size(1028, 482);
             // 
             // panel1
             // 
@@ -425,9 +439,10 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.panel1.Controls.Add(this.btnHome);
             this.panel1.Controls.Add(this.btnAudit);
             this.panel1.Controls.Add(this.btnSelectInvoice);
-            this.panel1.Location = new System.Drawing.Point(252, 0);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(290, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(744, 43);
+            this.panel1.Size = new System.Drawing.Size(744, 44);
             this.panel1.TabIndex = 3;
             // 
             // label6
@@ -496,7 +511,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             // 
             this.btnSelectInvoice.Image = global::DeliveryTakeOrder.Properties.Resources.list;
             this.btnSelectInvoice.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSelectInvoice.Location = new System.Drawing.Point(42, 6);
+            this.btnSelectInvoice.Location = new System.Drawing.Point(42, 8);
             this.btnSelectInvoice.Name = "btnSelectInvoice";
             this.btnSelectInvoice.Size = new System.Drawing.Size(125, 27);
             this.btnSelectInvoice.TabIndex = 0;
@@ -954,6 +969,7 @@ EXEC (@Query);";
 
         private void cellCustomerClick(object sender, PreviewMouseEventArgs e)
         {
+           
             ARAging oAge = (ARAging)e.Brick.Value;
             ar_aging frm = new ar_aging(oAge.CusNum, this.DueDate);
             if (frm.IsClose) return;
@@ -979,6 +995,34 @@ EXEC (@Query);";
         {
 
         }
+        private void DoPageChanged(object sender, TabPageChangedEventArgs e)
+        {
+            if (e.Page.Name.Contains("Invoice"))
+            {
+                //btnHome.Enabled = false;
+                btnSelectInvoice.Enabled = true;
+                if (e.Page.Name.Contains("Filtered"))
+                {
+                    btnAudit.Enabled = false;
+                }
+                else
+                {
+                    btnAudit.Enabled = true;
+                }
+                btnSetRemark.Enabled = true;
+            }
+            else
+            {
+                btnSelectInvoice.Enabled = false;
+                btnAudit.Enabled = false;
+                btnSetRemark.Enabled = false;
+                //btnHome.Enabled = true;
+            }
+        }
+
+
+
+
     }
 
 }

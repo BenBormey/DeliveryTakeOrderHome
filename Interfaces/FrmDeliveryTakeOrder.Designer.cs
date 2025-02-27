@@ -1795,6 +1795,7 @@
             this.lblalarm.TabIndex = 4;
             this.lblalarm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblalarm.Visible = false;
+            this.lblalarm.Click += new System.EventHandler(this.lblalarm_Click);
             // 
             // Panel10
             // 

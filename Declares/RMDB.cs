@@ -145,22 +145,40 @@ public class RMDB
 
     public List<T> GetDataTableToObject<T>(DataTable pDataTable)
     {
-        List<T> list = new List<T>();
+        List<T> ls = new List<T>();
+        T o;
+
         foreach (DataRow dr in pDataTable.Rows)
         {
-            T obj = Activator.CreateInstance<T>();
-            foreach (PropertyInfo prop in typeof(T).GetProperties())
+            o = Activator.CreateInstance<T>();
+            object value;
+
+            foreach (PropertyInfo p in typeof(T).GetProperties())
             {
-                if (pDataTable.Columns.Contains(prop.Name) && prop.CanWrite)
+                try
                 {
-                    object value = dr[prop.Name] == DBNull.Value ? null : Convert.ChangeType(dr[prop.Name], prop.PropertyType);
-                    prop.SetValue(obj, value, null);
+                    if (p.CanWrite)
+                    {
+                        if (pDataTable.Columns.Contains(p.Name))
+                        {
+                            Type propType = p.PropertyType;
+                            value = dr[p.Name] == DBNull.Value ? null : Convert.ChangeType(dr[p.Name], propType);
+                            p.SetValue(o, value);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    // Optionally handle exceptions here
                 }
             }
-            list.Add(obj);
+
+            ls.Add(o);
         }
-        return list;
+
+        return ls;
     }
+
 
     public List<T> GetDataTableToObject<T>(string pSql)
     {

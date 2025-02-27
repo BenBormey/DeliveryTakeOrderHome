@@ -11,7 +11,7 @@
 
 //namespace DeliveryTakeOrder.Classes
 //{
-//      public class ClsDeliveryTakeOrder
+//    public class ClsDeliveryTakeOrder
 //    {
 //        private string query;
 //        private DatabaseFramework Data = new DatabaseFramework();
@@ -25,7 +25,7 @@
 
 //        }
 
-//        public  bool CheckNewCodeForCustomer(string CmbProducts , string CmbBillTo)
+//        public bool CheckNewCodeForCustomer(string CmbProducts, string CmbBillTo)
 //        {
 //            bool IsNewCode = false;
 //            string query = @"
@@ -43,8 +43,8 @@
 //            }
 //            return IsNewCode;
 //        }
-        
-//        public void CustomerLoadingManually(string Programname)
+
+//        public void CustomerLoadingManually(string Programname ,string chkallitems)
 //        {
 //            if (Programname.Equals("Sale_Team"))
 //            {

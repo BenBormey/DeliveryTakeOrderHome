@@ -12,47 +12,72 @@ namespace DeliveryTakeOrder.App.CustomerAging
         public AgingReport()
         {
             InitializeComponent();
+            cellCurrent.BeforePrint += cellInvoice_BeforePrint;
+            cellAA.BeforePrint += cellInvoice_BeforePrint;
+            cellAB.BeforePrint += cellInvoice_BeforePrint;
+            cellA.BeforePrint += cellInvoice_BeforePrint;
+            cellB.BeforePrint += cellInvoice_BeforePrint;
+            cellC.BeforePrint += cellInvoice_BeforePrint;
+            cellD.BeforePrint += cellInvoice_BeforePrint;
+            cellE.BeforePrint += cellInvoice_BeforePrint;
+            cellCustomer.BeforePrint += cellInvoice_BeforePrint;
+            cellTotal.BeforePrint += cellInvoice_BeforePrint;
         }
         private void cellInvoice_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            ARAging o = (ARAging)GetCurrentRow();
-            ((XRTableCell)sender).Tag = o;
+          
 
-            if (sender == cellAA)
-            {
-                ((XRTableCell)sender).ForeColor = o.AA_Color;
-            }
-            else if (sender == cellAB)
-            {
-                ((XRTableCell)sender).ForeColor = o.AB_Color;
-            }
-            else if (sender == cellA)
-            {
-                ((XRTableCell)sender).ForeColor = o.A_Color;
-            }
-            else if (sender == cellB)
-            {
-                ((XRTableCell)sender).ForeColor = o.B_Color;
-            }
-            else if (sender == cellC)
-            {
-                ((XRTableCell)sender).ForeColor = o.C_Color;
-            }
-            else if (sender == cellD)
-            {
-                ((XRTableCell)sender).ForeColor = o.D_Color;
-            }
-            else if (sender == cellE)
-            {
-                ((XRTableCell)sender).ForeColor = o.E_Color;
-            }
-            else if (sender == cellTotal)
-            {
-                ((XRTableCell)sender).ForeColor = o.Total_Color;
-            }
+
+            ARAging o = (ARAging)GetCurrentRow();
+                ((XRTableCell)sender).Tag = o;
+
+                if (sender == cellAA)
+                {
+                    ((XRTableCell)sender).ForeColor = o.AA_Color;
+                }
+                else if (sender == cellAB)
+                {
+                    ((XRTableCell)sender).ForeColor = o.AB_Color;
+                }
+                else if (sender == cellA)
+                {
+                    ((XRTableCell)sender).ForeColor = o.A_Color;
+                }
+                else if (sender == cellB)
+                {
+                    ((XRTableCell)sender).ForeColor = o.B_Color;
+                }
+                else if (sender == cellC)
+                {
+                    ((XRTableCell)sender).ForeColor = o.C_Color;
+                }
+                else if (sender == cellD)
+                {
+                    ((XRTableCell)sender).ForeColor = o.D_Color;
+                }
+                else if (sender == cellE)
+                {
+                    ((XRTableCell)sender).ForeColor = o.E_Color;
+                }
+                else if (sender == cellTotal)
+                {
+                    ((XRTableCell)sender).ForeColor = o.Total_Color;
+                }
+            
+
         }
         private void cellInvoice_PreviewMouseMove(object sender, PreviewMouseEventArgs e)
         {
+            cellCurrent.PreviewMouseMove += cellInvoice_PreviewMouseMove;
+            cellAA.PreviewMouseMove += cellInvoice_PreviewMouseMove;
+            cellAB.PreviewMouseMove += cellInvoice_PreviewMouseMove;
+            cellA.PreviewMouseMove += cellInvoice_PreviewMouseMove;
+            cellB.PreviewMouseMove += cellInvoice_PreviewMouseMove;
+            cellC.PreviewMouseMove += cellInvoice_PreviewMouseMove;
+            cellD.PreviewMouseMove += cellInvoice_PreviewMouseMove;
+            cellE.PreviewMouseMove += cellInvoice_PreviewMouseMove;
+
+            cellTotal.PreviewMouseMove += cellInvoice_PreviewMouseMove;
             e.PreviewControl.Cursor = Cursors.Hand;
         }
 
@@ -97,6 +122,54 @@ namespace DeliveryTakeOrder.App.CustomerAging
         private void cellAA_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
 
+        }
+
+        private void cellCustomer_PreviewMouseMove(object sender, PreviewMouseEventArgs e)
+        {
+           
+            e.PreviewControl.Cursor = Cursors.Hand;
+        }
+
+        private void xtblData_PreviewMouseMove(object sender, PreviewMouseEventArgs e)
+        {
+
+        }
+
+        private void cellAA_PreviewMouseMove(object sender, PreviewMouseEventArgs e)
+        {
+
+            e.PreviewControl.Cursor = Cursors.Hand;
+
+        }
+
+        private void cellAB_PreviewMouseMove(object sender, PreviewMouseEventArgs e)
+        {
+            e.PreviewControl.Cursor = Cursors.Hand;
+        }
+
+        private void cellA_PreviewMouseMove(object sender, PreviewMouseEventArgs e)
+        {
+            e.PreviewControl.Cursor = Cursors.Hand;
+        }
+
+        private void cellD_PreviewMouseMove(object sender, PreviewMouseEventArgs e)
+        {
+            e.PreviewControl.Cursor = Cursors.Hand;
+        }
+
+        private void cellE_PreviewMouseMove(object sender, PreviewMouseEventArgs e)
+        {
+            e.PreviewControl.Cursor = Cursors.Hand;
+        }
+
+        private void cellC_PreviewMouseMove(object sender, PreviewMouseEventArgs e)
+        {
+            e.PreviewControl.Cursor = Cursors.Hand;
+        }
+
+        private void cellB_PreviewMouseMove(object sender, PreviewMouseEventArgs e)
+        {
+            e.PreviewControl.Cursor = Cursors.Hand;
         }
     }
 }

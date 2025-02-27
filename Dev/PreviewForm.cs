@@ -1,6 +1,8 @@
 ﻿using DeliveryTakeOrder.App.CustomerAging;
 using DeliveryTakeOrder.Declares;
 using DevExpress.XtraEditors;
+using DevExpress.XtraTab;
+using DevExpress.XtraTab.ViewInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -56,6 +58,27 @@ namespace DeliveryTakeOrder.Dev
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+
+        }
+
+        private void tabMain_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabMain_CloseButtonClick(object sender, EventArgs e)
+        {
+            ClosePageButtonEventArgs arg = e as ClosePageButtonEventArgs;
+            // hide
+            // ((XtraTabPage)arg.Page).PageVisible = false;
+
+            // remove
+            if (this.tabMain.TabPages.Count == 1)
+            {
+                this.Close();
+                return;
+            }
+            this.tabMain.TabPages.Remove(arg.Page as XtraTabPage);
 
         }
     }

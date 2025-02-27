@@ -744,6 +744,6 @@ namespace DeliveryTakeOrder.Dev
         private DevExpress.XtraReports.Parameters.Parameter companyaddress;
         private DevExpress.XtraReports.Parameters.Parameter planningorder;
         private DevExpress.XtraReports.Parameters.Parameter planningdate;
-        private DevExpress.DataAccess.ObjectBinding.ObjectDataSource objectDataSource1;
+        public DevExpress.DataAccess.ObjectBinding.ObjectDataSource objectDataSource1;
     }
 }

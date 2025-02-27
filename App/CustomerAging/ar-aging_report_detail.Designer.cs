@@ -139,6 +139,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.XrTableCell8.StylePriority.UseTextAlignment = false;
             this.XrTableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.XrTableCell8.Weight = 8.8476867063518814D;
+            this.XrTableCell8.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.XrTableCell8_BeforePrint);
             // 
             // cellInvoiceNumber
             // 
@@ -157,6 +158,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.cellInvoiceNumber.StylePriority.UseTextAlignment = false;
             this.cellInvoiceNumber.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.cellInvoiceNumber.Weight = 22.751197352553852D;
+            this.cellInvoiceNumber.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.cellInvoiceNumber_BeforePrint);
             // 
             // XrTableCell19
             // 
@@ -251,6 +253,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.cellGrandTotal.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.cellGrandTotal.TextFormatString = "{0:n2}";
             this.cellGrandTotal.Weight = 18.959348222275402D;
+            this.cellGrandTotal.PreviewMouseMove += new DevExpress.XtraReports.UI.PreviewMouseEventHandler(this.cellGrandTotal_PreviewMouseMove);
             // 
             // XrTableCell27
             // 
@@ -741,6 +744,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
             this.paramAsOfDate});
             this.Version = "19.1";
+            this.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.ar_aging_report_detail_BeforePrint);
             ((System.ComponentModel.ISupportInitialize)(this.XrTable3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.XrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();

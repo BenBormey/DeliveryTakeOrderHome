@@ -17,6 +17,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
         }
         public List<invoicedetail> GetInvoiceDetail(string pDivision, string pInvoiceNumber)
         {
+   
             string sqlQuery = @"
 DECLARE @Query NVARCHAR(MAX) = N'',
         @SelectClause NVARCHAR(MAX) = N'

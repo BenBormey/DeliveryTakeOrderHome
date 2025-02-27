@@ -357,6 +357,7 @@
             this.BtnOK.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnOK.Dock = System.Windows.Forms.DockStyle.Right;
             this.BtnOK.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnOK.Image = global::DeliveryTakeOrder.Properties.Resources.OK;
             this.BtnOK.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnOK.Location = new System.Drawing.Point(691, 2);
             this.BtnOK.Name = "BtnOK";
@@ -371,6 +372,7 @@
             this.BtnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnCancel.Dock = System.Windows.Forms.DockStyle.Right;
             this.BtnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnCancel.Image = global::DeliveryTakeOrder.Properties.Resources.cancel_16;
             this.BtnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCancel.Location = new System.Drawing.Point(855, 2);
             this.BtnCancel.Name = "BtnCancel";

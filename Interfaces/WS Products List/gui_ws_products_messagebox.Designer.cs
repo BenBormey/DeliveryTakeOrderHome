@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Panel20 = new System.Windows.Forms.Panel();
             this.Panel2 = new System.Windows.Forms.Panel();
             this.dgvavg = new System.Windows.Forms.DataGridView();
@@ -137,9 +137,9 @@
             // totalavgpcs
             // 
             this.totalavgpcs.DataPropertyName = "totalavgpcs";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Format = "N0";
-            this.totalavgpcs.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Format = "N0";
+            this.totalavgpcs.DefaultCellStyle = dataGridViewCellStyle6;
             this.totalavgpcs.HeaderText = "T. Avg Pcs";
             this.totalavgpcs.Name = "totalavgpcs";
             this.totalavgpcs.ReadOnly = true;
@@ -148,9 +148,9 @@
             // totalavgctn
             // 
             this.totalavgctn.DataPropertyName = "totalavgctn";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Format = "N2";
-            this.totalavgctn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.Format = "N2";
+            this.totalavgctn.DefaultCellStyle = dataGridViewCellStyle7;
             this.totalavgctn.HeaderText = "T. Avg CTN";
             this.totalavgctn.Name = "totalavgctn";
             this.totalavgctn.ReadOnly = true;
@@ -201,8 +201,8 @@
             // dateorder
             // 
             this.dateorder.DataPropertyName = "dateorder";
-            dataGridViewCellStyle3.Format = "dd-MMM-yyyy";
-            this.dateorder.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Format = "dd-MMM-yyyy";
+            this.dateorder.DefaultCellStyle = dataGridViewCellStyle8;
             this.dateorder.HeaderText = "Date";
             this.dateorder.Name = "dateorder";
             this.dateorder.ReadOnly = true;
@@ -211,9 +211,9 @@
             // totalpcs
             // 
             this.totalpcs.DataPropertyName = "totalpcs";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Format = "N0";
-            this.totalpcs.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.Format = "N0";
+            this.totalpcs.DefaultCellStyle = dataGridViewCellStyle9;
             this.totalpcs.HeaderText = "Total Pcs";
             this.totalpcs.Name = "totalpcs";
             this.totalpcs.ReadOnly = true;
@@ -222,9 +222,9 @@
             // totalctn
             // 
             this.totalctn.DataPropertyName = "totalctn";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Format = "N2";
-            this.totalctn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.Format = "N2";
+            this.totalctn.DefaultCellStyle = dataGridViewCellStyle10;
             this.totalctn.HeaderText = "Total CTN";
             this.totalctn.Name = "totalctn";
             this.totalctn.ReadOnly = true;
@@ -313,6 +313,7 @@
             this.BtnFinish.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnFinish.DialogResult = System.Windows.Forms.DialogResult.Yes;
             this.BtnFinish.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnFinish.Image = global::DeliveryTakeOrder.Properties.Resources.tick_16;
             this.BtnFinish.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnFinish.Location = new System.Drawing.Point(217, 3);
             this.BtnFinish.Name = "BtnFinish";
@@ -326,6 +327,7 @@
             this.BtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnClose.DialogResult = System.Windows.Forms.DialogResult.No;
             this.BtnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BtnClose.Image = global::DeliveryTakeOrder.Properties.Resources.cancel_16;
             this.BtnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnClose.Location = new System.Drawing.Point(323, 3);
             this.BtnClose.Name = "BtnClose";

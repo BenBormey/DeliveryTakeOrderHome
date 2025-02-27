@@ -93,6 +93,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.XrTableCell22 = new DevExpress.XtraReports.UI.XRTableCell();
             this.XrTableCell23 = new DevExpress.XtraReports.UI.XRTableCell();
             this.XrTableCell24 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
             this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
             this.xtblSum = new DevExpress.XtraReports.UI.XRTable();
             this.XrTableRow9 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -119,13 +120,12 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.paramAsOfDate = new DevExpress.XtraReports.Parameters.Parameter();
             this.paramContact = new DevExpress.XtraReports.Parameters.Parameter();
             this.paramFilterName = new DevExpress.XtraReports.Parameters.Parameter();
-            this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.xtblHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtblData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XrTable1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtblSum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtblSum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // TopMargin
@@ -493,6 +493,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.xtblData.SizeF = new System.Drawing.SizeF(811F, 20F);
             this.xtblData.StylePriority.UseBorders = false;
             this.xtblData.StylePriority.UseFont = false;
+            this.xtblData.PreviewMouseMove += new DevExpress.XtraReports.UI.PreviewMouseEventHandler(this.xtblData_PreviewMouseMove);
             // 
             // XRTableRowDetail
             // 
@@ -553,6 +554,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.cellCustomer.StylePriority.UseTextAlignment = false;
             this.cellCustomer.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             this.cellCustomer.Weight = 36.541472188382684D;
+            this.cellCustomer.PreviewMouseMove += new DevExpress.XtraReports.UI.PreviewMouseEventHandler(this.cellCustomer_PreviewMouseMove);
             // 
             // cellTerm
             // 
@@ -642,6 +644,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.cellAA.TextFormatString = "{0:#,0.00;-#,0.00;\'-\'}";
             this.cellAA.Weight = 14.616588511826024D;
             this.cellAA.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.cellAA_BeforePrint);
+            this.cellAA.PreviewMouseMove += new DevExpress.XtraReports.UI.PreviewMouseEventHandler(this.cellAA_PreviewMouseMove);
             // 
             // cellAB
             // 
@@ -665,6 +668,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.cellAB.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.cellAB.TextFormatString = "{0:#,0.00;-#,0.00;\'-\'}";
             this.cellAB.Weight = 14.616588511826024D;
+            this.cellAB.PreviewMouseMove += new DevExpress.XtraReports.UI.PreviewMouseEventHandler(this.cellAB_PreviewMouseMove);
             // 
             // cellA
             // 
@@ -688,6 +692,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.cellA.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.cellA.TextFormatString = "{0:#,0.00;-#,0.00;\'-\'}";
             this.cellA.Weight = 14.616588511826024D;
+            this.cellA.PreviewMouseMove += new DevExpress.XtraReports.UI.PreviewMouseEventHandler(this.cellA_PreviewMouseMove);
             // 
             // cellB
             // 
@@ -708,6 +713,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.cellB.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.cellB.TextFormatString = "{0:#,0.00;-#,0.00;\'-\'}";
             this.cellB.Weight = 14.616588531007476D;
+            this.cellB.PreviewMouseMove += new DevExpress.XtraReports.UI.PreviewMouseEventHandler(this.cellB_PreviewMouseMove);
             // 
             // cellC
             // 
@@ -728,6 +734,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.cellC.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.cellC.TextFormatString = "{0:#,0.00;-#,0.00;\'-\'}";
             this.cellC.Weight = 14.616588513936222D;
+            this.cellC.PreviewMouseMove += new DevExpress.XtraReports.UI.PreviewMouseEventHandler(this.cellC_PreviewMouseMove);
             // 
             // cellD
             // 
@@ -751,6 +758,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.cellD.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.cellD.TextFormatString = "{0:#,0.00;-#,0.00;\'-\'}";
             this.cellD.Weight = 14.616588997507549D;
+            this.cellD.PreviewMouseMove += new DevExpress.XtraReports.UI.PreviewMouseEventHandler(this.cellD_PreviewMouseMove);
             // 
             // cellE
             // 
@@ -771,6 +779,7 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.cellE.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.cellE.TextFormatString = "{0:#,0.00;-#,0.00;\'-\'}";
             this.cellE.Weight = 14.616588532858572D;
+            this.cellE.PreviewMouseMove += new DevExpress.XtraReports.UI.PreviewMouseEventHandler(this.cellE_PreviewMouseMove);
             // 
             // cellTotal
             // 
@@ -916,6 +925,11 @@ namespace DeliveryTakeOrder.App.CustomerAging
             this.XrTableCell24.Name = "XrTableCell24";
             this.XrTableCell24.Text = "Date Follow Up";
             this.XrTableCell24.Weight = 0.99922302364513416D;
+            // 
+            // objectDataSource1
+            // 
+            this.objectDataSource1.DataSource = typeof(DeliveryTakeOrder.App.CustomerAging.ARAging);
+            this.objectDataSource1.Name = "objectDataSource1";
             // 
             // GroupFooter1
             // 
@@ -1274,11 +1288,6 @@ namespace DeliveryTakeOrder.App.CustomerAging
             // 
             this.paramFilterName.Name = "paramFilterName";
             // 
-            // objectDataSource1
-            // 
-            this.objectDataSource1.DataSource = typeof(DeliveryTakeOrder.App.CustomerAging.ARAging);
-            this.objectDataSource1.Name = "objectDataSource1";
-            // 
             // AgingReport
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1311,8 +1320,8 @@ namespace DeliveryTakeOrder.App.CustomerAging
             ((System.ComponentModel.ISupportInitialize)(this.xtblData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.XrTable2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.XrTable1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtblSum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtblSum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }

@@ -918,7 +918,8 @@ FROM (
                 RCom.Transaction = RTran;
                 RCom.Connection = RCon;
                 RCom.CommandType = CommandType.Text;
-                query = @"DECLARE @vCusNum AS NVARCHAR(15) = N'{1}';
+                query = @"
+DECLARE @vCusNum AS NVARCHAR(15) = N'{1}';
 DECLARE @vProNumY AS NVARCHAR(15) = N'{2}';
 DECLARE @vProName AS NVARCHAR(100) = N'';
 DECLARE @vProPackSize AS NVARCHAR(30) = N'';

@@ -31,6 +31,7 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
         {
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(guiDeliveryTakeOrderPromotionId));
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -40,7 +41,8 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(guiDeliveryTakeOrderPromotionId));
+            this.btnDelete = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.btnModify = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.Panel3 = new System.Windows.Forms.Panel();
             this.lstmain = new DevExpress.XtraGrid.GridControl();
             this.gvmain = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -50,9 +52,7 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             this.createdDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.promotionId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.maindelete = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnDelete = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.mainmodify = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnModify = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.Panel6 = new System.Windows.Forms.Panel();
             this.btnexporttoexcel = new DevExpress.XtraEditors.SimpleButton();
             this.SeparatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
@@ -73,11 +73,11 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             this.Panel4 = new System.Windows.Forms.Panel();
             this.loading = new System.Windows.Forms.Timer(this.components);
             this.displayLoading = new System.Windows.Forms.Timer(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.btnDelete)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnModify)).BeginInit();
             this.Panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstmain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvmain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnDelete)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnModify)).BeginInit();
             this.Panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SeparatorControl1)).BeginInit();
             this.Panel5.SuspendLayout();
@@ -85,6 +85,26 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             this.Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.AutoHeight = false;
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions1.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.btnDelete.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            // 
+            // btnModify
+            // 
+            this.btnModify.AutoHeight = false;
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            editorButtonImageOptions2.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.btnModify.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.btnModify.Name = "btnModify";
+            this.btnModify.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
             // Panel3
             // 
@@ -105,9 +125,6 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             this.lstmain.Location = new System.Drawing.Point(2, 92);
             this.lstmain.MainView = this.gvmain;
             this.lstmain.Name = "lstmain";
-            this.lstmain.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.btnDelete,
-            this.btnModify});
             this.lstmain.Size = new System.Drawing.Size(758, 340);
             this.lstmain.TabIndex = 20;
             this.lstmain.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -204,16 +221,6 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             this.maindelete.VisibleIndex = 3;
             this.maindelete.Width = 25;
             // 
-            // btnDelete
-            // 
-            this.btnDelete.AutoHeight = false;
-            editorButtonImageOptions1.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.btnDelete.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.btnDelete.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnDelete_ButtonClick);
-            // 
             // mainmodify
             // 
             this.mainmodify.ColumnEdit = this.btnModify;
@@ -223,16 +230,6 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             this.mainmodify.Visible = true;
             this.mainmodify.VisibleIndex = 4;
             this.mainmodify.Width = 25;
-            // 
-            // btnModify
-            // 
-            this.btnModify.AutoHeight = false;
-            editorButtonImageOptions2.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.btnModify.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.btnModify.Name = "btnModify";
-            this.btnModify.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.btnModify.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnModify_ButtonClick);
             // 
             // Panel6
             // 
@@ -263,6 +260,7 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             this.btnexporttoexcel.Size = new System.Drawing.Size(176, 35);
             this.btnexporttoexcel.TabIndex = 24;
             this.btnexporttoexcel.Text = "&Export To Excel";
+            this.btnexporttoexcel.Click += new System.EventHandler(this.btnexporttoexcel_Click);
             // 
             // SeparatorControl1
             // 
@@ -458,6 +456,7 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             // 
             this.PicLogo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PicLogo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PicLogo.Image = global::DeliveryTakeOrder.Properties.Resources.Logo;
             this.PicLogo.Location = new System.Drawing.Point(0, 0);
             this.PicLogo.Name = "PicLogo";
             this.PicLogo.Size = new System.Drawing.Size(66, 66);
@@ -496,11 +495,11 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PROMOTION ID";
             this.Load += new System.EventHandler(this.guiDeliveryTakeOrderPromotionId_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.btnDelete)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnModify)).EndInit();
             this.Panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lstmain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvmain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnDelete)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnModify)).EndInit();
             this.Panel6.ResumeLayout(false);
             this.Panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SeparatorControl1)).EndInit();
@@ -524,9 +523,7 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
         internal DevExpress.XtraGrid.Columns.GridColumn createdDate;
         internal DevExpress.XtraGrid.Columns.GridColumn promotionId;
         internal DevExpress.XtraGrid.Columns.GridColumn maindelete;
-        internal DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnDelete;
         internal DevExpress.XtraGrid.Columns.GridColumn mainmodify;
-        internal DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnModify;
         internal System.Windows.Forms.Panel Panel6;
         internal DevExpress.XtraEditors.SimpleButton btnexporttoexcel;
         internal DevExpress.XtraEditors.SeparatorControl SeparatorControl1;
@@ -547,5 +544,7 @@ namespace DeliveryTakeOrder.Interfaces.promotion_Id
         internal System.Windows.Forms.Panel Panel4;
         internal System.Windows.Forms.Timer loading;
         internal System.Windows.Forms.Timer displayLoading;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnDelete;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnModify;
     }
 }

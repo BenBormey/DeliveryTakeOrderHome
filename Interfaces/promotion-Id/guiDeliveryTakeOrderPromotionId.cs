@@ -3,6 +3,7 @@ using DeliveryTakeOrder.Controller;
 using DeliveryTakeOrder.DatabaseFrameworks;
 using DeliveryTakeOrder.Declares;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -252,6 +253,36 @@ EXECUTE @RC = [DBUNTWHOLESALECOLTD].[dbo].[deleteDeliveryTakeOrderPromotionId] @
             this.txtDescription.Text = $"{current.description}";
             this.btnCancel.Visible = true;
             this.lstmain.Enabled = false;
+
+        }
+
+        private void btnexporttoexcel_Click(object sender, EventArgs e)
+        {
+            GridView View = (GridView)this.lstmain.MainView;
+            if (View != null)
+            {
+                View.OptionsPrint.ExpandAllDetails = true;
+                View.ExportToXlsx(System.IO.Path.Combine(System.IO.Path.GetTempPath(), "Manager_List.xlsx"));
+
+                Microsoft.Office.Interop.Excel.Application xlsApp = null;
+                Microsoft.Office.Interop.Excel.Workbooks xlsWorkBooks = null;
+                Microsoft.Office.Interop.Excel.Workbook xlsWB = null;
+                try
+                {
+                    xlsApp = new Microsoft.Office.Interop.Excel.Application();
+                    xlsApp.Visible = true;
+                    xlsWorkBooks = xlsApp.Workbooks;
+                    xlsWB = xlsWorkBooks.Open(System.IO.Path.Combine(System.IO.Path.GetTempPath(), "Manager_List.xlsx"));
+                }
+                catch (Exception ex)
+                {
+                    // Handle exception
+                }
+                finally
+                {
+                    // Clean up
+                }
+            }
 
         }
     }
